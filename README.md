@@ -14,7 +14,7 @@ and a multi-tenant SaaS application.
  Technologies: Synchronizing Arduino Uno with GSM Shield, PIR Sensor, Webcam, DS3231
 using Arduino IDE.
 
-##############################################################################################################
+########################################################################################
 
 2) Project Title : Lucy helps keep our seniors happy and engaged
 
@@ -31,7 +31,7 @@ out to the senior citizens.
  Technologies : Dialog flow(api.ai) by Google or Alexa skill kit by Amazon web services, Rest
 webservice for reading mail from the mail account, Node JS, Heroku to host the web service
 
-###############################################################################################################
+########################################################################################
 
 3) Project title: WeServe - Connecting pro-bono and student volunteers to the NGOs around the
 world.
@@ -46,7 +46,7 @@ intelligent algorithm to match them.
 
  Technologies: Node JS, JavaScript, MySQL
 
-################################################################################################################
+########################################################################################
 
 4) Project Title: Wastage reduction through donation.
 
