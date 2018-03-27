@@ -142,7 +142,7 @@ section.section1{
     background : url('../images/image2.jpg');
     background-size: cover;  
     
-} */
+} 
 
 /* left navigation */
 div.leftnavigation ul{
@@ -206,4 +206,45 @@ div.leftnavigation ul li a:hover
 {
 color : #fff;
 background : #48C9B0;
+}
+
+
+/* People html */
+.card-body img{
+    width : 100px;
+     
+}
+/*people html */
+.card-header{
+    width : 100px;
+    background : #C0392B;
+    text-align: center;
+    color : white;
+}
+
+.card-footer{
+   padding-bottom: 30px;
+}
+
+.card{
+    width : 100px
+}
+
+.media.people{
+    
+    width : 300px;
+    height : 100px;
+    background : #F9E79F;
+    
+}
+
+
+/* Modal window */
+.modal-header {
+    background: black;
+    color : white;
+}
+
+.modal-body{
+    background: #EAEDED;
 }
