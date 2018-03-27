@@ -1,0 +1,250 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto:700');
+body,html{
+
+    height : 100%;
+    margin :0;
+    font-size:16px;
+    font-family: "Lato", sans-serif;
+    font-weight: 400;
+    line-height: 1.8em;
+    color:#666
+}
+
+.image1,.image2,.image3{
+    position: relative;
+    opacity:0.70;
+    background-position: center;
+    background-size:cover;
+    background-repeat: no-repeat;
+    /*
+    fixed = parallax
+    */
+    background-attachment: fixed
+}
+.image1{
+
+    background-image: url('../images/image1.jpg');
+    min-height: 100%;
+}
+
+.image2{
+    background-image: url('../images/image2.jpg');
+    min-height: 400px;
+}
+
+.image3{
+    background-image: url('../images/image3.jpg');
+    min-height: 400px;
+}
+
+.section{
+    text-align: center;
+    padding: 50px 80px;
+}
+
+.section-light{
+    background: color #f4f4f4;
+    color : #666;
+}
+
+.section-dark{
+    background: black;
+    color : #ddd;
+}
+
+.ptext{
+    position : absolute;
+    top : 50%;
+    width: 100%;
+    text-align : center;
+    color : #000;
+    font-size: 27px;
+    /*
+    spacing between each letter
+    */
+    letter-spacing: 8px;   
+    /*
+    Text to upper case
+    */
+    text-transform: uppercase;
+
+}
+
+/* Navigation Bar */
+
+nav{
+    position : fixed;
+    top : 0;
+    left : 0;
+    width : 100%;
+    height : 60px;
+    padding : 10px 100px;
+    box-sizing: border-box;
+    transition: .5s;
+    background : black;
+    
+}
+
+nav .logo
+{
+    float : left;
+}
+
+nav .logo img
+{
+    height : 40px; 
+    transition: .5s;
+}
+
+nav ul
+{
+    float : right;
+    margin : 0;
+    padding : 0;
+    display: flex;
+}
+
+nav ul li
+{
+    list-style: none;
+}
+nav ul li a
+{
+    list-style: 80px;
+    color : white;
+    padding : 5px 20px;
+    text-decoration: none;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 15px;
+    transition: .5s;
+}
+/*
+for the EconomiCali Text
+*/
+ div.logo a
+{
+    color : #F9E79F;
+    text-decoration: none;
+    font-family: 'Roboto', sans-serif;
+    font-size: 20px;
+    transition: .5s;
+}
+nav ul li a.active, 
+nav ul li a:hover 
+{
+color : #fff;
+background : #48C9B0;
+}
+
+section.section1{
+    width : 100%;
+    height : 20vh;
+    background : url('../images/image2.jpg');
+    background-size: cover;  
+    
+} 
+
+/* left navigation */
+div.leftnavigation ul{
+    position : absolute;
+    top : 50px;
+    float : left;
+    display : flex;
+    padding : 30px 30px;
+    flex-direction: column;
+    top : 40px;
+    bottom : 0px;
+    background: #000;
+    color : white;
+    width : 10%;
+}
+
+div.leftnavigation ul li{
+    list-style : none;
+    padding : 20px 40px;
+  
+    
+}
+
+div#divsearch{
+    float: right;
+    padding : 20px 100px 30px 30px;
+    
+}
+/*search button */
+div#divsearch button{
+    width : 35px;
+    height : 20px;
+    border-radius: 5px;
+    background : greenyellow;
+    color : white;
+}
+/*search bar*/
+div#divsearch input{
+    width : 200px;
+    border-radius: 5px;
+    background: black;
+    border-width: 0px;
+    color : white;
+    font-size: 15px;
+}
+
+div.leftnavigation ul li a
+{
+    list-style: 80px;
+    color : white;
+    padding : 5px 20px;
+    text-decoration: none;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 15px;
+    transition: .5s;
+    
+}
+/* hover on left navigationlinks */
+div.leftnavigation ul li a.active,
+div.leftnavigation ul li a:hover
+{
+color : #fff;
+background : #48C9B0;
+}
+
+
+/* People html */
+.card-body img{
+    width : 100px;
+     
+}
+/*people html */
+.card-header{
+    width : 100px;
+    background : #C0392B;
+    text-align: center;
+    color : white;
+}
+
+.card-footer{
+   padding-bottom: 30px;
+}
+
+.card{
+    width : 100px
+}
+
+.media.people{
+    
+    width : 300px;
+    height : 100px;
+    background : #F9E79F;
+    
+}
+
+
+/* Modal window */
+.modal-header {
+    background: black;
+    color : white;
+}
+
+.modal-body{
+    background: #EAEDED;
+}
