@@ -90,20 +90,18 @@ function data()
                     if(res.status === 'PASS'){
                         pass.push(res);
                     }
-
                     if(res.status === 'INTRODUCED')
                     {
                         introduced.push(res);
                     }
-
                     if(res.status === 'FAIL')
                     {
                        fail.push(res);
                     }
-
                 });
                 var statusResult ={"Pass" : pass.length ,"Introduced":introduced.length,"Fail":fail.length}
                 
+
                 /* Display status for Education category */
                 google.charts.load('current', {'packages':['corechart']});
                 google.charts.setOnLoadCallback(drawChart);
@@ -155,12 +153,10 @@ function data()
                     if(res.status === 'PASS'){
                         pass.push(res);
                     }
-
                     if(res.status === 'INTRODUCED')
                     {
                         introduced.push(res);
                     }
-                    
                     if(res.status === 'FAIL')
                     {
                        fail.push(res);
@@ -168,6 +164,7 @@ function data()
                 });
                 var statusResult ={"Pass" : pass.length ,"Introduced":introduced.length,"Fail":fail.length}
                 
+               
                 /* Display status for Education category */
                 google.charts.load('current', {'packages':['corechart']});
                 google.charts.setOnLoadCallback(drawChart);
@@ -182,12 +179,14 @@ function data()
                       ['Pass',pass.length]
                     ]);
             
+
                     // Set chart options
                     var options = {'title':'Count of different status for each category',
                                    'width':400,
                                    'height':300};
                     //colors:['#','#',....]
             
+
                     // Instantiate and draw our chart, passing in some options.
                     var chart = new google.visualization.PieChart(document.getElementById('chart_div'));
                     chart.draw(data, options);
@@ -225,6 +224,7 @@ function sendMail()
             }
         })
 }
+
 function goToContactUs(){
     $("contactUsBtn").click(function() {
         $('html,body').animate({
@@ -232,3 +232,168 @@ function goToContactUs(){
             'slow');
     });
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

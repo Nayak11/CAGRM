@@ -1,8 +1,13 @@
 const MongoClient = require('mongodb').MongoClient;
+
 const express = require('express');
+
 var nodemailer = require('nodemailer');
+
 var bodyParser = require('body-parser');
+
 const app = express();
+
 var cmpedb;
 
 app.use(express.static('.'));
@@ -22,9 +27,7 @@ if(!err) {
   });
 }); 
 
-/*app.listen(9002,()=>{
-    console.log("listening on port 9000");
-}); */
+
 
 app.get('/',(req,res)=>{
 res.sendfile('./htmlpages/dashboard.html');
@@ -104,3 +107,49 @@ app.post('/sendMail',(req,res)=>{
 });
 
 module.exports = app;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
