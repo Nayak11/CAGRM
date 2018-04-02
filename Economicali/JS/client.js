@@ -209,3 +209,33 @@ function data()
 
 
     }
+
+function sendMail()
+{
+    var payload = {
+        name :  document.getElementById('inputUsername').value,
+        email : document.getElementById('inputEmail').value,
+        mobileno: document.getElementById('telephone').value,
+        message: document.getElementById('message').value
+    }
+    console.log(payload);
+    axios.post('http://localhost:9000/sendMail',payload)
+        .then(function(response){
+            if(response.status === 200 ) {
+                var x = document.getElementById("snackbar");
+                x.className = "show";
+                setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
+            }
+            else
+            {
+                throw new Error('Request failed.');
+            }
+        })
+}
+function goToContactUs(){
+    $("contactUsBtn").click(function() {
+        $('html,body').animate({
+                scrollTop: $(".contact").offset().top},
+            'slow');
+    });
+}

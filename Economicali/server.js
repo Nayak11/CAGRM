@@ -1,5 +1,6 @@
 const MongoClient = require('mongodb').MongoClient;
 const express = require('express');
+var nodemailer = require('nodemailer');
 var bodyParser = require('body-parser');
 const app = express();
 var cmpedb;
@@ -27,6 +28,10 @@ if(!err) {
 
 app.get('/',(req,res)=>{
 res.sendfile('./htmlpages/dashboard.html');
+});
+
+app.get('/landingpage',(req,res)=>{
+    res.sendfile('./htmlpages/landingpage.html');
 });
 
 /*sample test flow */ 
@@ -67,5 +72,35 @@ app.post('/dashboard',(req,res)=>{
     });
 });
 
+
+app.post('/sendMail',(req,res)=>{
+
+    console.log(req);
+
+    console.log("Inside send Mail server");
+    var transporter = nodemailer.createTransport({
+        service: 'gmail',
+        auth: {
+            user: 'kiratib216@gmail.com',
+            pass: 'Jayu@216'
+        }
+    });
+
+    var mailOptions = {
+        from: 'kiratib216@gmail.com',
+        to: req.body.email ,
+        subject: 'Contact Us',
+        text: req.body.message
+    };
+    transporter.sendMail(mailOptions, function(error, info){
+        if (error) {
+            console.log(error);
+            // res.status(400).send({message:"Success"});
+        } else {
+            console.log('Email sent: ' + info.response);
+            res.status(200).send({message:"Success"});
+        }
+    });
+});
 
 module.exports = app;

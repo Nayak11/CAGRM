@@ -5,10 +5,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Landing Page</title>
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
+<div id="snackbar">Email Sending...</div>
     <div class="image1">
+        <div class=" transparent navbar-fixed-top">
+            <div class="row col-sm-3 offset-sm-8 navbar-right">
+                    <button id="contactUsBtn" class="btn  cusButton"><i class="fa fa-paper-plane" aria-hidden="true"  onclick="goToContactUs()"></i>Contact Us</button>
+                <button class="btn  cusButton"><i class="fa fa-paper-plane" aria-hidden="true"></i>Login</button>
+            </div>
+        </div>
         <div class="ptext">
             <span class="border"></span>
             EconomiCali
@@ -50,8 +61,49 @@
             <div class="image1">
                     <div class="ptext">
                         <span class="border"></span>
-                        EconomiCali
+                            EconomiCali
                     </div>
-                </div>
+            </div>
+
+            <div>
+                <section id="contact">
+                    <div class="section-content">
+                        <br/>
+                        <h1>Get in <span class="content-header wow fadeIn " data-wow-delay="0.2s" data-wow-duration="2s"> Touch with us</span></h1>
+                        <h3>We look forward to talking with you about your challenges and how we can help you address them.</h3>
+                    </div>
+                    <div class="contact-section">
+                        <div class="container">
+                            <form>
+                                <div class="col-md-6 form-line">
+                                    <div class="form-group">
+                                        <label for="inputUsername">Your Name</label>
+                                        <input type="text" class="form-control" id="inputUsername" placeholder=" Enter Name" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="inputEmail">Email Address</label>
+                                        <input type="email" class="form-control" id="inputEmail" placeholder=" Enter Email id"  required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="telephone">Mobile No.</label>
+                                        <input type="tel" class="form-control" id="telephone" placeholder=" Enter 10-digit mobile no." required>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for ="message">Message</label>
+                                        <textarea  class="form-control" id="message" placeholder="Enter Your Message" required></textarea>
+                                    </div>
+                                    <div>
+                                        <button type="submit" class="btn btn-default submit" onclick="sendMail()"><i class="fa fa-paper-plane" aria-hidden="true"></i>  Send Message</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </section>
+            </div>
+    <script src="../JS/client.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 </body>
 </html>
