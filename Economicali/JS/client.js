@@ -11,7 +11,6 @@ function data()
                 var texbox = document.getElementById('textbox').value=response.data.name;
                 return response;
             };
-            
             throw new Error('Request failed.');
             //console.log("In client js");
         });
@@ -35,7 +34,6 @@ function data()
                 console.log(matchresults);
                 return matchresults;
             };
-            
             throw new Error('Request failed.');
             //console.log("In client js");
         })
@@ -64,7 +62,6 @@ function data()
                document.getElementById("aboutauthor").innerText="Bill Title: "+matchresults[0].title + "\n\n"+"Status: "+matchresults[0].status;
                 return matchresults;
             };
-            
             throw new Error('Request failed.');
             //console.log("In client js");
         })
@@ -95,12 +92,10 @@ function data()
                     if(res.status === 'PASS'){
                         pass.push(res);
                     }
-
                     if(res.status === 'INTRODUCED')
                     {
                         introduced.push(res);
                     }
-
                     if(res.status === 'FAIL')
                     {
                        fail.push(res);
@@ -160,17 +155,14 @@ function data()
                     if(res.status === 'PASS'){
                         pass.push(res);
                     }
-
                     if(res.status === 'INTRODUCED')
                     {
                         introduced.push(res);
                     }
-
                     if(res.status === 'FAIL')
                     {
                        fail.push(res);
                     }
-
                 });
                 var statusResult ={"Pass" : pass.length ,"Introduced":introduced.length,"Fail":fail.length}
                 
