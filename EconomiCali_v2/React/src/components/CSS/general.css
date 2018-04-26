@@ -1,0 +1,128 @@
+.custom-radio{
+    width: 50%;
+    background-color:whitesmoke;
+    white-space: nowrap;
+
+}
+#role1{
+    border-bottom-right-radius: 0;
+    border-top-right-radius: 0;
+}
+
+#role2{
+    border-bottom-left-radius: 0;
+    border-top-left-radius: 0;
+}
+
+#role1:hover{
+    background-color:#E8E8E8;
+}
+
+#role2:hover{
+    background-color:#E8E8E8;
+}
+
+.btn-large
+{
+    width: 100%;
+
+}
+form
+{
+    margin-top: 5%;
+    padding-top: 10px;
+    background-color:white;
+    border-radius: 5px;
+    box-shadow: 5px 10px 8px #888888;
+    float: left;
+    display:inline-block;
+
+}
+
+.noBorder{
+    box-shadow: none;
+}
+
+.image{
+    height:100px;
+    width: 100px;
+}
+.pagefont{
+    font-size: 15px;
+    font-family: sans-serif;
+    line-height: 1.5;
+    color: #4D525B;
+    margin-bottom: 0;
+}
+
+.customfileupload{
+    border-style: dashed !important;
+}
+
+.errormessage
+{
+    font-size: x-small;
+    margin-top: 0px;
+    color: red;
+    padding-top: 0px;
+}
+
+table {
+    table-layout: fixed;
+    word-wrap: break-word;
+}
+
+.btnBid
+{
+    bottom: 0px;
+    right: 0px;
+}
+.cusPanel{
+    background: rgb(223, 117, 20);
+    float : left;
+    font-weight: 600;
+    color: black;
+    position: relative;
+    border: #F0F0F0;
+    padding: 10px;
+
+}
+
+.cusLogin{
+
+}
+
+body{
+    padding: 0px 0px 0px 0px;
+    margin: 0px 0px 0px 0px;
+    /*background-image: url("../Images/Login_Test_6.jpg");*/
+    /*backgroundColor: 'rgba(0,0,0,.6)';*/
+    /*height: 100%;*/
+    /*width: 100%;*/
+}
+
+.cusCard{
+    width: 100% !important;
+    margin-bottom: 10px !important;
+}
+
+.cusMainDiv{
+    padding-left: 0px !important; ;
+    padding-right: 0px !important;
+    padding-top: 0px !important;
+    padding-bottom: 0px !important;
+}
+.cusDivNav{
+    padding-left: 0px !important; ;
+    padding-right: 0px !important;
+}
+
+.logoTitle{
+    padding-left: 15px;
+    color : lightseagreen;
+    font-family: 'Helvetica Neue', 'Segoe UI', Helvetica, Arial, sans-serif;
+}
+.cusRightNavItems{
+    margin-right: 0px;
+    /*width: 100% !important;*/
+}

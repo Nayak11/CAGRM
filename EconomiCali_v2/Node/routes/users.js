@@ -568,7 +568,7 @@ router.get('/downloadFile', (req, res) => {
     }
 });
 
-router.post('/fetchbills', function (req, res, next) {
+router.post('/fetchAllbills', function (req, res, next) {
 
     var requserId =  req.body.user_id;
     console.log("Inside Bills");

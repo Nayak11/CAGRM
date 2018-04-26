@@ -1,275 +1,227 @@
 import React,{Component} from 'react';
 //import logo1 from './b.png';
 import bg from './1.jpg';
+import * as API from "./../api/API";
+import "./CSS/general.css";
+import NavbarTemp from "./NavbarTemp";
 
-var mails=[
-  {
-      "_id": {
-          "$oid": "5ad4ee91734d1d7f23719147"
-      },
-      "bill_no": "1936",
-      "introducer": "Low and Eggman",
-      "when": "January 25, 2018",
-      "category": "Education",
-      "description": "Postsecondary education: Office of Higher Education Performance and Accountability",
-      "status": "INTRODUCED",
-      "bill_type": "H.R."
-  },
-  {
-    "_id": {
-        "$oid ": "5ad4ee91734d1d7f23719147"
-    },
-    "bill_no": "1936",
-    "introducer": "Low and Eggman",
-    "when": "January 25, 2018",
-    "category": "Education",
-    "description": "Postsecondary education: Office of Higher Education Performance and Accountability",
-    "status": "INTRODUCED",
-    "bill_type": "H.R."
-},
-{
-    "_id": {
-        "$oid": "5ad4ee91734d1d7f23719147"
-    },
-    "bill_no": "1936",
-    "introducer": "Low and Eggman",
-    "when": "January 25, 2018",
-    "category": "Education",
-    "description": "Postsecondary education: Office of Higher Education Performance and Accountability",
-    "status": "INTRODUCED",
-    "bill_type": "H.R."
-},
-{
-    "_id": {
-        "$oid": "5ad4ee91734d1d7f23719147"
-    },
-    "bill_no": "1936",
-    "introducer": "Low and Eggman",
-    "when": "January 25, 2018",
-    "category": "Education",
-    "description": "Postsecondary education: Office of Higher Education Performance and Accountability",
-    "status": "REJECTED",
-    "bill_type": "H.R."
-},
-{
-    "_id": {
-        "$oid": "5ad4ee91734d1d7f23719147"
-    },
-    "bill_no": "1936",
-    "introducer": "Low and Eggman",
-    "when": "January 25, 2018",
-    "category": "Education",
-    "description": "Postsecondary education: Office of Higher Education Performance and Accountability",
-    "status": "REJECTED",
-    "bill_type": "H.R."
-},
-{
-    "_id": {
-        "$oid": "5ad4ee91734d1d7f23719147"
-    },
-    "bill_no": "1936",
-    "introducer": "Low and Eggman",
-    "when": "January 25, 2018",
-    "category": "Education",
-    "description": "Postsecondary education: Office of Higher Education Performance and Accountability",
-    "status": "PROGRESS",
-    "bill_type": "H.R."
-},
-{
-    "_id": {
-        "$oid": "5ad4ee91734d1d7f23719147"
-    },
-    "bill_no": "1936",
-    "introducer": "Low and Eggman",
-    "when": "January 25, 2018",
-    "category": "Education",
-    "description": "Postsecondary education: Office of Higher Education Performance and Accountability",
-    "status": "PROGRESS",
-    "bill_type": "H.R."
-}
-];
 
 class CenterHome extends Component{
-  constructor(props){
+
+  constructor(props) {
     super(props);
-    this.state={
-      category:[],
-      searchTerm:"",
-      month:"",
-      bill:"",
-      status:"ALL",
-      houseBool:true,
-      senateBool:true,
-      mails:[{
-            "_id": {
-                "$oid": "5ad4ee91734d1d7f23719147"
-            },
-            "bill_no": "1936",
-            "introducer": "Low and Eggman",
-            "when": "2018-05",
-            "category": "Health",
-            "description": "Postsecondary education: Office of Higher Education Performance and Accountability",
-            "status": "INTRODUCED",
-            "bill_type": "H.R."
-        },
-        {
-          "_id": {
-              "$oid": "5ad4ee91734d1d7f23719147"
-          },
-          "bill_no": "1932",
-          "introducer": "Low and Eggman",
-          "when": "2018-04",
-          "category": "Crime",
-          "description": "Postsecondary education: Office of Higher Education Performance and Accountability",
-          "status": "INTRODUCED",
-          "bill_type": "H.R."
-      },
-      {
-          "_id": {
-              "$oid": "5ad4ee91734d1d7f23719147"
-          },
-          "bill_no": "1933",
-          "introducer": "Low and Eggman",
-          "when": "2018-04",
-          "category": "Crime",
-          "description": "Postsecondary education: Office of Higher Education Performance and Accountability",
-          "status": "INTRODUCED",
-          "bill_type": "H.R."
-      },
-      {
-          "_id": {
-              "$oid": "5ad4ee91734d1d7f23719147"
-          },
-          "bill_no": "1934",
-          "introducer": "Low and Eggman",
-          "when": "2018-01",
-          "category": "Education",
-          "description": "Postsecondary education: Office of Higher Education Performance and Accountability",
-          "status": "REJECTED",
-          "bill_type": "S.R."
-      },
-      {
-          "_id": {
-              "$oid": "5ad4ee91734d1d7f23719147"
-          },
-          "bill_no": "1935",
-          "introducer": "Low and Eggman",
-          "when": "2018-05",
-          "category": "Finance",
-          "description": "Postsecondary education: Office of Higher Education Performance and Accountability",
-          "status": "REJECTED",
-          "bill_type": "S.R."
-      },
-      {
-          "_id": {
-              "$oid": "5ad4ee91734d1d7f23719147"
-          },
-          "bill_no": "1938",
-          "introducer": "Low and Eggman",
-          "when": "2018-04",
-          "category": "Education",
-          "description": "Postsecondary education: Office of Higher Education Performance and Accountability",
-          "status": "PROGRESS",
-          "bill_type": "S.R."
-      },
-      {
-          "_id": {
-              "$oid": "5ad4ee91734d1d7f23719147"
-          },
-          "bill_no": "1937",
-          "introducer": "Low and Eggman",
-          "when": "2018-04",
-          "category": "Agriculture",
-          "description": "Postsecondary education: Office of Higher Education Performance and Accountability",
-          "status": "PROGRESS",
-          "bill_type": "S.R."
-      }],
-      mailscopy:[{
-            "_id": {
-                "$oid": "5ad4ee91734d1d7f23719147"
-            },
-            "bill_no": "1936",
-            "introducer": "Low and Eggman",
-            "when": "2018-05",
-            "category": "Health",
-            "description": "Postsecondary education: Office of Higher Education Performance and Accountability",
-            "status": "INTRODUCED",
-            "bill_type": "H.R."
-        },
-        {
-          "_id": {
-              "$oid": "5ad4ee91734d1d7f23719147"
-          },
-          "bill_no": "1932",
-          "introducer": "Low and Eggman",
-          "when": "2018-04",
-          "category": "Crime",
-          "description": "Postsecondary education: Office of Higher Education Performance and Accountability",
-          "status": "INTRODUCED",
-          "bill_type": "H.R."
-      },
-      {
-          "_id": {
-              "$oid": "5ad4ee91734d1d7f23719147"
-          },
-          "bill_no": "1933",
-          "introducer": "Low and Eggman",
-          "when": "2018-04",
-          "category": "Crime",
-          "description": "Postsecondary education: Office of Higher Education Performance and Accountability",
-          "status": "INTRODUCED",
-          "bill_type": "H.R."
-      },
-      {
-          "_id": {
-              "$oid": "5ad4ee91734d1d7f23719147"
-          },
-          "bill_no": "1934",
-          "introducer": "Low and Eggman",
-          "when": "2018-01",
-          "category": "Education",
-          "description": "Postsecondary education: Office of Higher Education Performance and Accountability",
-          "status": "REJECTED",
-          "bill_type": "S.R."
-      },
-      {
-          "_id": {
-              "$oid": "5ad4ee91734d1d7f23719147"
-          },
-          "bill_no": "1935",
-          "introducer": "Low and Eggman",
-          "when": "2018-05",
-          "category": "Finance",
-          "description": "Postsecondary education: Office of Higher Education Performance and Accountability",
-          "status": "REJECTED",
-          "bill_type": "S.R."
-      },
-      {
-          "_id": {
-              "$oid": "5ad4ee91734d1d7f23719147"
-          },
-          "bill_no": "1938",
-          "introducer": "Low and Eggman",
-          "when": "2018-04",
-          "category": "Education",
-          "description": "Postsecondary education: Office of Higher Education Performance and Accountability",
-          "status": "PROGRESS",
-          "bill_type": "S.R."
-      },
-      {
-          "_id": {
-              "$oid": "5ad4ee91734d1d7f23719147"
-          },
-          "bill_no": "1937",
-          "introducer": "Low and Eggman",
-          "when": "2018-04",
-          "category": "Agriculture",
-          "description": "Postsecondary education: Office of Higher Education Performance and Accountability",
-          "status": "PROGRESS",
-          "bill_type": "S.R."
-      }]
-    }
-  }
+    this.state = {
+        temp:0,
+        mails:[],
+        mailscopy:[]
+    };
+}
+
+componentDidMount(){
+  var payload ={user_id : "admin@admin.com"}
+  API.fetchAllbills(payload)
+      .then(
+          (response) =>{
+              console.log(response.data);
+              this.setState({
+                  mails:response.data,
+                  mailscopy:response.data
+              })
+          }
+      );
+
+}
+  // constructor(props){
+  //   super(props);
+  //   this.state={
+  //     category:[],
+  //     searchTerm:"",
+  //     month:"",
+  //     bill:"",
+  //     status:"ALL",
+  //     houseBool:true,
+  //     senateBool:true,
+  //     mails:[{
+  //           "_id": {
+  //               "$oid": "5ad4ee91734d1d7f23719147"
+  //           },
+  //           "bill_no": "1936",
+  //           "introducer": "Low and Eggman",
+  //           "when": "2018-05",
+  //           "category": "Health",
+  //           "description": "Postsecondary education: Office of Higher Education Performance and Accountability",
+  //           "status": "INTRODUCED",
+  //           "bill_type": "H.R."
+  //       },
+  //       {
+  //         "_id": {
+  //             "$oid": "5ad4ee91734d1d7f23719147"
+  //         },
+  //         "bill_no": "1932",
+  //         "introducer": "Low and Eggman",
+  //         "when": "2018-04",
+  //         "category": "Crime",
+  //         "description": "Postsecondary education: Office of Higher Education Performance and Accountability",
+  //         "status": "INTRODUCED",
+  //         "bill_type": "H.R."
+  //     },
+  //     {
+  //         "_id": {
+  //             "$oid": "5ad4ee91734d1d7f23719147"
+  //         },
+  //         "bill_no": "1933",
+  //         "introducer": "Low and Eggman",
+  //         "when": "2018-04",
+  //         "category": "Crime",
+  //         "description": "Postsecondary education: Office of Higher Education Performance and Accountability",
+  //         "status": "INTRODUCED",
+  //         "bill_type": "H.R."
+  //     },
+  //     {
+  //         "_id": {
+  //             "$oid": "5ad4ee91734d1d7f23719147"
+  //         },
+  //         "bill_no": "1934",
+  //         "introducer": "Low and Eggman",
+  //         "when": "2018-01",
+  //         "category": "Education",
+  //         "description": "Postsecondary education: Office of Higher Education Performance and Accountability",
+  //         "status": "REJECTED",
+  //         "bill_type": "S.R."
+  //     },
+  //     {
+  //         "_id": {
+  //             "$oid": "5ad4ee91734d1d7f23719147"
+  //         },
+  //         "bill_no": "1935",
+  //         "introducer": "Low and Eggman",
+  //         "when": "2018-05",
+  //         "category": "Finance",
+  //         "description": "Postsecondary education: Office of Higher Education Performance and Accountability",
+  //         "status": "REJECTED",
+  //         "bill_type": "S.R."
+  //     },
+  //     {
+  //         "_id": {
+  //             "$oid": "5ad4ee91734d1d7f23719147"
+  //         },
+  //         "bill_no": "1938",
+  //         "introducer": "Low and Eggman",
+  //         "when": "2018-04",
+  //         "category": "Education",
+  //         "description": "Postsecondary education: Office of Higher Education Performance and Accountability",
+  //         "status": "PROGRESS",
+  //         "bill_type": "S.R."
+  //     },
+  //     {
+  //         "_id": {
+  //             "$oid": "5ad4ee91734d1d7f23719147"
+  //         },
+  //         "bill_no": "1937",
+  //         "introducer": "Low and Eggman",
+  //         "when": "2018-04",
+  //         "category": "Agriculture",
+  //         "description": "Postsecondary education: Office of Higher Education Performance and Accountability",
+  //         "status": "PROGRESS",
+  //         "bill_type": "S.R."
+  //     }],
+  //     mailscopy:[{
+  //           "_id": {
+  //               "$oid": "5ad4ee91734d1d7f23719147"
+  //           },
+  //           "bill_no": "1936",
+  //           "introducer": "Low and Eggman",
+  //           "when": "2018-05",
+  //           "category": "Health",
+  //           "description": "Postsecondary education: Office of Higher Education Performance and Accountability",
+  //           "status": "INTRODUCED",
+  //           "bill_type": "H.R."
+  //       },
+  //       {
+  //         "_id": {
+  //             "$oid": "5ad4ee91734d1d7f23719147"
+  //         },
+  //         "bill_no": "1932",
+  //         "introducer": "Low and Eggman",
+  //         "when": "2018-04",
+  //         "category": "Crime",
+  //         "description": "Postsecondary education: Office of Higher Education Performance and Accountability",
+  //         "status": "INTRODUCED",
+  //         "bill_type": "H.R."
+  //     },
+  //     {
+  //         "_id": {
+  //             "$oid": "5ad4ee91734d1d7f23719147"
+  //         },
+  //         "bill_no": "1933",
+  //         "introducer": "Low and Eggman",
+  //         "when": "2018-04",
+  //         "category": "Crime",
+  //         "description": "Postsecondary education: Office of Higher Education Performance and Accountability",
+  //         "status": "INTRODUCED",
+  //         "bill_type": "H.R."
+  //     },
+  //     {
+  //         "_id": {
+  //             "$oid": "5ad4ee91734d1d7f23719147"
+  //         },
+  //         "bill_no": "1934",
+  //         "introducer": "Low and Eggman",
+  //         "when": "2018-01",
+  //         "category": "Education",
+  //         "description": "Postsecondary education: Office of Higher Education Performance and Accountability",
+  //         "status": "REJECTED",
+  //         "bill_type": "S.R."
+  //     },
+  //     {
+  //         "_id": {
+  //             "$oid": "5ad4ee91734d1d7f23719147"
+  //         },
+  //         "bill_no": "1935",
+  //         "introducer": "Low and Eggman",
+  //         "when": "2018-05",
+  //         "category": "Finance",
+  //         "description": "Postsecondary education: Office of Higher Education Performance and Accountability",
+  //         "status": "REJECTED",
+  //         "bill_type": "S.R."
+  //     },
+  //     {
+  //         "_id": {
+  //             "$oid": "5ad4ee91734d1d7f23719147"
+  //         },
+  //         "bill_no": "1938",
+  //         "introducer": "Low and Eggman",
+  //         "when": "2018-04",
+  //         "category": "Education",
+  //         "description": "Postsecondary education: Office of Higher Education Performance and Accountability",
+  //         "status": "PROGRESS",
+  //         "bill_type": "S.R."
+  //     },
+  //     {
+  //         "_id": {
+  //             "$oid": "5ad4ee91734d1d7f23719147"
+  //         },
+  //         "bill_no": "1937",
+  //         "introducer": "Low and Eggman",
+  //         "when": "2018-04",
+  //         "category": "Agriculture",
+  //         "description": "Postsecondary education: Office of Higher Education Performance and Accountability",
+  //         "status": "PROGRESS",
+  //         "bill_type": "S.R."
+  //     }],
+
+   // }
+
+  
+
+  // componentDidMount(){
+  //   fetch('http://localhost:3001/users/bills')
+  //   .then(res => res.json())
+  //   .then(res => {
+  //     this.setState({mails:res.bills,mailscopy:res.bills});
+  //   })
+  //   .catch(()=> console.log("NAI JAMLA"))
+  // }
 
   handleBill(bill){
     var house=this.state.houseBool;
@@ -387,14 +339,18 @@ class CenterHome extends Component{
 
   render(){
     return(
-    <div style={{display:"flex",flexDirection:"column",width:"80%",height:"300%",alignContent:"space-between",backgroundImage: 'url(' + bg + ')',backgroundRepeat:"stretch"}}>
-        <div  style={{color:"white"}}>
+        <div className="content-wrapper">
+            <nav className="navbar navbar-default ">
+            </nav>
+            <NavbarTemp/>
+           <div style={{display:"flex",flexDirection:"column",alignContent:"space-between"}}>
+        <div  style={{color:"black"}}>
           <div style={{width:"100%",color:"black"}}>
             <br/><br/><br/>
             <div style={{width:"100%",display:"flex",alignContent:"space-between"}}>
           <div style={{float:"left",overflow:"hidden",width:"25%"}}>
             <h1>Category</h1>
-            <form>
+            <form style={{width:"100%",height:"100%"}}>
               <select onChange={(event)=>{this.handleCategory(event.target.value)}}>
   <option value="All">All</option>
   <option value="Agriculture">Agriculture</option>
@@ -421,7 +377,7 @@ class CenterHome extends Component{
           </div>
           <div style={{float:"left",overflow:"hidden",width:"20%"}}>
             <h1>Status</h1>
-              <label><input type="radio" name="contact" onClick={()=>{this.handleStatus("PASSED")}}/>Passed</label>
+              <label><input type="radio" name="contact" onClick={()=>{this.handleStatus("PASS")}}/>Passed</label>
               <label><input type="radio" name="contact" onClick={()=>{this.handleStatus("INTRODUCED")}}/>Introduced</label>
                 <label><input type="radio" name="contact" onClick={()=>{this.handleStatus("PROGRESS")}} />Progress</label>
                 <label><input type="radio" name="contact" onClick={()=>{this.handleStatus("REJECTED")}} />Rejected</label>
@@ -432,42 +388,42 @@ class CenterHome extends Component{
            <input type="text" placeholder="Search" value={this.state.searchTerm} onChange={(event)=>{
                this.setState({searchTerm:event.target.value});}} style={{width:"300px"}}/>
              <br/>
-           <button className="btn btn-default" style={{backgroundColor:"blue",width:"50px",height:"30px"}} onClick={()=>{this.handleSearch(this.state.searchTerm)}} type="submit">Search</button>
-           <i className="glyphicon glyphicon-search"></i>
+           <button className="btn btn-default" style={{backgroundColor:"blue",width:"100px",height:"30px",color:"black"}} onClick={()=>{this.handleSearch(this.state.searchTerm)}} type="submit">Search  <i className="glyphicon glyphicon-search"></i></button>
+
           </div>
           </div>
         </div>
           </div>
-          <ul style={{border:"2px solid black"}}>
+          <ul style={{border:"2px solid black",listStyleType:"none"}}>
             <li>
               <div style={{display:"flex",justifyContent: "space-between",textAlign:"left",color:"skyblue"}}>
                 <div style={{float:"left",overflow:"hidden",width:"25%"}}>
-                <h1> Bill No.</h1>
+                <h1 style={{textAlign:"center"}}> Bill No.</h1>
                 </div>
                 <div style={{float:"left",overflow:"hidden",width:"25%"}}>
-                <h1>  Introducer</h1>
+                <h1 style={{textAlign:"center"}}>  Introducer</h1>
                 </div>
                 <div style={{float:"left",overflow:"hidden",width:"25%"}}>
-                <h1>  When </h1>
+                <h1 style={{textAlign:"center"}}>  When </h1>
                 </div>
                 <div style={{float:"left",overflow:"hidden",width:"25%"}}>
-                <h1>  Category </h1>
+                <h1 style={{textAlign:"center"}}>  Category </h1>
                 </div>
                 <div style={{float:"left",overflow:"hidden",width:"25%"}}>
-              <h1>    Description </h1>
+              <h1 style={{textAlign:"center"}}>    Description </h1>
                 </div>
                 <div style={{float:"left",overflow:"hidden",width:"25%"}}>
-              <h1>    Status</h1>
+              <h1 style={{textAlign:"center"}}>    Status</h1>
                 </div>
                 <div style={{float:"left",overflow:"hidden",width:"25%"}}>
-              <h1>    Bill Type </h1>
+              <h1 style={{textAlign:"center"}}>    Bill Type </h1>
                 </div>
 
               </div>
             </li>
             {this.state.mails.map((item)=>{
               return <li key={item.time} >
-                <div style={{display:"flex",border:"1px solid black",justifyContent: "space-between",color:"white"}}>
+                <div style={{display:"flex",border:"1px solid black",justifyContent: "space-between",color:"black"}}>
                   <div style={{float:"left",overflow:"hidden",width:"14.28%"}}>
                     {item.bill_no}
                   </div>
@@ -481,7 +437,7 @@ class CenterHome extends Component{
                     {item.category}
                   </div>
                   <div style={{float:"left",overflow:"hidden",width:"14.28%"}}>
-                    {item.description}
+                    {item.title}
                   </div>
                   <div style={{float:"left",overflow:"hidden",width:"14.28%"}}>
                     {item.status}
@@ -495,6 +451,14 @@ class CenterHome extends Component{
           </ul>
         </div>
     </div>
+            <footer className="sticky-footer">
+                <div className="container">
+                    <div className="text-center">
+                        <small>Copyright © Economicali 2018</small>
+                    </div>
+                </div>
+            </footer>
+        </div>
     )
   }
 }
