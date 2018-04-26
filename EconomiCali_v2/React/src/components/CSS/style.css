@@ -1,0 +1,416 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto:700');
+body,html{
+
+    height : 100%;
+    padding-right: 0;
+    padding-top: 0;
+    padding-left: 0;
+    margin :0;
+    font-size:16px;
+    font-family: "Lato", sans-serif;
+    font-weight: 400;
+    line-height: 1.8em;
+    color:#666;
+}
+
+.image1,.image2,.image3{
+    position: relative;
+    opacity:0.70;
+    background-position: center;
+    background-size:cover;
+    background-repeat: no-repeat;
+    /*
+    fixed = parallax
+    */
+    background-attachment: fixed
+}
+.image1{
+
+    background-image: url('../Images/image1.jpg');
+    min-height: 600px;
+}
+
+.image2{
+    background-image: url('../Images/image2.jpg');
+    min-height: 400px;
+}
+
+.image3{
+    background-image: url('../Images/image3.jpg');
+    min-height: 400px;
+}
+
+.section{
+    text-align: center;
+    padding: 50px 80px;
+}
+
+.section-light{
+    background: color #f4f4f4;
+    color : #666;
+}
+
+.section-dark{
+    background: black;
+    color : #ddd;
+}
+
+.ptext{
+    position : absolute;
+    top : 50%;
+    width: 100%;
+    text-align : center;
+    color : #000;
+    font-size: 27px;
+    /*
+    spacing between each letter
+    */
+    letter-spacing: 8px;
+    /*
+    Text to upper case
+    */
+    text-transform: uppercase;
+
+}
+
+/* Navigation Bar */
+
+nav{
+    position : fixed;
+    top : 0;
+    left : 0;
+    width : 100%;
+    height : 60px;
+    padding : 10px 100px;
+    box-sizing: border-box;
+    transition: .5s;
+    background : black;
+
+}
+
+nav .logo
+{
+    float : left;
+}
+
+nav .logo img
+{
+    height : 40px;
+    transition: .5s;
+}
+
+nav ul
+{
+    float : right;
+    margin : 0;
+    padding : 0;
+    display: flex;
+}
+
+nav ul li
+{
+    list-style: none;
+}
+nav ul li a
+{
+    list-style: 80px;
+    color : white;
+    padding : 5px 20px;
+    text-decoration: none;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 15px;
+    transition: .5s;
+}
+/*
+for the EconomiCali Text
+*/
+div.logo a
+{
+    color : #F9E79F;
+    text-decoration: none;
+    font-family: 'Roboto', sans-serif;
+    font-size: 20px;
+    transition: .5s;
+}
+nav ul li a.active,
+nav ul li a:hover
+{
+    color : #fff;
+    background : #48C9B0;
+}
+
+section.section1{
+    width : 100%;
+    height : 20vh;
+    /*background : url('../images/image2.jpg');*/
+    background-size: cover;
+
+}
+
+/*!* left navigation *!*/
+/*div.leftnavigation ul{*/
+/*position : absolute;*/
+/*top : 50px;*/
+/*float : left;*/
+/*display : flex;*/
+/*padding : 30px 30px;*/
+/*flex-direction: column;*/
+/*top : 40px;*/
+/*bottom : 0px;*/
+/*background: #000;*/
+/*color : black;*/
+/*width : 10%;*/
+/*}*/
+
+/*div.leftnavigation ul li{*/
+/*list-style : none;*/
+/*padding : 20px 40px;*/
+/**/
+/**/
+/*}*/
+
+/*div#divsearch{*/
+/*float: right;*/
+/*padding : 20px 100px 30px 30px;*/
+/**/
+/*}*/
+/*!*search button *!*/
+/*div#divsearch button{*/
+/*width : 35px;*/
+/*height : 20px;*/
+/*border-radius: 5px;*/
+/*background : greenyellow;*/
+/*color : white;*/
+/*}*/
+/*!*search bar*!*/
+/*div#divsearch input{*/
+/*width : 200px;*/
+/*border-radius: 5px;*/
+/*background: black;*/
+/*border-width: 0px;*/
+/*color : white;*/
+/*font-size: 15px;*/
+/*}*/
+
+/*div.leftnavigation ul li a*/
+/*{*/
+/*list-style: 80px;*/
+/*color : white;*/
+/*padding : 5px 20px;*/
+/*text-decoration: none;*/
+/*font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;*/
+/*font-size: 15px;*/
+/*transition: .5s;*/
+/**/
+/*}*/
+/*!* hover on left navigationlinks *!*/
+/*div.leftnavigation ul li a.active,*/
+/*div.leftnavigation ul li a:hover*/
+/*{*/
+/*color : #fff;*/
+/*background : #48C9B0;*/
+/*}*/
+
+
+/* People html */
+.card-body img{
+    width : 100px;
+
+}
+/*people html */
+.card-header{
+    width : 100px;
+    background : #C0392B;
+    text-align: center;
+    color : white;
+}
+
+.card-footer{
+    padding-bottom: 30px;
+}
+
+.card{
+    width : 100px
+}
+
+.media.people{
+
+    width : 300px;
+    height : 100px;
+    background : #F9E79F;
+
+}
+
+
+/* Modal window */
+.modal-header {
+    background: black;
+    color : white;
+}
+
+.modal-body{
+    background: #EAEDED;
+}
+
+
+/*added by Kirati*/
+
+.content-header{
+    font-family: 'Oleo Script', cursive;
+    color:#fcc500;
+    font-size: 30px;
+}
+
+.section-content{
+    text-align: center;
+
+}
+#contact{
+
+    font-family: 'Teko', sans-serif;
+    /*padding-top: 60px;*/
+    width: 100%;
+    width: 100vw;
+    height: 600px;
+    background: #B29999; /* fallback for old browsers */
+    background: -webkit-linear-gradient(to left, black , #B29999); /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to left, black , #B29999); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    color : #fff;
+}
+.contact-section{
+    padding-top: 40px;
+}
+.contact-section .col-md-6{
+    width: 50%;
+}
+
+.form-line{
+    border-right: 1px solid #B29999;
+}
+
+.form-group{
+    /*margin-top: 10px;*/
+}
+label{
+    font-size: 1em;
+    line-height: 1em;
+    font-weight: normal;
+}
+.form-control{
+    font-size: 1em;
+    color: #080808;
+}
+textarea.form-control {
+    height: 135px;
+    /* margin-top: px;*/
+}
+
+.submit{
+    font-size: 0.9em;
+    float: right;
+    width: 150px;
+    background-color: transparent;
+    color: #fff;
+
+}
+/*landing page button*/
+.cusButton{
+    background-color: transparent;
+    border: black;
+    border:2px;
+    font-size: medium;
+    color: black;
+    border-style: solid;
+    border-color: black;
+    margin-top: 8%;
+    margin-right: 20px;
+    border-radius: 0px;
+}
+
+.cusButton:hover {
+    background-color: transparent;
+    border: #333333;
+    border:2px;
+    font-size: medium;
+    color: #333333;
+    border-style: solid;
+    border-color: #333333;
+    margin-top: 8%;
+    margin-right: 20px;
+    border-radius: 0px;
+}
+/*end of kirati change*/
+
+/* snackbar start
+
+/* The snackbar - position it at the bottom and in the middle of the screen */
+#snackbar {
+    visibility: hidden; /* Hidden by default. Visible on click */
+    min-width: 250px; /* Set a default minimum width */
+    margin-left: -125px; /* Divide value of min-width by 2 */
+    background-color: #333; /* Black background color */
+    color: #fff; /* White text color */
+    text-align: center; /* Centered text */
+    border-radius: 2px; /* Rounded borders */
+    padding: 16px; /* Padding */
+    position: fixed; /* Sit on top of the screen */
+    z-index: 1; /* Add a z-index if needed */
+    left: 50%; /* Center the snackbar */
+    bottom: 30px; /* 30px from the bottom */
+}
+
+#snackbar.show {
+    visibility: visible; /* Show the snackbar */
+
+    /* Add animation: Take 0.5 seconds to fade in and out the snackbar.
+    However, delay the fade out process for 2.5 seconds */
+    -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+    animation: fadein 0.5s, fadeout 0.5s 2.5s;
+}
+
+@-webkit-keyframes fadein {
+    from {bottom: 0; opacity: 0;}
+    to {bottom: 30px; opacity: 1;}
+}
+
+@keyframes fadein {
+    from {bottom: 0; opacity: 0;}
+    to {bottom: 30px; opacity: 1;}
+}
+
+@-webkit-keyframes fadeout {
+    from {bottom: 30px; opacity: 1;}
+    to {bottom: 0; opacity: 0;}
+}
+
+@keyframes fadeout {
+    from {bottom: 30px; opacity: 1;}
+    to {bottom: 0; opacity: 0;}
+}
+
+/*snack bar end *!*/
+/*new left pane*/
+.navbar-fixed-left {
+    width: 100%;
+    position: fixed;
+    border-radius: 0;
+    height: 550px;
+    margin-left: 0%;
+    alignment: center;
+}
+
+.navbar-fixed-left .navbar-nav > li {
+    float: none;  /* Cancel default li float: left */
+}
+
+
+
+.divCus{
+    padding: 0px;
+    align-content: center;
+    margin-left : -43px;
+    margin-top: -20px;
+    border: yellow;
+    border-style: solid;
+    padding: 0;
+}

@@ -1,0 +1,99 @@
+body{
+  margin:0;
+  padding:0;
+  background: url("../Images/Login_Test_6.jpg");
+  background-size: cover;
+  background-position:50% 50%;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  font-family: sans-serif;
+  image-rendering: -webkit-optimize-contrast;
+  height: 100vh;
+}
+
+<!--
+#particles-js
+{
+  height: 100%;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.7),rgba(0, 0, 0, 0.7)),url("../Images/Login_Test_6.jpg");
+}-->
+
+.form-link{
+  color: #F9DF05;
+}
+
+.panel{
+  border: 0px;
+  background: rgba(0,0,0,0.5);
+  color: #999900  ;
+  text-align: center;
+  padding-top: 70px;
+  position: relative;
+  transition:1s;
+}
+
+h2{
+  margin: 0;
+  padding: 0;
+  color: #F9DF05;
+}
+
+.lock{
+  position: absolute;
+  top: -50px;
+  width: 100px;
+  height: 100px;
+  line-height: 100px;
+  text-align: center;
+  left: 37%;
+  background:linear-gradient(DarkSlateGray,Cyan);
+  background:-webkit-linear-gradient(DarkSlateGray,Cyan);
+  background:-moz-linear-gradient(DarkSlateGray,Cyan);
+  border: 3px outset #F4E10A;
+  -webkit-border-radius:100%;
+  -moz-border-radius:100%;
+  -ms-border-radius:100%;
+  -o-border-radius:100%;
+  border-radius: 100%;
+  color: #fff;
+}
+
+.panel:hover{
+  background: rgba(0, 0, 0, 0.7);
+}
+
+.label{
+  position: absolute;
+  top:10px;
+  left: -20px;
+  width: 130px;
+  height: 40px;
+  line-height: 35px;
+  color: #fff;
+  transform: rotate(-20deg);
+  background: #E419B7 ;
+  -webkit-box-shadow:3px 3px 3px rgba(0,0,0,0.5);
+  box-shadow:3px 3px 3px rgba(0,0,0,0.5);
+}
+
+.label2{
+  position: absolute;
+  top:0px;
+  left: -18px;
+  width: 130px;
+  height: 40px;
+  line-height: 35px;
+  color: #fff;
+  transform: rotate(-27deg);
+  background: #4B0082;
+  z-index: -1;
+}
+
+.btn-success{
+  border: 0px;
+  border-radius: 0px;
+}
+
+.Sign-up-form{
+  display: none;
+}
