@@ -10,6 +10,8 @@ exports.connect = function(url, callback){
         callback(db);
     });
 };
+
+
 /**
  * Returns the collection on the selected database
  */

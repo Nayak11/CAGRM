@@ -22,6 +22,7 @@ var storage = multer.diskStorage({
     }
 })
 
+
 var upload = multer({ storage: storage }).single('myfile');
 
 /* GET users listing. */
@@ -29,21 +30,16 @@ router.get('/', function (req, res, next) {
     res.send('respond with a resource');
 });
 
-router.post('/doLogin', function (req, res, next) {
 
+router.post('/doLogin', function (req, res, next) {
     console.log("Inside DoLogin");
     var reqUsername = req.body.userID;
     var reqPassword = req.body.password;
-
     console.log(reqUsername);
     console.log(reqPassword);
-
     mongo.connect(mongoURL, function () {
-
         console.log('Connected to mongo at: ' + mongoURL);
-
         var coll = mongo.collection('organization');
-
         coll.findOne({User_name: reqUsername, Password: reqPassword}, function (err, user1) {
             if (user1) {
                 console.log(user1);
@@ -58,7 +54,6 @@ router.post('/doLogin', function (req, res, next) {
             else {
                 res.status(401).json({message: "Login Error", success: false});
             }
-
         });
     });
 });
@@ -108,18 +103,15 @@ router.post('/doLogin', function (req, res, next) {
         //         }
         //     }
 
-router.post('/doSignUp', function (req, res, next) {
 
+router.post('/doSignUp', function (req, res, next) {
     //console.log(JSON.stringify(req.body));
     var reqEmail = req.body.email;
         var reqUsername = req.body.username;
-
     //console.log(reqEmail);
-
     bcrypt.hash(req.body.password, bcrypt.genSaltSync(10), function(err, password) {
         var query = "insert into user(email, username, password) values ('" + reqEmail + "','" + reqUsername + "','" + password + "')";
         //console.log("Query is :" + query);
-
         //kirati start
         pool.fetchData(function (err, results) {
             if (err) {
@@ -150,10 +142,7 @@ router.post('/addProject', function (req, res, next) {
     var reqProjectBudgetMax = req.body.projectBudgetMax;
     var reqFilePath = req.body.projectFile;
     var reqEmployer = req.body.userid;
-    var reqSkill = req.body.projectSkilstring
-
-
-
+    var reqSkill = req.body.projectSkilstring;
 
     var q = "insert into project(project_name, description, budget_range_start, budget_range_end) values ('website', 'simple site', 10, 50)"
     var query = "insert into project(project_name, description, budget_range_start, budget_range_end, projectSkills, userid, filepath) values ('" + reqProjectname + "','" + reqDescription + "','" + reqProjectBudgetMin + "','" + reqProjectBudgetMax + "','" + reqSkill  + "','" + reqEmployer + "','"  + reqFilePath + "')"
@@ -253,7 +242,6 @@ router.post('/sendMail',(req,res)=>{
             pass: 'Jayu@216'
         }
     });
-
     var mailOptions = {
         from: 'kiratib216@gmail.com',
         to: req.body.email ,
@@ -286,11 +274,9 @@ router.post('/setProfile', function (req, res, next) {
     var reqPath = req.body.profileFile;
 
     console.log(reqfirstname);
-
     //var q = "update user set firstname = 'Deep' ,lastname = 'Bhuva', email = 'deep@deep.com',phone = '012345678' where userid = 1"
     var query = "update user set firstname = '" + reqfirstname + "' ,lastname = '" + reqlastname + "', email = '" + reqemail + "',phone = '" + reqphonenumber  + "', userskills = '" +  reqSkills + "' , profilepicpath = '" + reqPath + "' where userid = '" + reqUserId + "'";
     console.log("Query is :" + query);
-
     //kirati start
     pool.fetchData(function(err,results){
         //console.log('---------------------------------------');
@@ -368,12 +354,9 @@ router.post('/addmybid', function (req, res, next) {
     console.log("Inside addmybid");
     var q = "insert into project_user values (1,7,25,30)"
     //var query_for_userid = "select userid from user where username ='"+req.body.username+"'";
-
     console.log(req.body);
-
     var query = "insert into project_user values ('" + req.body.project_id+ "','" + req.body.userId + "','" + req.body.bid_value + "','" + req.body.bid_period+"')";
     //console.log("Query is :" + query);
-
     pool.fetchData(function(err,results){
         //console.log('---------------------------------------');
         if(err){
@@ -405,6 +388,8 @@ router.post('/fetchmybids', function (req, res, next) {
         }
     },query);
 });
+
+
 router.post('/fetchmyPostedprojects', function (req, res, next) {
 
     console.log("Inside fetchmyPostedprojects");
@@ -422,11 +407,11 @@ router.post('/fetchmyPostedprojects', function (req, res, next) {
         }
     },query);
 });
-router.post('/fetchskills', function (req, res, next) {
 
+
+router.post('/fetchskills', function (req, res, next) {
     console.log("Inside fetchskils");
     var query = "select skill_id as id ,skill_name as name from skill "
-
     pool.fetchData(function(err,results){
         //console.log('---------------------------------------');
         if(err){
@@ -534,9 +519,8 @@ var requserId =  req.body.userid;
             },qry);
         }
     },query);
-
-
 });
+
 
 router.post('/fetchPeople', function (req, res, next) {
 
@@ -627,6 +611,7 @@ router.post('/fetchbillsData',(req,res)=> {
     });
 });
 
+
 router.post('/fetchPreferencesByUser',(req,res)=> {
 
     console.log("Inside Fetch bills passes failed analysis");
@@ -647,6 +632,7 @@ router.post('/fetchPreferencesByUser',(req,res)=> {
 
     });
 });
+
 
 router.post('/savePreferences',(req,res)=> {
 
@@ -695,6 +681,7 @@ router.get('/downloadFile', (req, res) => {
     }
 });
 
+
 router.post('/fetchAllbills', function (req, res, next) {
 
     var requserId =  req.body.user_id;
@@ -724,4 +711,292 @@ router.post('/fetchAllbills', function (req, res, next) {
 
 
 module.exports = router;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

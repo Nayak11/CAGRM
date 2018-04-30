@@ -25,10 +25,12 @@ export default function signUpReducer (state = defaultState, action) {
             newState.userId = '';
             return newState;
 
+
         case 'PROFILE_SUCCESS':
             newState.isSetProfile = true;
             newState.messageProfile = "Existing Username Or EmailId";
             return newState;
+
 
         case 'PROFILE_FAILURE':
             newState.isSetProfile = false;

@@ -10,8 +10,6 @@ var mongodb = require('mongodb');
 var mongo = require("./mongo");
 var ObjectID = require('mongodb').ObjectID;
 var mongoURL = "mongodb://cmpe272:cmpe272@ds013495.mlab.com:13495/cmpe272";
-
-
 var storage = multer.diskStorage({
     destination: function (req, file, cb) {
         cb(null, './uploads/doc')
@@ -20,23 +18,22 @@ var storage = multer.diskStorage({
         cb(null, file.fieldname + '-' + Date.now() + "."+ file.originalname)
     }
 })
-
 var upload = multer({ storage: storage }).single('myfile');
+
 
 /* GET users listing. */
 router.get('/', function (req, res, next) {
     res.send('respond with a resource');
 });
 
+
 router.post('/doLogin', function (req, res, next) {
 
     console.log("Inside DoLogin");
     var reqUsername = req.body.userID;
     var reqPassword = req.body.password;
-
     console.log(reqUsername);
     console.log(reqPassword);
-
     mongo.connect(mongoURL, function () {
 
         console.log('Connected to mongo at: ' + mongoURL);
@@ -44,7 +41,8 @@ router.post('/doLogin', function (req, res, next) {
         var coll = mongo.collection('organization');
 
         coll.findOne({User_name: reqUsername, Password: reqPassword}, function (err, user1) {
-            if (user1) {
+            if (user1) 
+            {
                 console.log(user1);
                 res.status(201).json({
                     message: "Login successful",
@@ -54,7 +52,8 @@ router.post('/doLogin', function (req, res, next) {
                     companyId: user1.Comany_id
                 });
             }
-            else {
+            else 
+            {
                 res.status(401).json({message: "Login Error", success: false});
             }
 
@@ -62,50 +61,7 @@ router.post('/doLogin', function (req, res, next) {
     });
 });
 
-        //  // console.log(reqUsername);
-        //  // console.log(reqPassword);
-        //
-        // //var query = "select * from user where password = 'jjjjjjj' and (username = 'deep@deep.com' OR email = 'deep@deep.com')";
-        // var query = "select * from user where  username = '" + reqUsername+ "' or  email = '" + reqUsername+ "'" ;
-        //  //console.log("Query is :" + query);
-        //
-        // //kirati start
-        // pool.fetchData(function(err,results){
-        //     if(err){
-        //         res.status(401).json({message:"Login Error", success: false});
-        //     }
-        //     else
-        //     {
-        //         //console.log("Results: " + results.username);
-        //         if(results.length > 0){
-        //                 // console.log("Plain password :"  + reqPassword);
-        //                 // console.log("Encrypted password : " + results[0].password);
-        //                 bcrypt.compare(reqPassword, results[0].password, function(err, matches){
-        //                 if (matches){
-        //                     //console.log("valid Login");
-        //                     var sessiondata = {firstName : results[0].firstname,
-        //                     lastName : results[0].lastName,
-        //                     email : results[0].email};
-        //                     var token = jwt.sign(sessiondata , 'shhhhhh' , { expiresIn : 60*60 });
-        //                     //console.log(results[0].data.userid);
-        //                     res.status(201).json({message: "Login successful",
-        //                                     success: true,username : reqUsername,
-        //                                     userId : results[0].userid,
-        //                                     token: token,
-        //                                   });
-        //                 }
-        //                 else{
-        //                     //console.log("Password not matched");
-        //                     res.status(401).json({message:"Login Error", success: false});
-        //                 }
-        //             })
-        //         }
-        //         else {
-        //
-        //             //console.log("Invalid Login");
-        //             res.status(401).json({message:"Login Error", success: false});
-        //         }
-        //     }
+        
 
 router.post('/doSignUp', function (req, res, next) {
 
@@ -121,16 +77,20 @@ router.post('/doSignUp', function (req, res, next) {
 
         //kirati start
         pool.fetchData(function (err, results) {
-            if (err) {
+            if (err) 
+            {
                 //console.log("401 error");
                 res.status(401).json({message: "Existing Email or Username", success: false});
             }
-            else {
-                if (results.affectedRows > 0) {
+            else 
+            {
+                if (results.affectedRows > 0) 
+                {
                     //console.log("Entry Done");
                     res.status(200).json({message: "Sign up successful", userId: results.insertId, success: true});
                 }
-                else {
+                else 
+                {
                     //console.log("Error in entry");
                     res.status(401).json({message: "Existing Email or Username", success: false});
                 }
@@ -138,6 +98,7 @@ router.post('/doSignUp', function (req, res, next) {
         }, query);
     });
 });
+
 
 router.post('/addProject', function (req, res, next) {
 
@@ -150,8 +111,6 @@ router.post('/addProject', function (req, res, next) {
     var reqFilePath = req.body.projectFile;
     var reqEmployer = req.body.userid;
     var reqSkill = req.body.projectSkilstring
-
-
 
 
     var q = "insert into project(project_name, description, budget_range_start, budget_range_end) values ('website', 'simple site', 10, 50)"
@@ -179,6 +138,7 @@ router.post('/addProject', function (req, res, next) {
     },query);
 });
 
+
 router.post('/commentAdd',function(req,res,next){
     var id = req.body.id;
     var commentText = req.body.comment;
@@ -186,9 +146,11 @@ router.post('/commentAdd',function(req,res,next){
         console.log('Connected to mongo at: ' + mongoURL);
         var coll = mongo.collection('organization_details');
         coll.insertOne({"Comany_id":id,"Company_name":commentText},function(err, user){
-            if (user) {
+            if (user) 
+            {
                 res.status(201).json(user);
-            } else {
+            } else 
+            {
 
                 res.status(401).json({wrong:1});
             }
@@ -203,22 +165,26 @@ router.get('/comments',function(req,res,next){
     mongo.connect(mongoURL, function(){
         var coll = mongo.collection('organization_details');
         coll.find({Comany_id: req.body.company_id}).toArray(function (err, user1) {
-            if (user1) {
+            if (user1) 
+            {
                 console.log(user1);
                 var col2 = mongo.collection('organization_details');
                 col2.find({username: req.body.username}).toArray(function (err, user1) {
-            if (user1) {
+            if (user1) 
+            {
                 console.log(user1);
 
 
                 res.status(200).json({data:user1, status:true, message: "Success" });
             }
-            else {
+            else 
+            {
                 res.status(401).json({message: "Error",success: false});
             }
             });
         }
-            else {
+            else 
+            {
                 res.status(401).json({message: "Error",success: false});
             }
         });
@@ -248,16 +214,19 @@ router.post('/setProfile', function (req, res, next) {
     pool.fetchData(function(err,results){
         //console.log('---------------------------------------');
         console.log(results);
-        if(err){
+        if(err)
+        {
             res.status(401).json({message: "Error in profile set",success: false});
         }
         else
         {
-            if(results.affectedRows > 0){
+            if(results.affectedRows > 0)
+            {
                 console.log("Entry Done");
                 res.status(201).json({message: "Profile Set Successfully", success:true });
             }
-            else {
+            else 
+            {
                 console.log("Error in entry");
                 res.status(401).json({message: "Error in profile set",success: false});
             }
@@ -272,7 +241,8 @@ router.post('/fetchProject', function (req, res, next) {
     //console.log("Query is :" + query);
 
     pool.fetchData(function(err,results){
-        if(err){
+        if(err)
+        {
             res.status(401).json({message: "Error in profile set",success: false});
         }
         else
@@ -297,20 +267,6 @@ router.post('/fetchprojectusers', function (req, res, next) {
         }
         else
         {
-            // results.forEach(function(obj) {
-            //     console.log("Inside this");
-            //     if (obj.profilepicpath !== null) {
-            //         console.log(obj);
-            //         var buffer = fs.readFileSync(obj.profilepicpath);
-            //         var bufferBase64 = new Buffer(buffer);
-            //         obj.encodeImage = bufferBase64;
-            //     } else {
-            //         console.log(obj);
-            //         var buffer = fs.readFileSync("./uploads/default/default_img.png");
-            //         var bufferBase64 = new Buffer(buffer);
-            //         obj.encodeImage = bufferBase64;
-            //     }
-            // });
             res.status(201).send(JSON.stringify(results));
         }
     },query);
@@ -329,7 +285,8 @@ router.post('/addmybid', function (req, res, next) {
 
     pool.fetchData(function(err,results){
         //console.log('---------------------------------------');
-        if(err){
+        if(err)
+        {
             res.status(401).json({message: "Error in profile set",success: false});
         }
         else
@@ -341,6 +298,8 @@ router.post('/addmybid', function (req, res, next) {
 
 
 });
+
+
 router.post('/fetchmybids', function (req, res, next) {
 
     //console.log("Inside fetchmybids");
@@ -348,7 +307,8 @@ router.post('/fetchmybids', function (req, res, next) {
 
     pool.fetchData(function(err,results){
         //console.log('---------------------------------------');
-        if(err){
+        if(err)
+        {
             res.status(401).json({message: "Error",success: false});
         }
         else
@@ -358,6 +318,8 @@ router.post('/fetchmybids', function (req, res, next) {
         }
     },query);
 });
+
+
 router.post('/fetchmyPostedprojects', function (req, res, next) {
 
     console.log("Inside fetchmyPostedprojects");
@@ -365,7 +327,8 @@ router.post('/fetchmyPostedprojects', function (req, res, next) {
 
     pool.fetchData(function(err,results){
         //console.log('---------------------------------------');
-        if(err){
+        if(err)
+        {
             res.status(401).json({message: "Error",success: false});
         }
         else
@@ -375,6 +338,8 @@ router.post('/fetchmyPostedprojects', function (req, res, next) {
         }
     },query);
 });
+
+
 router.post('/fetchskills', function (req, res, next) {
 
     console.log("Inside fetchskils");
@@ -382,7 +347,8 @@ router.post('/fetchskills', function (req, res, next) {
 
     pool.fetchData(function(err,results){
         //console.log('---------------------------------------');
-        if(err){
+        if(err)
+        {
             res.status(401).json({message: "Error",success: false});
         }
         else
@@ -409,7 +375,8 @@ router.post('/addskillsToProject', function (req, res, next) {
         var query = "insert into project_skill(project_id, skill_id) values(" + reqProjectId + "," + skill.id + ");"
         pool.fetchData(function(err,results){
             //console.log('---------------------------------------');
-            if(err){
+            if(err)
+            {
                 res.status(401).json({message: "Error",success: false});
             }
             else if(index !== skills.length -1)
@@ -437,7 +404,8 @@ router.post('/addskillsToUser', function (req, res, next) {
             var query = "insert into user_skill (user_id, skill_id) values(" + reqUserId + "," + skill.id + ");"
             pool.fetchData(function(err,results){
                 //console.log('---------------------------------------');
-                if(err){
+                if(err)
+                {
                     res.status(401).json({message: "Error",success: false});
                 }
                 else if(index !== skills.length -1)
@@ -452,6 +420,8 @@ router.post('/addskillsToUser', function (req, res, next) {
         }
     )
 });
+
+
 router.post('/fetchUserDetails', function (req, res, next) {
 
 var requserId =  req.body.userid;
@@ -462,7 +432,8 @@ var requserId =  req.body.userid;
     console.log("Query is :" + query);
 
     pool.fetchData(function(err,results){
-        if(err){
+        if(err)
+        {
             res.status(401).json({message: "Error in profile set",success: false});
         }
         else
@@ -487,8 +458,6 @@ var requserId =  req.body.userid;
             },qry);
         }
     },query);
-
-
 });
 
 router.post('/fetchPeople', function (req, res, next) {
@@ -513,7 +482,8 @@ router.post('/fetchPeople', function (req, res, next) {
                 }
             }
         ]).toArray(function (err, user1) {
-            if (user1) {
+            if (user1) 
+            {
                 console.log("inside call back" + JSON.stringify(user1))
                 res.status(200).json({data:user1, status:true, message: "Success" });
             }
@@ -522,8 +492,6 @@ router.post('/fetchPeople', function (req, res, next) {
             }
         });
     });
-
-
 });
 
 
@@ -542,7 +510,8 @@ router.post('/fetchbills',(req,res)=> {
         [{"$group" : { _id: {category : "$category" ,author:  "$introducer" }, count : {$sum : 1}}}]
     ).toArray(function (err, result) {
 
-            if (result) {
+            if (result) 
+            {
                 console.log("inside call back" + JSON.stringify(result))
                 res.status(200).json({data: result, status: true, message: "Success"});
             }
@@ -553,6 +522,7 @@ router.post('/fetchbills',(req,res)=> {
         });
     });
 });
+
 
 router.post('/fetchbillsData',(req,res)=> {
 
@@ -581,21 +551,10 @@ router.post('/fetchbillsData',(req,res)=> {
 });
 
 
-
-
-
-// router.post('/uploadFile', upload.single('myfile'), function (req, res, next){
-//     upload(req, res, function (err) {
-//         if (err) {
-//             return res.status(501).send({error:err});
-//         }
-//         res.json({originalname :req.file.originalname, uploadname :req.file.filename});
-//     })
-// })
-
 router.post('/uploadFile', function (req, res) {
     upload(req, res, function (err) {
-        if (err) {
+        if (err) 
+        {
             return res.status(501).send({error:err});
         }
         //res.json({originalname :req.file.originalname, uploadname :req.file.filename});
@@ -605,7 +564,8 @@ router.post('/uploadFile', function (req, res) {
 
 
 router.get('/downloadFile', (req, res) => {
-    if(req.query.filepath!='undefined'){
+    if(req.query.filepath!='undefined')
+    {
         var buffer = fs.readFileSync(req.query.filepath);
         console.log(req.query.filepath);
         console.log(buffer);
@@ -625,7 +585,8 @@ router.post('/fetchAllbills', function (req, res, next) {
         var coll = mongo.collection('bills');
 
         coll.find({}).toArray(function (err, user1) {
-            if (user1) {
+            if (user1) 
+            {
                 console.log("inside call back" + JSON.stringify(user1))
                 res.status(200).json({data:user1, status:true, message: "Success" });
             }
@@ -643,4 +604,358 @@ router.post('/fetchAllbills', function (req, res, next) {
 
 
 module.exports = router;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
