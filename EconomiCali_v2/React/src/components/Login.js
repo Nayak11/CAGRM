@@ -3,9 +3,10 @@ import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import * as API from "../api/API";
 import {authenticateUser} from "../actions/index";
-import "./CSS/general.css";
 import LogoImage from "./LogoImage";
 import {Link,withRouter} from "react-router-dom";
+import axios from 'axios';
+import "./CSS/custom.css";
 
 class Login extends Component {
 
@@ -19,35 +20,56 @@ class Login extends Component {
                 userID: '',
                 password: '',
             },
+            emailorusernameValid: true,
+            passwordValid: true,
             isLoggedIn: false,
             message: ''
         };
 
     }
 
-    // handleLogin(event){
-    //     this.props.dispatch(authenticateUser(this.state.userdata))
-    //     //event.preventDefault();
-    // }
-    //
-    //
-    // componentWillMount(){
-    //     if(localStorage.getItem('jwtToken')){
-    //         this.props.history.push('/dashboard');
-    //     }
-    // }
-    //
-    // componentWillReceiveProps(nextProps){
-    //     if(nextProps.isLoggedIn === true){
-    //         nextProps.history.push('/dashboard');
-    //         //this.context.history.push('/signup');
-    //     }
-    // }
+    handleLogin(event){
+        var self = this;
 
-    componentDidMount(){
-
+        if(this.validateUsername() == true)
+        {
+            if(this.validatePassword() == true) {
+                axios.get("http://localhost:3001/users/doLogin", this.state.userdata)
+                    .then((response) => {
+                        console.log(response);
+                        if (response.data) {
+                            localStorage.setItem('user_id', response.data.userId);
+                            this.props.history.push('/home');
+                        }
+                    });
+            }else
+            {
+                this.setState({passwordValid: false})
+            }
+        }
+        else
+        {
+            this.setState({emailorusernameValid: false})
+        }
     }
 
+
+    validateUsername() {
+        var username = this.state.userdata.userID;
+        if (username != '')
+        {
+            return (true)
+        }
+        return (false)
+    }
+    validatePassword(){
+        var password = this.state.userdata.password;
+        if (password != '')
+        {
+            return (true)
+        }
+        return (false)
+    }
 
     render() {
         //console.log(this.props);
@@ -60,15 +82,7 @@ class Login extends Component {
                             <hr />
                             <div className="form-group"><h5>Login</h5></div>
                             <div className="form-group">
-                                <div >
-                                    {this.props.message && (
-                                        <div className="alert alert-warning text-danger small" role="alert">
-                                            {this.props.message}
-                                        </div>
-                                    )}
-                                </div>
-                            </div>
-                            <div className="form-group">
+                                { this.state.emailorusernameValid ? null : <div className="text-input-error-wrapper text-left errorMsg">Username is required.</div>}
                                 <input
                                     className="form-control"
                                     type="text"
@@ -83,10 +97,13 @@ class Login extends Component {
                                             }
                                         });
                                     }}
+                                    onFocus={(event) => {
+                                        this.setState({emailorusernameValid: true, msg : false});
+                                    }}
                                 />
                             </div>
-
                             <div className="form-group">
+                                { this.state.passwordValid ? null : <div className="text-input-error-wrapper text-left errorMsg">Password is required.</div>}
                                 <input
                                     className="form-control"
                                     type="password"
@@ -100,6 +117,9 @@ class Login extends Component {
                                                 password: event.target.value
                                             }
                                         });
+                                    }}
+                                    onFocus={(event) => {
+                                        this.setState({passwordValid: true , msg: false});
                                     }}
                                 />
                             </div>
@@ -116,9 +136,6 @@ class Login extends Component {
                             </div>
                             <hr />
                             <div className="form-group"><p className="small">Don't have an account? <Link to = "/signup">Sign Up</Link></p></div>
-
-
-
                         </form>
                     </div>
 

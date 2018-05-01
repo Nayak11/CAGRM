@@ -8,10 +8,10 @@ import MainPage from "./MainPage";
 import Home from "./Home";
 import People from "./People";
 import Temp from "./temp";
-import "./CSS/general.css";
 import LeftNavbar from "./LeftNavbar";
 import Dashboard from "./Dashboard1";
 import NavbarTemp from "./NavbarTemp";
+import PeopleTemp from "./peopleTemp"
 
 class NewerHomePage extends Component {
 
@@ -25,11 +25,8 @@ class NewerHomePage extends Component {
         return (
             <div className="container-fluid cusDivNav">
                 <Route exact path="/" render={() => (
-                    <div><Message message="You have landed on main page !!"/></div>
+                    <div><MainPage/></div>
                 )}/>
-
-
-
                 <Route exact path="/mainpage" render={() => (
                     <div>
                         <MainPage/>
@@ -89,6 +86,13 @@ class NewerHomePage extends Component {
                     </div>
                 )}/>
 
+
+                <Route exact path="/peo" render={() => (
+                    <div>
+                        <PeopleTemp/>
+                        <Message message={this.state.message}/>
+                    </div>
+                )}/>
 
 
             </div>

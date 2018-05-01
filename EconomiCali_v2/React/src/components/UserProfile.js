@@ -4,7 +4,7 @@ import {connect} from 'react-redux';
 import {Link,withRouter} from "react-router-dom";
 import * as API from "./../api/API";
 import Navbarmain from "./Navbarmain";
-import  "./CSS/general.css";
+import "../../public/CSS/general.css";
 import {Typeahead} from 'react-bootstrap-typeahead';
 import {setProfile} from "../actions";
 

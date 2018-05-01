@@ -28,59 +28,85 @@ router.get('/', function (req, res, next) {
     res.send('respond with a resource');
 });
 
-router.post('/doLogin', function (req, res, next) {
+router.get('/doLogin', function (req, res, next) {
 
-     console.log("Inside DoLogin");
-     var reqUsername = req.body.userID;
-     var reqPassword = req.body.password;
+    console.log("Inside DoLogin");
+    var reqUsername = req.body.userID;
+    var reqPassword = req.body.password;
 
-     // console.log(reqUsername);
-     // console.log(reqPassword);
+    mongo.connect(mongoURL, function () {
 
-    //var query = "select * from user where password = 'jjjjjjj' and (username = 'deep@deep.com' OR email = 'deep@deep.com')";
-    var query = "select * from user where  username = '" + reqUsername+ "' or  email = '" + reqUsername+ "'" ;
-     //console.log("Query is :" + query);
+        console.log('Connected to mongo at: ' + mongoURL);
 
-    //kirati start
-    pool.fetchData(function(err,results){
-        if(err){
-            res.status(401).json({message:"Login Error", success: false});
-        }
-        else
-        {
-            //console.log("Results: " + results.username);
-            if(results.length > 0){
-                    // console.log("Plain password :"  + reqPassword);
-                    // console.log("Encrypted password : " + results[0].password);
-                    bcrypt.compare(reqPassword, results[0].password, function(err, matches){
-                    if (matches){
-                        //console.log("valid Login");
-                        var sessiondata = {firstName : results[0].firstname,
-                        lastName : results[0].lastName,
-                        email : results[0].email};
-                        var token = jwt.sign(sessiondata , 'shhhhhh' , { expiresIn : 60*60 });
-                        //console.log(results[0].data.userid);
-                        res.status(201).json({message: "Login successful",
-                                        success: true,username : reqUsername,
-                                        userId : results[0].userid,
-                                        token: token,
-                                      });
-                    }
-                    else{
-                        //console.log("Password not matched");
-                        res.status(401).json({message:"Login Error", success: false});
-                    }
-                })
-            }
-            else {
+        res.status(201).json({
+            message: "Login successful",
+            success: true, username: reqUsername,
+            userId:1
+        });
 
-                //console.log("Invalid Login");
-                res.status(401).json({message:"Login Error", success: false});
-            }
-        }
-    },query);
+        // coll.findOne({username:reqUsername , password: reqPassword}, function (err, user1) {
+        //     if (user1){
+        //         console.log(user1);
+        //         res.status(201).json({message: "Login successful",
+        //                    success: true,username : reqUsername,
+        //                    userId : results[0].userid,
+        //                    });
+        //             }
+        //             else
+        //             {
+        //                 res.status(401).json({message:"Login Error", success: false});
+        //             }
+        //
+        //         });
+        //     });
+
+        //  // console.log(reqUsername);
+        //  // console.log(reqPassword);
+        //
+        // //var query = "select * from user where password = 'jjjjjjj' and (username = 'deep@deep.com' OR email = 'deep@deep.com')";
+        // var query = "select * from user where  username = '" + reqUsername+ "' or  email = '" + reqUsername+ "'" ;
+        //  //console.log("Query is :" + query);
+        //
+        // //kirati start
+        // pool.fetchData(function(err,results){
+        //     if(err){
+        //         res.status(401).json({message:"Login Error", success: false});
+        //     }
+        //     else
+        //     {
+        //         //console.log("Results: " + results.username);
+        //         if(results.length > 0){
+        //                 // console.log("Plain password :"  + reqPassword);
+        //                 // console.log("Encrypted password : " + results[0].password);
+        //                 bcrypt.compare(reqPassword, results[0].password, function(err, matches){
+        //                 if (matches){
+        //                     //console.log("valid Login");
+        //                     var sessiondata = {firstName : results[0].firstname,
+        //                     lastName : results[0].lastName,
+        //                     email : results[0].email};
+        //                     var token = jwt.sign(sessiondata , 'shhhhhh' , { expiresIn : 60*60 });
+        //                     //console.log(results[0].data.userid);
+        //                     res.status(201).json({message: "Login successful",
+        //                                     success: true,username : reqUsername,
+        //                                     userId : results[0].userid,
+        //                                     token: token,
+        //                                   });
+        //                 }
+        //                 else{
+        //                     //console.log("Password not matched");
+        //                     res.status(401).json({message:"Login Error", success: false});
+        //                 }
+        //             })
+        //         }
+        //         else {
+        //
+        //             //console.log("Invalid Login");
+        //             res.status(401).json({message:"Login Error", success: false});
+        //         }
+        //     }
+        // },query);
+    });
 });
-
 router.post('/doSignUp', function (req, res, next) {
 
     //console.log(JSON.stringify(req.body));
@@ -269,7 +295,6 @@ router.post('/addmybid', function (req, res, next) {
 
 
 });
-
 router.post('/fetchmybids', function (req, res, next) {
 
     //console.log("Inside fetchmybids");
@@ -287,7 +312,6 @@ router.post('/fetchmybids', function (req, res, next) {
         }
     },query);
 });
-
 router.post('/fetchmyPostedprojects', function (req, res, next) {
 
     console.log("Inside fetchmyPostedprojects");
@@ -305,7 +329,6 @@ router.post('/fetchmyPostedprojects', function (req, res, next) {
         }
     },query);
 });
-
 router.post('/fetchskills', function (req, res, next) {
 
     console.log("Inside fetchskils");
@@ -323,7 +346,6 @@ router.post('/fetchskills', function (req, res, next) {
         }
     },query);
 });
-
 router.post('/addskillsToProject', function (req, res, next) {
 
     var reqProjectId = req.body.projectId;

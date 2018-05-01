@@ -1,8 +1,6 @@
 import "./../../node_modules/bootstrap/dist/css/bootstrap.css";
 import React, {Component} from 'react';
-import "./../components/CSS/navbar.css";
 import {Link,withRouter} from "react-router-dom";
-import "./CSS/style.css";
 class MainPage extends Component {
     render() {
         return (

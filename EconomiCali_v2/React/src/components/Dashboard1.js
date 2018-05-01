@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import "./CSS/general.css";
 import {connect} from "react-redux";
 import Navbarmain from "./Navbarmain";
 import {projectdetails} from "../actions";

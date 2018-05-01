@@ -11,7 +11,7 @@ import Projectusers from "./ProjectUser"
 import * as API from "./../../api/API";
 import signUpReducer from "../../reducers/signUpReducer";
 import Navbarmain from "../Navbarmain";
-import  "./../CSS/general.css";
+import "../../../public/CSS/general.css";
 import {Panel} from "react-bootstrap";
 import Collapsible from 'react-collapsible';
 import {projectdetails} from "../../actions";

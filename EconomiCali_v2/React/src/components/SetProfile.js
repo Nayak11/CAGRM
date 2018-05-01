@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import * as API from "../api/API";
 import {authenticateUser} from "../actions/index";
-import "./CSS/general.css";
+import "../../public/CSS/general.css";
 import LogoImage from "./LogoImage";
 import {Link, withRouter} from "react-router-dom";
 import {setProfile} from "../actions";

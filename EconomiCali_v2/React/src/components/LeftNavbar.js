@@ -1,7 +1,5 @@
 import React, {Component} from 'react';
-import "./CSS/navbar.css";
 import {Link,withRouter} from "react-router-dom";
-import "./CSS/general.css"
 
 class LeftNavbar extends Component {
 

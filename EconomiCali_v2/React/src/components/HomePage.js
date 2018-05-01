@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import * as API from '../api/API';
+import "./CSS/style.css";
 
 class HomePage extends Component {
 
