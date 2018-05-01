@@ -455,7 +455,18 @@ router.post('/fetchPeople', function (req, res, next) {
         console.log('Connected to mongo at: ' + mongoURL);
         var coll = mongo.collection('authors');
 
-        coll.find({}).toArray(function (err, user1) {
+        coll.aggregate([
+            {
+                $group : {
+                    _id :  "$author",
+                    author : { $first: '$author' },
+                    about : { $first: '$about' },
+                    email : { $first: '$email' },
+                    phone : { $first: '$phone' },
+                    profile_pic : { $first: '$profile_pic' },
+                }
+            }
+        ]).toArray(function (err, user1) {
             if (user1) {
                 console.log("inside call back" + JSON.stringify(user1))
                 res.status(200).json({data:user1, status:true, message: "Success" });

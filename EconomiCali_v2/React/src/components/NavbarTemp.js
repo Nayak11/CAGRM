@@ -23,7 +23,7 @@ class NavbarTemp extends Component {
                     <div className="collapse navbar-collapse" id="navbarResponsive">
                         <ul className="navbar-nav navbar-sidenav" id="exampleAccordion">
                             <li className="nav-item" data-toggle="tooltip" data-placement="right" title="Dashboard">
-                                <a className="nav-link" href="index.html">
+                                <a className="nav-link" href="dashboard">
                                     <i className="fa fa-fw fa-dashboard"></i>
                                     <span className="nav-link-text">Dashboard</span>
                                 </a>
