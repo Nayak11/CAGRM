@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import "./CSS/navbar.css";
 import {Link,withRouter} from "react-router-dom";
-import "./CSS/general.css"
 
 class Navbarmain extends Component {
 
@@ -18,15 +17,16 @@ class Navbarmain extends Component {
     render() {
         return (
             <div >
-                <nav className="navbar navbar-expand-lg navbar-inverse">
+                <nav className="navbar navbar-expand-lg navbar-inverse cusNavbar">
                     <div className="navbar-brand">
                     <img src = "../Images/logo.png" className="customImage float-left" alt="BV" ></img>
                     <h4 className="logoTitle">EconomiCALI</h4>
                     </div>
-                    <ul className="nav navbar pull-right">
-                        <li><a className="nav-item nav-link active" href="home">Home <span className="sr-only">(current)</span></a></li>
-                        <li><a className="nav-item nav-link" href="#">Features</a></li>
-                        <li><a className="nav-item nav-link" href="#">Contact Us</a></li>
+                    <div>
+                    <ul className="nav navbar-right">
+                        <li><a className="nav-item" href="home">Home <span className="sr-only">(current)</span></a></li>
+                        <li><a className="nav-item" href="#">Features</a></li>
+                        <li><a className="nav-item" href="#">Contact Us</a></li>
                         <li className="dropdown">
                         <a className="dropdown-toggle" data-toggle="dropdown" href="userProfile"><span className="glyphicon glyphicon-user"></span></a>
                         <ul className="dropdown-menu">
@@ -35,6 +35,7 @@ class Navbarmain extends Component {
                         </ul>
                         </li>
                     </ul>
+                    </div>
                 </nav>
 
 

@@ -113,13 +113,16 @@ nav ul li
 }
 nav ul li a
 {
-    list-style: 80px;
     color : white;
     padding : 5px 20px;
     text-decoration: none;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-size: 15px;
     transition: .5s;
+}
+nav ul li a:hover
+{
+    color : white;
 }
 /*
 for the EconomiCali Text
@@ -132,11 +135,13 @@ div.logo a
     font-size: 20px;
     transition: .5s;
 }
-nav ul li a.active,
+nav ul li a.active
+{
+    color : #fff;
+}
 nav ul li a:hover
 {
     color : #fff;
-    background : #48C9B0;
 }
 
 section.section1{

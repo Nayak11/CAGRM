@@ -17,31 +17,14 @@ class LeftNavbar extends Component {
 
     render() {
         return (
-            <div >
-                <div className="nav-side-menu">
-                    <div className="brand">Brand Logo</div>
-                    <i className="fa fa-bars fa-2x toggle-btn" data-toggle="collapse" data-target="#menu-content"></i>
-
-                    <div className="menu-list">
-
-                        <ul id="menu-content" className="menu-content collapse out">
-                            <li>
-                                <a href="#">
-                                    <i className="fa fa-dashboard fa-lg"></i> Dashboard
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <i className="fa fa-user fa-lg"></i> Profile
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <i className="fa fa-user fa-lg"></i> Profile
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
+            <div className="cusLeftNav" >
+                <div className=" navbar-inverse navbar-fixed-left cusLeftNav">
+                    <ul className=" navbar-nav">
+                        <li><a href="#">Bills</a></li>
+                        <li><a href="#">Mail</a></li>
+                        <li><a href="#">Connect</a></li>
+                        <li><a href="#">Dashboard</a></li>
+                    </ul>
                 </div>
             </div>
         );

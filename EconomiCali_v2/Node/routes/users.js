@@ -28,24 +28,6 @@ router.get('/', function (req, res, next) {
     res.send('respond with a resource');
 });
 
-//shraddha
-router.get('/bills', function (req, res, next) {
-    console.log("Ithe ALA");
-    mongo.connect(mongoURL, function () {
-        var coll = mongo.collection('bills');
-  coll.find({}).toArray(function (err, bills) {
-      if (bills) {
-          //console.log("inside call back" + JSON.stringify(bills))
-          res.status(200).json({bills:bills});
-      }
-      else {
-          res.status(401).json({message: "Error",success: false});
-      }
-    });
-  });
-});
-//shraddha end
-
 router.post('/doLogin', function (req, res, next) {
 
      console.log("Inside DoLogin");
@@ -466,6 +448,36 @@ router.post('/fetchPeople', function (req, res, next) {
 });
 
 
+router.post('/fetchbills',(req,res)=> {
+
+    console.log("Inside Fetch bills");
+    mongo.connect(mongoURL, function () {
+
+        console.log('Connected to mongo at: ' + mongoURL);
+        var coll = mongo.collection('bills');
+
+        // coll.aggregate({"category": req.body.categorydata},
+        //     $group:{},
+
+        coll.aggregate(
+        [{"$group" : { _id: {category : "$category" ,author:  "$introducer" }, count : {$sum : 1}}}]
+    ).toArray(function (err, result) {
+
+            if (result) {
+                console.log("inside call back" + JSON.stringify(result))
+                res.status(200).json({data: result, status: true, message: "Success"});
+            }
+            else {
+                res.status(401).json({message: "Error", success: false});
+            }
+
+        });
+    });
+});
+
+
+
+
 // router.post('/uploadFile', upload.single('myfile'), function (req, res, next){
 //     upload(req, res, function (err) {
 //         if (err) {
@@ -483,7 +495,7 @@ router.post('/uploadFile', function (req, res) {
         //res.json({originalname :req.file.originalname, uploadname :req.file.filename});
         res.status(200).send(JSON.stringify({filename : req.file.filename, originalname :req.file.originalname,success: true}))
     })
-})
+});
 
 
 router.get('/downloadFile', (req, res) => {
@@ -501,3 +513,4 @@ router.get('/downloadFile', (req, res) => {
 
 
 module.exports = router;
+

@@ -45,6 +45,26 @@ export const fetchPeople = (payload) =>
         });
 
 
+export const fetchbills = (payload) =>
+    fetch(`${api}/users/fetchbills`, {
+        method: 'POST',
+        headers: {
+            ...headers,
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(payload)
+    }).then(res => {
+        //  console.log("sending JSON from API");
+        // //res.status = 201;
+        // return res.json();
+        return res.json();
+    })
+        .catch(error => {
+            console.log("Error from fetching data from Authors");
+            return error;
+        });
+
+
 export const doSignUp = (payload) =>
     fetch(`${api}/users/doSignUp`, {
         method: 'POST',

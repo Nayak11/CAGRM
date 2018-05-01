@@ -3,7 +3,7 @@ import * as API from '../api/API';
 import "./CSS/general.css";
 import LogoImage from "./LogoImage";
 import {Link} from "react-router-dom";
-//import {FormErrors} from "./FormErrors";
+// import {FormErrors} from "./FormErrors"
 import {authenticateUser,registerUser} from "../actions";
 import {connect} from "react-redux";
 import {createBrowserHistory} from "history"
