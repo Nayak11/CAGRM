@@ -1,6 +1,6 @@
-Project : Freelancer Site prototype using ReactJS and NodeJS
+Project : EconomiCali Site prototype using ReactJS and NodeJS
 
-Steps to run Freelancer Site.
+Steps to run EconomiCali Site.
 1)Install ReactJS
 
 On the terminal: npm install -g create-react-app
