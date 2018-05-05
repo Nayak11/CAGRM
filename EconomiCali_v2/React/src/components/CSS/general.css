@@ -27,17 +27,6 @@
     width: 100%;
 
 }
-form
-{
-    margin-top: 5%;
-    padding-top: 10px;
-    background-color:white;
-    border-radius: 5px;
-    box-shadow: 5px 10px 8px #888888;
-    float: left;
-    display:inline-block;
-
-}
 
 .noBorder{
     box-shadow: none;
@@ -67,30 +56,7 @@ form
     padding-top: 0px;
 }
 
-table {
-    table-layout: fixed;
-    word-wrap: break-word;
-}
 
-.btnBid
-{
-    bottom: 0px;
-    right: 0px;
-}
-.cusPanel{
-    background: rgb(223, 117, 20);
-    float : left;
-    font-weight: 600;
-    color: black;
-    position: relative;
-    border: #F0F0F0;
-    padding: 10px;
-
-}
-
-.cusLogin{
-
-}
 
 body{
     padding: 0px 0px 0px 0px;
@@ -126,3 +92,69 @@ body{
     margin-right: 0px;
     /*width: 100% !important;*/
 }
+
+
+
+/*added by kirati*/
+/*added by Kirati*/
+
+.content-header{
+    font-family: 'Oleo Script', cursive;
+    color:#fcc500;
+    font-size: 30px;
+}
+
+.section-content{
+    text-align: center;
+
+}
+#contact{
+
+    font-family: 'Teko', sans-serif;
+    /*padding-top: 60px;*/
+    width: 100%;
+    width: 100vw;
+    height: 700px;
+    background: #B29999; /* fallback for old browsers */
+    background: -webkit-linear-gradient(to left, black , #B29999); /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to left, black , #B29999); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    color : #fff;
+}
+.contact-section{
+    padding-top: 40px;
+}
+.contact-section .col-md-6{
+    width: 50%;
+
+}
+
+.form-line{
+    border-right: 1px solid #B29999;
+}
+
+.form-group{
+    /*margin-top: 10px;*/
+}
+label{
+    font-size: 1em;
+    line-height: 1em;
+    font-weight: normal;
+}
+.form-control{
+    font-size: 1em;
+    color: #080808;
+}
+textarea.form-control {
+    height: 135px;
+    /* margin-top: px;*/
+}
+
+.submit{
+    font-size: 0.9em;
+    float: right;
+    width: 150px;
+    background-color: transparent;
+    color: #fff;
+
+}
+/*end kirati*/

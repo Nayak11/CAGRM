@@ -39,7 +39,6 @@ class BillStatusByCategory extends Component {
             .then(
                 (response) =>{
                     console.log(response.data);
-
                     var res = response.data.filter(function (el ) {
                         return "Health-care".indexOf(el._id.category) >= 0;
                     });

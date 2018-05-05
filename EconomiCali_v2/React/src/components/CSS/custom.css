@@ -20,3 +20,31 @@
     color : lightseagreen;
     font-family: 'Helvetica Neue', 'Segoe UI', Helvetica, Arial, sans-serif;
 }
+
+/*landing page button*/
+.cusButton{
+    background-color: transparent !important;
+    border: #333333 !important;
+    border:2px !important;
+    font-size: medium !important;
+    color: #333333 !important;
+    border-style: solid !important;
+    border-color: #333333 !important;
+    margin-top: 8% !important;
+    margin-right: 20px !important;
+    border-radius: 0px !important;
+}
+
+.cusButton:hover {
+    background-color: transparent !important;
+    border: black !important;
+    border:2px !important;
+    font-size: medium !important;
+    color: black !important;
+    border-style: solid !important;
+    border-color: black !important;
+    margin-top: 8% !important;
+    margin-right: 20px !important;
+    border-radius: 0px !important;
+}
+/*end of kirati change*/
