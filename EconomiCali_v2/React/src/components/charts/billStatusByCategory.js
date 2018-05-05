@@ -49,9 +49,9 @@ class BillStatusByCategory extends Component {
 
                     var authors = [];
                     var counts= [];
-                    res.slice(0, 5).map((data) => {
+                    res.slice(0, 5).map((index,data) => {
 
-                        authors.push([data.author,data.count]);
+                        authors[index].push(new [data.author,data.count]);
                         //counts.push(data.count);
                     })
 
