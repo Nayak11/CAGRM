@@ -62,6 +62,9 @@ class AuthorByCategoty extends Component {
                             chart: {
                                 type: 'column'
                             },
+                            title: {
+                                text: 'Top 5 authors under a category selection'
+                            },
                             /* HighchartsConfig */
                             xAxis: {
                                 categories: authors

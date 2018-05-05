@@ -46,6 +46,28 @@ class Dashboard extends Component {
                 </nav>
                 <NavbarTemp/>
             <div className="col-md-12">
+            <div className="row">
+            <div className="col-md-8">
+            <select id="category" name="category" class="form-control">
+            <option value="Education">Education</option>
+            <option value="Health-care">Health-care</option>
+            </select>
+            </div>
+            </div>
+            <br/>
+            <br/>
+            <div className="row">
+                    <div className="col-md-2 offset-md-6">
+                    <select id="category" name="category" className="form-control">
+                        <option value="Education">Education</option>
+                        <option value="Health-care">Health-care</option>
+                        <option value="Corporation">Corporation</option>
+                        <option value="Corporation">Government</option>
+                    </select>
+                    </div>
+                </div>
+                <br/>
+                <br/>
                 <div className="row">
                     <div className="col-md-6"><AuthorByCategoty /></div>
                     <div className="col-md-6"><BillStatusByCategory/></div>
