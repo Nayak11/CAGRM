@@ -28,37 +28,39 @@ router.get('/', function (req, res, next) {
     res.send('respond with a resource');
 });
 
-router.get('/doLogin', function (req, res, next) {
+router.post('/doLogin', function (req, res, next) {
 
     console.log("Inside DoLogin");
     var reqUsername = req.body.userID;
     var reqPassword = req.body.password;
 
+    console.log(reqUsername);
+    console.log(reqPassword);
+
     mongo.connect(mongoURL, function () {
 
         console.log('Connected to mongo at: ' + mongoURL);
 
-        res.status(201).json({
-            message: "Login successful",
-            success: true, username: reqUsername,
-            userId:1
-        });
+        var coll = mongo.collection('organization');
 
-        // coll.findOne({username:reqUsername , password: reqPassword}, function (err, user1) {
-        //     if (user1){
-        //         console.log(user1);
-        //         res.status(201).json({message: "Login successful",
-        //                    success: true,username : reqUsername,
-        //                    userId : results[0].userid,
-        //                    });
-        //             }
-        //             else
-        //             {
-        //                 res.status(401).json({message:"Login Error", success: false});
-        //             }
-        //
-        //         });
-        //     });
+        coll.findOne({User_name: reqUsername, Password: reqPassword}, function (err, user1) {
+            if (user1) {
+                console.log(user1);
+                res.status(201).json({
+                    message: "Login successful",
+                    success: true, username: reqUsername,
+                    userId: user1.userid,
+                    username: user1.User_name,
+                    companyId: user1.Comany_id
+                });
+            }
+            else {
+                res.status(401).json({message: "Login Error", success: false});
+            }
+
+        });
+    });
+});
 
         //  // console.log(reqUsername);
         //  // console.log(reqPassword);
@@ -104,9 +106,7 @@ router.get('/doLogin', function (req, res, next) {
         //             res.status(401).json({message:"Login Error", success: false});
         //         }
         //     }
-        // },query);
-    });
-});
+
 router.post('/doSignUp', function (req, res, next) {
 
     //console.log(JSON.stringify(req.body));
