@@ -23,7 +23,7 @@ class BillStatusByCategory extends Component {
                     categories: []
                 },
                 series: [{
-                    name: 'Tokyo',
+                    name: 'Author',
                     data: []
 
                 }]
@@ -35,10 +35,11 @@ class BillStatusByCategory extends Component {
     componentDidMount(){
         var self = this;
         var payload ={categorydata : "Health-care"}
-        API.fetchbills(payload)
+        API.fetchbillsData(payload)
             .then(
                 (response) =>{
-                    console.log(response.data);
+                    console.log("in bill status by category",response.data);
+
                     var res = response.data.filter(function (el ) {
                         return "Health-care".indexOf(el._id.category) >= 0;
                     });
@@ -48,13 +49,16 @@ class BillStatusByCategory extends Component {
 
                     var authors = [];
                     var counts= [];
-                    res.slice(0, 5).map((index,data) => {
 
-                        authors[index].push(new [data.author,data.count]);
+                    res.map((data) => {
+
+                        authors.push({name:data._id.status,y:data.count});
+
                         //counts.push(data.count);
                     })
 
-                    console.log(" *******authors : " + authors );
+                    console.log(" *******authors1 : " + JSON.stringify(authors) );
+                    //console.log("count of passed",res.data[0].count)
                     //console.log("counts : " + counts);
 
                     self.setState({
@@ -62,19 +66,20 @@ class BillStatusByCategory extends Component {
                             chart: {
                                 type: 'pie'
                             },
+                            title: {
+                                text: 'Bill Status for a particular Category'
+                            },
                             /* HighchartsConfig */
                             series: [{
-                                name: 'passed',
-                                data: authors,
+                                name: "Status",
+                                data: authors
 
 
                             }]
                         },
-                    })
-                }
-            );
+                    });
+                });
     }
-
 
     render(){
         return(

@@ -67,7 +67,7 @@ class AuthorByCategoty extends Component {
                                 categories: authors
                             },
                             series: [{
-                                name: 'Tokyo',
+                                name: 'Authors',
                                 data: counts
 
                             }]
