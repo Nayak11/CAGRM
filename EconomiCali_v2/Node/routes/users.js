@@ -508,6 +508,33 @@ router.post('/fetchbills',(req,res)=> {
     });
 });
 
+router.post('/fetchbillsData',(req,res)=> {
+
+    console.log("Inside Fetch bills passes failed analysis");
+    mongo.connect(mongoURL, function () {
+
+        console.log('Connected to mongo at: ' + mongoURL);
+        var coll = mongo.collection('bills');
+
+        // coll.aggregate({"category": req.body.categorydata},
+        //     $group:{},
+
+        coll.aggregate(
+            [{"$group" : { _id: {category : "$category" ,status:  "$status" }, count : {$sum : 1}}}]
+        ).toArray(function (err, result) {
+
+            if (result) {
+                console.log("inside call back" + JSON.stringify(result))
+                res.status(200).json({data: result, status: true, message: "Success"});
+            }
+            else {
+                res.status(401).json({message: "Error", success: false});
+            }
+        });
+    });
+});
+
+
 
 
 

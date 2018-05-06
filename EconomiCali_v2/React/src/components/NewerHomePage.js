@@ -11,7 +11,8 @@ import Temp from "./temp";
 import LeftNavbar from "./LeftNavbar";
 import Dashboard from "./Dashboard1";
 import NavbarTemp from "./NavbarTemp";
-import PeopleTemp from "./peopleTemp"
+import PeopleTemp from "./peopleTemp";
+import AuthorByCategoty from "./charts/authorsBillCategory";
 
 class NewerHomePage extends Component {
 
@@ -90,6 +91,13 @@ class NewerHomePage extends Component {
                 <Route exact path="/peo" render={() => (
                     <div>
                         <PeopleTemp/>
+                        <Message message={this.state.message}/>
+                    </div>
+                )}/>
+
+                <Route exact path="/authorByCategory" render={() => (
+                    <div>
+                        <AuthorByCategoty/>
                         <Message message={this.state.message}/>
                     </div>
                 )}/>
