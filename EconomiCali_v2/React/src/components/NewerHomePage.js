@@ -6,12 +6,10 @@ import Message from "./Message";
 import Navbarmain from "./Navbarmain";
 import MainPage from "./MainPage";
 import Home from "./Home";
+import LeftHome from './LeftHome';
+import CenterHome from './CenterHome';
 import People from "./People";
-import Temp from "./temp";
-import LeftNavbar from "./LeftNavbar";
-import Dashboard from "./Dashboard1";
-import NavbarTemp from "./NavbarTemp";
-import PeopleTemp from "./peopleTemp"
+import "./CSS/general.css";
 
 class NewerHomePage extends Component {
 
@@ -25,8 +23,18 @@ class NewerHomePage extends Component {
         return (
             <div className="container-fluid cusDivNav">
                 <Route exact path="/" render={() => (
-                    <div><MainPage/></div>
+                    <div><Message message="You have landed on main page !!"/></div>
                 )}/>
+
+              <Route exact path="/int" render={()=>(
+                        <div style={{display:"flex",justifyContent:"flex-start",alignContent:"stretch",height:"940px"}}>
+                          <LeftHome/>
+                          <CenterHome/>
+                        </div>
+                    )}/>
+
+
+
                 <Route exact path="/mainpage" render={() => (
                     <div>
                         <MainPage/>
@@ -59,41 +67,12 @@ class NewerHomePage extends Component {
                     </div>
                 )}/>
 
-                <Route exact path="/temp" render={() => (
+                <Route exact path="/bills" render={() => (
                     <div>
-                        <Temp/>
+                        <CenterHome/>
                         <Message message={this.state.message}/>
                     </div>
                 )}/>
-
-                <Route exact path="/leftnav" render={() => (
-                    <div>
-                        <LeftNavbar/>
-                        <Message message={this.state.message}/>
-                    </div>
-                )}/>
-
-                <Route exact path="/dashboard" render={() => (
-                    <div>
-                        <Dashboard/>
-                        <Message message={this.state.message}/>
-                    </div>
-                )}/>
-                <Route exact path="/abc" render={() => (
-                    <div>
-                        <NavbarTemp/>
-                        <Message message={this.state.message}/>
-                    </div>
-                )}/>
-
-
-                <Route exact path="/peo" render={() => (
-                    <div>
-                        <PeopleTemp/>
-                        <Message message={this.state.message}/>
-                    </div>
-                )}/>
-
 
             </div>
         );
