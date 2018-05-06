@@ -15,7 +15,6 @@ import Dashboard from "./Dashboard1";
 import NavbarTemp from "./NavbarTemp";
 import PeopleTemp from "./peopleTemp";
 import AuthorByCategoty from "./charts/authorsBillCategory";
-import "./CSS/general.css";
 
 class NewerHomePage extends Component {
 
