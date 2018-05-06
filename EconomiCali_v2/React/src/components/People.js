@@ -5,9 +5,7 @@ import {projectdetails} from "./../actions/index";
 import {Link,withRouter} from "react-router-dom";
 import * as API from "./../api/API";
 import Navbarmain from "./Navbarmain";
-import "./CSS/general.css";
 import LeftNavbar from "./LeftNavbar";
-import "./CSS/people.css";
 
 
 class People extends Component {

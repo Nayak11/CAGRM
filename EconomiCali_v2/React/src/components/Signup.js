@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import * as API from '../api/API';
-import "./CSS/general.css";
 import LogoImage from "./LogoImage";
 import {Link} from "react-router-dom";
 // import {FormErrors} from "./FormErrors"
