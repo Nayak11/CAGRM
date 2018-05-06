@@ -80,7 +80,6 @@ class NewerHomePage extends Component {
                     </div>
                 )}/>
 
-<<<<<<< HEAD
                 <Route exact path="/leftnav" render={() => (
                     <div>
                         <LeftNavbar/>
@@ -115,10 +114,6 @@ class NewerHomePage extends Component {
                         <Message message={this.state.message}/>
                     </div>
                 )}/>
-
-
-=======
->>>>>>> bf4a3e9a8b2caf0db780004ac319402b7f7655e1
             </div>
         );
     }
