@@ -275,3 +275,22 @@ export const getuserPic = (payload) =>
             console.log("This is error");
             return error;
         });
+
+  export const fetchbills = (payload) =>
+    fetch(`${api}/users/fetchbills`, {
+        method: 'POST',
+        headers: {
+            ...headers,
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(payload)
+    }).then(res => {
+        //  console.log("sending JSON from API");
+        // //res.status = 201;
+        // return res.json();
+        return res.json();
+    })
+        .catch(error => {
+            console.log("Error from fetching data from Bills");
+            return error;
+        });

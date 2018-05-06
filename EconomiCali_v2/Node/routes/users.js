@@ -508,6 +508,30 @@ router.get('/downloadFile', (req, res) => {
     }
 });
 
+router.post('/fetchbills', function (req, res, next) {
+
+    var requserId =  req.body.user_id;
+    console.log("Inside Bills");
+
+    mongo.connect(mongoURL, function () {
+
+        console.log('Connected to mongo at: ' + mongoURL);
+        var coll = mongo.collection('bills');
+
+        coll.find({}).toArray(function (err, user1) {
+            if (user1) {
+                console.log("inside call back" + JSON.stringify(user1))
+                res.status(200).json({data:user1, status:true, message: "Success" });
+            }
+            else {
+                res.status(401).json({message: "Error",success: false});
+            }
+        });
+    });
+
+
+});
+
 
 
 
