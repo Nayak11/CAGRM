@@ -9,16 +9,13 @@ import Home from "./Home";
 import LeftHome from './LeftHome';
 import CenterHome from './CenterHome';
 import People from "./People";
-<<<<<<< HEAD
 import Temp from "./temp";
 import LeftNavbar from "./LeftNavbar";
 import Dashboard from "./Dashboard1";
 import NavbarTemp from "./NavbarTemp";
 import PeopleTemp from "./peopleTemp";
 import AuthorByCategoty from "./charts/authorsBillCategory";
-=======
 import "./CSS/general.css";
->>>>>>> bf4a3e9a8b2caf0db780004ac319402b7f7655e1
 
 class NewerHomePage extends Component {
 
