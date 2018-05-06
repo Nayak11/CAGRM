@@ -1,17 +1,113 @@
 import React, {Component} from 'react';
 import {Link,withRouter} from "react-router-dom";
+import {
+    Modal,
+    ModalHeader,
+    ModalTitle,
+    ModalClose,
+    ModalBody,
+    ModalFooter
+} from 'react-modal-bootstrap';
 
 class NavbarTemp extends Component {
 
+    constructor(props){
+        super(props);
+        this.state = {
+            isOpen: false
+        }
+
+        this.openModal = this.openModal.bind(this);
+        this.hideModal = this.hideModal.bind(this);
+        this.handleLogout = this.handleLogout.bind(this);
+    }
+
     handleLogout(){
-         localStorage.clean();
+         localStorage.clear();
          this.props.history.push("/mainpage");
     }
 
+
+    openModal = () => {
+        this.setState({
+            isOpen: true
+        });
+    };
+
+    hideModal = () => {
+        var self = this;
+        self.setState({
+            isOpen: false
+        });
+    };
+
     render() {
+
         return (
             <div >
                 <div className="fixed-nav sticky-footer bg-dark" id="page-top">
+                    <Modal isOpen={this.state.isOpen} onRequestHide={this.hideModal} size = "modal-lg">
+                        <ModalHeader>
+                            <ModalTitle>Modal title</ModalTitle>
+                            <ModalClose onClick={this.hideModal}/>
+                        </ModalHeader>
+                        <ModalBody>
+                            <div className="container">
+                                <div className="row">
+                                    <div className="col-md-12">
+                                        <div className="well well-sm">
+                                            <form>
+                                                <div className="row">
+                                                    <div className="col-md-6">
+                                                        <div className="form-group">
+                                                            <label for="name">
+                                                                Name</label>
+                                                            <input type="text" className="form-control" id="name" placeholder="Enter name" required="required" />
+                                                        </div>
+                                                        <div className="form-group">
+                                                            <label for="email">
+                                                                Email Address</label>
+                                                            <div className="input-group">
+                                <span className="input-group-addon"><span className="fa fa-envelope"></span>
+                                </span>
+                                                                <input type="email" className="form-control" id="email" placeholder="Enter email" required="required" /></div>
+                                                        </div>
+                                                        <div className="form-group">
+                                                            <label for="subject">
+                                                                Subject</label>
+                                                            <select id="subject" name="subject" className="form-control" required="required">
+                                                                <option value="na" selected="">Choose One:</option>
+                                                                <option value="service">General Customer Service</option>
+                                                                <option value="suggestions">Suggestions</option>
+                                                                <option value="product">Product Support</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <div className="col-md-6">
+                                                        <div className="form-group">
+                                                            <label for="name">
+                                                                Message</label>
+                                                            <textarea name="message" id="message" className="form-control" rows="9" cols="25" required="required"
+                                                                      placeholder="Message"></textarea>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </ModalBody>
+                        <ModalFooter>
+                            <button type="submit" className="btn btn-primary pull-right" id="btnContactUs">
+                                Send Message</button>
+                            <button className='btn btn-default' onClick={() => {
+                                this.hideModal()
+                            }}>
+                                Close
+                            </button>
+                        </ModalFooter>
+                    </Modal>
                 <nav className="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
                     <div className="navbar-brand">
                         <img src = "../Images/logo.png" className="customImage float-left" alt="BV" ></img>
@@ -40,14 +136,16 @@ class NavbarTemp extends Component {
                                     <span className="nav-link-text"> Authors</span>
                                 </a>
                             </li>
-                        </ul>
-                        <ul className="navbar-nav sidenav-toggler">
-                            <li className="nav-item">
-                                <a className="nav-link text-center" id="sidenavToggler">
-                                    <i className="fa fa-fw fa-angle-left"></i>
+                            <li className="nav-item" data-toggle="tooltip" data-placement="right" title="Tables">
+                                <a className="nav-link" onClick={()=>{
+                                    this.openModal()
+                                }}>
+                                    <i className="fa fa-envelope-square"></i>
+                                    <span className="nav-link-text"> Email</span>
                                 </a>
                             </li>
                         </ul>
+
                         <ul className="navbar-nav ml-auto">
                             <li className="nav-item dropdown">
                                 <a className="nav-link dropdown-toggle mr-lg-2" id="messagesDropdown" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -139,7 +237,7 @@ class NavbarTemp extends Component {
                                 </form>
                             </li>
                             <li className="nav-item">
-                                <a className="nav-link" data-toggle="modal" data-target="#exampleModal" >
+                                <a className="nav-link" data-toggle="modal" data-target="#exampleModal" onClick={() => {this.handleLogout()}}>
                                     <i className="fa fa-fw fa-sign-out"></i>Logout</a>
                             </li>
                         </ul>
