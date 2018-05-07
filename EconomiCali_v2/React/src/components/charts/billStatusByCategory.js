@@ -66,6 +66,9 @@ class BillStatusByCategory extends Component {
                             chart: {
                                 type: 'pie'
                             },
+                            title: {
+                                text: 'Bill Status for a particular Category'
+                            },
                             /* HighchartsConfig */
                             series: [{
                                 name: "Status",
