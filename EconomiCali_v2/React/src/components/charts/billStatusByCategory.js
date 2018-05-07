@@ -50,6 +50,7 @@ class BillStatusByCategory extends Component {
                     var authors = [];
                     var counts= [];
                     res.slice(0, 5).map((data) => {
+
                         authors.push([data.author,data.count]);
                         //counts.push(data.count);
                     })
@@ -63,11 +64,8 @@ class BillStatusByCategory extends Component {
                                 type: 'pie'
                             },
                             /* HighchartsConfig */
-                            xAxis: {
-                                categories: authors
-                            },
                             series: [{
-                                name: 'Tokyo',
+                                name: 'passed',
                                 data: authors,
 
 
