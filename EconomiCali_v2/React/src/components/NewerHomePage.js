@@ -15,14 +15,22 @@ import Dashboard from "./Dashboard1";
 import NavbarTemp from "./NavbarTemp";
 import PeopleTemp from "./peopleTemp";
 import AuthorByCategoty from "./charts/authorsBillCategory";
+import BillDetails from "./BillDetails";
 
 class NewerHomePage extends Component {
 
     state = {
         isLoggedIn: false,
         message: '',
-        username: ''
+        username: '',
+        item:null
     };
+
+    handleClick= (item) =>{
+        //console.log(item);
+        this.setState({item:item})
+        this.props.history.push('/billdetails');
+    }
 
     render() {
         return (
@@ -74,7 +82,14 @@ class NewerHomePage extends Component {
 
                 <Route exact path="/bills" render={() => (
                     <div>
-                        <CenterHome/>
+                        <CenterHome handleClick={this.handleClick}/>
+                        <Message message={this.state.message}/>
+                    </div>
+                )}/>
+
+                <Route exact path="/billdetails" render={() => (
+                    <div>
+                        <BillDetails item={this.state.item}/>
                         <Message message={this.state.message}/>
                     </div>
                 )}/>

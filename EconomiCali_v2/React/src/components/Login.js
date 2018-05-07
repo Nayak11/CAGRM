@@ -34,11 +34,13 @@ class Login extends Component {
         if(this.validateUsername() == true)
         {
             if(this.validatePassword() == true) {
-                axios.get("http://localhost:3001/users/doLogin", this.state.userdata)
+                axios.post("http://localhost:3001/users/doLogin", this.state.userdata)
                     .then((response) => {
                         console.log(response);
                         if (response.data) {
                             localStorage.setItem('user_id', response.data.userId);
+                            localStorage.setItem('company_id',response.data.companyId);
+                            localStorage.setItem('username',response.data.companyId)
                             this.props.history.push('/home');
                         }
                     });
