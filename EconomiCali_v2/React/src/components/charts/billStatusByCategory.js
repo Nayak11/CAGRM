@@ -54,10 +54,6 @@ class BillStatusByCategory extends Component {
 
                         authors.push({name:data._id.status,y:data.count});
 
-                    res.map((index,data) => {
-
-                        authors[index].push(new [data.author,data.count]);
-
                         //counts.push(data.count);
                     })
 
@@ -79,8 +75,6 @@ class BillStatusByCategory extends Component {
                             }]
                         },
                     });
-                }
-            );
     });
 }
 
