@@ -37,40 +37,48 @@ class MainPage extends Component {
                     </div>
                 </div>
 
-
-
-
                 <section className="section section-light">
-                    <h2>Section One</h2>
+                    <h2>About Us</h2>
                     <p>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae ea rem alias, accusamus animi tempora officia, illo dolores iste vitae expedita. Quisquam ut vero voluptatum deserunt delectus deleniti? Ex beatae hic magnam recusandae, commodi dolor fugiat dicta excepturi quo temporibus eum eligendi omnis ea voluptatibus sapiente modi nemo laudantium nulla provident nesciunt reprehenderit perferendis. Autem dicta recusandae molestiae accusantium fugit eos omnis veritatis dignissimos ipsam facere culpa excepturi suscipit dolorum officia illo voluptates, aspernatur facilis? Excepturi fugit possimus modi quasi nemo exercitationem corporis recusandae error corrupti consectetur incidunt, laborum mollitia reprehenderit repudiandae quo nam asperiores, blanditiis ea voluptas saepe. Quidem.
+                        Welcome EcomomiCali which is one stop for all the goverment info for your new and existing business to be inline with Government policies
                     </p>
                 </section>
 
                 <div className="image2">
                     <div className="ptext">
                         <span className="border"></span>
-                        Image Two Text
+                        EconomiCali
                     </div>
                 </div>
-                <section className="section section-dark">
-                    <h2>Section Two</h2>
-                    <p>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae ea rem alias, accusamus animi tempora officia, illo dolores iste vitae expedita. Quisquam ut vero voluptatum deserunt delectus deleniti? Ex beatae hic magnam recusandae, commodi dolor fugiat dicta excepturi quo temporibus eum eligendi omnis ea voluptatibus sapiente modi nemo laudantium nulla provident nesciunt reprehenderit perferendis. Autem dicta recusandae molestiae accusantium fugit eos omnis veritatis dignissimos ipsam facere culpa excepturi suscipit dolorum officia illo voluptates, aspernatur facilis? Excepturi fugit possimus modi quasi nemo exercitationem corporis recusandae error corrupti consectetur incidunt, laborum mollitia reprehenderit repudiandae quo nam asperiores, blanditiis ea voluptas saepe. Quidem.
-                    </p>
+                <section className="section section-dark" >
+                    <h2>How it is Useful</h2>
+                    <div id="useful">
+                   <h6> Economicali provides software tools and platforms, data services, and news to companies and organizations through the Economicali Government Relationship Management (GRM) service.</h6>
+                    <h6>Economicali has reinvented influence – dramatically improving the way organizations build and manage their relationships with all levels of government, enabling them to have maximum impact on legislation and regulation.</h6>
+                   </div>
                 </section>
 
                 <div className="image3">
                     <div className="ptext">
                         <span className="border"></span>
-                        Image Three Text
+                        EconomiCali
                     </div>
                 </div>
-                <section className="section section-light">
-                    <h2>Section Three</h2>
-                    <p>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae ea rem alias, accusamus animi tempora officia, illo dolores iste vitae expedita. Quisquam ut vero voluptatum deserunt delectus deleniti? Ex beatae hic magnam recusandae, commodi dolor fugiat dicta excepturi quo temporibus eum eligendi omnis ea voluptatibus sapiente modi nemo laudantium nulla provident nesciunt reprehenderit perferendis. Autem dicta recusandae molestiae accusantium fugit eos omnis veritatis dignissimos ipsam facere culpa excepturi suscipit dolorum officia illo voluptates, aspernatur facilis? Excepturi fugit possimus modi quasi nemo exercitationem corporis recusandae error corrupti consectetur incidunt, laborum mollitia reprehenderit repudiandae quo nam asperiores, blanditiis ea voluptas saepe. Quidem.
-                    </p>
+                <section className="section section-light" id="features">
+                    <h2>Features</h2>
+                    <div className="row">
+                    <div className="col-md-6 offset-md-1" id="part1">
+                       <h6> Get all the latest information about the Government bills </h6>
+                        <h6>Get the top list of legislative members for each category</h6>
+                        <h6>Get more information about the legislative members</h6> <br/>
+                    </div>
+                    <div className="col-md-5" id="part2">
+                        <h6> Keep track of the conversation within the organisation on the respective bill</h6>
+                        <h6>Communicate with the legislative members over a mail</h6>
+                    
+                    </div>
+                </div>
+                    
                 </section>
 
                 <div className="image1">
