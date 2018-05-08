@@ -9,15 +9,16 @@
 .customImage
 {
     position: absolute;
-    top: 3px;
+    top: 7px;
     left: 3px;
-    width: 42px;
-    height: 41px;
+    width: 35px;
+    height: 35px;
 }
 .logoTitle{
     padding-left: 30px;
     color : lightseagreen;
     font-family: 'Helvetica Neue', 'Segoe UI', Helvetica, Arial, sans-serif;
+    margin-left:15px;
 }
 
 /*landing page button*/
