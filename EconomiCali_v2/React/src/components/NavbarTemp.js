@@ -273,6 +273,12 @@ class NavbarTemp extends Component {
                                     <span className="nav-link-text">Dashboard</span>
                                 </a>
                             </li>
+                            <li className="nav-item" data-toggle="tooltip" data-placement="right" title="Dashboard">
+                                <a className="nav-link" href="preferences">
+                                    <i className="fa fa-fw fa fa-star-o"></i>
+                                    <span className="nav-link-text">My Preferences</span>
+                                </a>
+                            </li>
                         </ul>
 
                         <ul className="navbar-nav ml-auto">
