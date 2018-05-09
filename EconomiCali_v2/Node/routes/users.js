@@ -8,6 +8,7 @@ var bcrypt = require('bcrypt');
 var fs = require('fs-extra');
 var mongodb = require('mongodb');
 var mongo = require("./mongo");
+var nodemailer = require('nodemailer');
 var ObjectID = require('mongodb').ObjectID;
 var mongoURL = "mongodb://cmpe272:cmpe272@ds013495.mlab.com:13495/cmpe272";
 
@@ -179,13 +180,13 @@ router.post('/addProject', function (req, res, next) {
     },query);
 });
 
-router.post('/commentAdd',function(req,res,next){
+router.post('/getcomment',function(req,res,next){
     var id = req.body.id;
     var commentText = req.body.comment;
     mongo.connect(mongoURL, function(){
         console.log('Connected to mongo at: ' + mongoURL);
         var coll = mongo.collection('organization_details');
-        coll.insertOne({"Comany_id":id,"Company_name":commentText},function(err, user){
+        coll.findOne({Comany_id: req.body.company_id,bill_no: req.body.bill_no },function(err, user){
             if (user) {
                 res.status(201).json(user);
             } else {
@@ -197,33 +198,79 @@ router.post('/commentAdd',function(req,res,next){
 });
 
 
-router.get('/comments',function(req,res,next){
+router.post('/comments',function(req,res,next){
     console.log(req.body.company_id);
     console.log(req.body.username);
+    console.log(req.body.comment);
+    console.log(req.body.bill_no);
     mongo.connect(mongoURL, function(){
         var coll = mongo.collection('organization_details');
-        coll.find({Comany_id: req.body.company_id}).toArray(function (err, user1) {
-            if (user1) {
-                console.log(user1);
-                var col2 = mongo.collection('organization_details');
-                col2.find({username: req.body.username}).toArray(function (err, user1) {
-            if (user1) {
-                console.log(user1);
-
-
-                res.status(200).json({data:user1, status:true, message: "Success" });
+        coll.find({Comany_id: req.body.company_id,bill_no: req.body.bill_no }).toArray(function (err, user1) {
+            //console.log("user1" + JSON.parse(user1));
+            if (user1.length > 0) {
+                var comments = user1[0].comment
+                comments.push({username: req.body.username, comment: req.body.comment})
+                coll.update({Comany_id: req.body.company_id, bill_no: req.body.bill_no}, {
+                    $set: {
+                        comment: comments,
+                    }
+                }, function (err, resp) {
+                    if (resp) {
+                        console.log("comments added to existing record");
+                        res.status(201).json({message: "Profile Set Successfully", success: true});
+                    }
+                    else {
+                        res.status(401).json({message: "Error in profile set", success: false});
+                    }
+                });
             }
             else {
-                res.status(401).json({message: "Error",success: false});
-            }
-            });
-        }
-            else {
-                res.status(401).json({message: "Error",success: false});
+                console.log("Add new value")
+                coll.insertOne({Comany_id: req.body.company_id,bill_no: req.body.bill_no, comment : [{username :req.body.username,comment: req.body.comment}]},function (err, add){
+                    if(add){
+                        console.log("Entry Done");
+                        res.status(201).json({message: "Profile Set Successfully", success:true });
+                    }
+                    else {
+                        console.log("Error in entry");
+                        res.status(401).json({message: "Error in profile set",success: false});
+                    }
+                })
+
             }
         });
     });
 });
+
+
+router.post('/sendMail',(req,res)=>{
+
+    console.log("Inside send Mail server");
+    var transporter = nodemailer.createTransport({
+        service: 'gmail',
+        auth: {
+            user: 'kiratib216@gmail.com',
+            pass: 'Jayu@216'
+        }
+    });
+
+    var mailOptions = {
+        from: 'kiratib216@gmail.com',
+        to: req.body.email ,
+        subject: 'Contact Us',
+        text: req.body.message
+    };
+    transporter.sendMail(mailOptions, function(error, info){
+        if (error) {
+            console.log(error);
+            // res.status(400).send({message:"Success"});
+        } else {
+            console.log('Email sent: ' + info.response);
+            res.status(200).send({message:"Success"});
+        }
+    });
+});
+
 
 router.post('/setProfile', function (req, res, next) {
 

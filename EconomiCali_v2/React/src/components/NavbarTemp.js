@@ -8,15 +8,26 @@ import {
     ModalBody,
     ModalFooter
 } from 'react-modal-bootstrap';
+import axios from "axios/index";
 
 class NavbarTemp extends Component {
 
     constructor(props){
         super(props);
         this.state = {
-            isOpen: false
+            isOpen: false,
+            userdata: {
+                name : "",
+                email:"",
+                subject:"",
+                message:""
+            },
+            validEmail : true,
+            validName : true,
+            validSubject : true,
+            validMessage : true
         }
-
+        this.sendMail = this.sendMail.bind(this);
         this.openModal = this.openModal.bind(this);
         this.hideModal = this.hideModal.bind(this);
         this.handleLogout = this.handleLogout.bind(this);
@@ -41,6 +52,77 @@ class NavbarTemp extends Component {
         });
     };
 
+    validateEmail() {
+
+        var emailId = this.state.userdata.email;
+        if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(emailId))
+        {
+            return (true)
+        }
+        return (false)
+    }
+    validateName() {
+
+        var username = this.state.userdata.name;
+        if (username != '')
+        {
+            return (true)
+        }
+        return (false)
+    }
+
+    validSubject() {
+
+        var username = this.state.userdata.subject;
+        if (username != '')
+        {
+            return (true)
+        }
+        return (false)
+    }
+
+    validateMessage() {
+
+        var username = this.state.userdata.message;
+        if (username != '')
+        {
+            return (true)
+        }
+        return (false)
+    }
+
+    sendMail()
+    {
+        if(this.validateName() == true){
+            if(this.validateEmail() == true){
+                if(this.validSubject() == true){
+                    if(this.validateMessage() == true)
+                    {
+                        axios.post("http://localhost:3001/users/sendMail", this.state.userdata)
+                            .then((response) => {
+                                console.log(response);
+                                if (response.data) {
+                                    this.setState({message:true});
+                                }
+                            })
+                    }
+                    else{
+                        this.setState({validMessage : false})
+                    }
+                }
+                else{
+                    this.setState({validSubject: false})
+                }
+            }
+            else{
+                this.setState({validEmail : false})
+            }
+        }
+        else{
+            this.setState({validName : false})
+        }
+    }
+
     render() {
 
         return (
@@ -62,33 +144,78 @@ class NavbarTemp extends Component {
                                                         <div className="form-group">
                                                             <label for="name">
                                                                 Name</label>
-                                                            <input type="text" className="form-control" id="name" placeholder="Enter name" required="required" />
+                                                            { this.state.validName ? null : <div className="text-input-error-wrapper text-left errorMsg">Name is Required.</div>}
+                                                            <input type="text" className="form-control" id="name" placeholder="Enter name" required="required"
+                                                                   onChange={(event) => {
+                                                                       this.setState({
+                                                                           userdata: {
+                                                                               ...this.state.userdata,
+                                                                               name: event.target.value
+                                                                           }
+                                                                       });
+                                                                   }}
+                                                                   onFocus={(event) => {
+                                                                       this.setState({validName: true});
+                                                                   }}/>
                                                         </div>
                                                         <div className="form-group">
                                                             <label for="email">
                                                                 Email Address</label>
                                                             <div className="input-group">
+                                                                { this.state.validEmail ? null : <div className="text-input-error-wrapper text-left errorMsg">Please Enter valid Email Address.</div>}
                                 <span className="input-group-addon"><span className="fa fa-envelope"></span>
                                 </span>
-                                                                <input type="email" className="form-control" id="email" placeholder="Enter email" required="required" /></div>
+
+                                                                <input type="email" className="form-control" id="email" placeholder="Enter email"
+                                                                       onChange={(event) => {
+                                                                           this.setState({
+                                                                               userdata: {
+                                                                                   ...this.state.userdata,
+                                                                                   email: event.target.value
+                                                                               }
+                                                                           });
+                                                                       }}
+                                                                       onFocus={(event) => {
+                                                                           this.setState({validEmail: true});
+                                                                       }}/></div>
                                                         </div>
                                                         <div className="form-group">
                                                             <label for="subject">
                                                                 Subject</label>
-                                                            <select id="subject" name="subject" className="form-control" required="required">
-                                                                <option value="na" selected="">Choose One:</option>
-                                                                <option value="service">General Customer Service</option>
-                                                                <option value="suggestions">Suggestions</option>
-                                                                <option value="product">Product Support</option>
-                                                            </select>
+                                                            <div className="input-group">
+                                                                { this.state.validSubject ? null : <div className="text-input-error-wrapper text-left errorMsg">Please Enter Subject.</div>}
+                                                                <input type="text" className="form-control" id="email" placeholder="Enter Subject"
+                                                                       onChange={(event) => {
+                                                                           this.setState({
+                                                                               userdata: {
+                                                                                   ...this.state.userdata,
+                                                                                   subject: event.target.value
+                                                                               }
+                                                                           });
+                                                                       }}
+                                                                       onFocus={(event) => {
+                                                                           this.setState({validSubject: true});
+                                                                       }}/></div>
                                                         </div>
                                                     </div>
                                                     <div className="col-md-6">
                                                         <div className="form-group">
                                                             <label for="name">
                                                                 Message</label>
-                                                            <textarea name="message" id="message" className="form-control" rows="9" cols="25" required="required"
-                                                                      placeholder="Message"></textarea>
+                                                            { this.state.validMessage ? null : <div className="text-input-error-wrapper text-left errorMsg">Message is Required.</div>}
+                                                            <textarea  className="form-control" id="message" placeholder="Enter Your Message"
+                                                                       onChange={(event) => {
+                                                                           this.setState({
+                                                                               userdata: {
+                                                                                   ...this.state.userdata,
+                                                                                   message: event.target.value
+                                                                               }
+                                                                           });
+                                                                       }}
+                                                                       onFocus={(event) => {
+                                                                           this.setState({validMessage: true});
+                                                                       }}
+                                                            ></textarea>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -99,7 +226,7 @@ class NavbarTemp extends Component {
                             </div>
                         </ModalBody>
                         <ModalFooter>
-                            <button type="submit" className="btn btn-primary pull-right" id="btnContactUs">
+                            <button type="button" className="btn btn-primary pull-right"  onClick={()=>{this.sendMail()}} id="btnContactUs">
                                 Send Message</button>
                             <button className='btn btn-default' onClick={() => {
                                 this.hideModal()

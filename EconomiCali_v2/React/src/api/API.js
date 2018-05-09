@@ -351,3 +351,18 @@ export const getuserPic = (payload) =>
                 return error;
             });
 
+
+export const sendMail = (payload) =>
+    fetch(`${api}/users/sendMail`, {
+        method: 'POST',
+        headers: {
+            ...headers,
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(payload)
+    }).then(function(resp) { return resp.json(); })
+
+        .catch(error => {
+            console.log("This is error");
+            return error;
+        });

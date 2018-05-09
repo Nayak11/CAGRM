@@ -2,6 +2,7 @@ import "./../../node_modules/bootstrap/dist/css/bootstrap.css";
 import React, {Component} from 'react';
 import {Link,withRouter} from "react-router-dom";
 import "./CSS/custom.css";
+import axios from "axios/index";
 
 class MainPage extends Component {
 
@@ -9,13 +10,90 @@ class MainPage extends Component {
     constructor(props){
         super(props)
         this.state={
+            userdata: {
+                name : "",
+                email:"",
+                phone:"",
+                message:""
+            },
+            validEmail : true,
+            validName : true,
+            validPhone : true,
+            validMessage : true
 
+        }
+        this.sendMail = this.sendMail.bind(this);
+    }
+
+    validateEmail() {
+
+        var emailId = this.state.userdata.email;
+        if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(emailId))
+        {
+            return (true)
+        }
+        return (false)
+    }
+    validateName() {
+
+        var username = this.state.userdata.name;
+        if (username != '')
+        {
+            return (true)
+        }
+        return (false)
+    }
+
+    validateMessage() {
+
+        var username = this.state.userdata.message;
+        if (username != '')
+        {
+            return (true)
+        }
+        return (false)
+    }
+
+    validatePhone(){
+        var phoneno = /^\d{10}$/;
+        if ((phoneno.test(this.state.userdata.phone))) {
+            return true;
+        }
+        else {
+            return false
         }
     }
 
-    contactUs()
+    sendMail()
     {
+        if(this.validateName() == true){
+            if(this.validateEmail() == true){
+                if(this.validatePhone() == true){
+                    if(this.validateMessage() == true)
+                    {
+                        axios.post("http://localhost:3001/users/sendMail", this.state.userdata)
+                            .then((response) => {
+                                console.log(response);
+                                if (response.data) {
 
+                                }
+                            })
+                    }
+                    else{
+                        this.setState({validMessage : false})
+                    }
+                }
+                else{
+                    this.setState({validPhone : false})
+                }
+            }
+            else{
+                this.setState({validEmail : false})
+            }
+        }
+        else{
+            this.setState({validName : false})
+        }
     }
 
     render() {
@@ -24,9 +102,7 @@ class MainPage extends Component {
                 <div className="image1">
                     <div className=" transparent navbar-fixed-top">
                         <div className="row col-sm-3 offset-sm-9 navbar-right">
-                            <button id="contactUsBtn" className="btn cusButton"><i className="fa fa-paper-plane" aria-hidden="true" onClick={()=>{
-                                this.refs.contact.scrollIntoView();
-                            }}></i>Contact Us</button>
+                            <button id="contactUsBtn" className="btn cusButton"><i className="fa fa-paper-plane" aria-hidden="true" ></i>Contact Us</button>
                             <button className="btn  cusButton fa fa-paper-plane" onClick={() => {
                                 this.props.history.push("/login");
                             }}>Login</button>
@@ -90,7 +166,7 @@ class MainPage extends Component {
                     </div>
                 </div>
                 <div id="abc" ref = "contact">
-                    <section id="contact">
+                    <div id="contact">
                         <div className="section-content">
                             <br/>
                             <h1>Get in <span className="content-header wow fadeIn " data-wow-delay="0.2s" data-wow-duration="2s"> Touch with us</span></h1>
@@ -98,34 +174,86 @@ class MainPage extends Component {
                         </div>
                         <div className="contact-section">
                             <div className="container">
-                                <form className="row" action={this.contactUs()}>
+                                <div className="row" >
                                     <div className="col-md-6 form-line">
                                         <div className="form-group">
-                                            <label for="inputUsername">Your Name</label>
-                                            <input type="text" className="form-control" id="inputUsername" placeholder=" Enter Name" required/>
+                                            <label>Your Name</label>
+                                            { this.state.validName ? null : <div className="text-input-error-wrapper text-left errorMsg">Name is Required.</div>}
+                                            <input type="text" className="form-control" id="inputUsername" placeholder=" Enter Name"
+                                                   onChange={(event) => {
+                                                       this.setState({
+                                                           userdata: {
+                                                               ...this.state.userdata,
+                                                               name: event.target.value
+                                                           }
+                                                       });
+                                                   }}
+                                                   onFocus={(event) => {
+                                                       this.setState({validName: true});
+                                                   }}
+                                            />
                                         </div>
                                         <div className="form-group">
-                                            <label for="inputEmail">Email Address</label>
-                                            <input type="email" className="form-control" id="inputEmail" placeholder=" Enter Email id"  required/>
+                                            <label>Email Address</label>
+                                            { this.state.validEmail ? null : <div className="text-input-error-wrapper text-left errorMsg">Please Enter valid Email Address.</div>}
+                                            <input type="email" className="form-control" id="inputEmail" placeholder=" Enter Email id"
+                                                   onChange={(event) => {
+                                                       this.setState({
+                                                           userdata: {
+                                                               ...this.state.userdata,
+                                                               email: event.target.value
+                                                           }
+                                                       });
+                                                   }}
+                                                   onFocus={(event) => {
+                                                       this.setState({validEmail: true});
+                                                   }}
+                                            />
                                         </div>
                                         <div className="form-group">
-                                            <label for="telephone">Mobile No.</label>
-                                            <input type="tel" className="form-control" id="telephone" placeholder=" Enter 10-digit mobile no." required/>
+                                            <label>Mobile No.</label>
+                                            { this.state.validPhone ? null : <div className="text-input-error-wrapper text-left errorMsg">Please Enter Valid Phone number.</div>}
+                                            <input type="number" className="form-control" id="telephone" placeholder=" Enter 10-digit mobile no."
+                                                   onChange={(event) => {
+                                                       this.setState({
+                                                           userdata: {
+                                                               ...this.state.userdata,
+                                                               phone: event.target.value
+                                                           }
+                                                       });
+                                                   }}
+                                                   onFocus={(event) => {
+                                                       this.setState({validPhone: true});
+                                                   }}
+                                            />
                                         </div>
                                     </div>
                                     <div className="col-md-6">
                                         <div className="form-group">
-                                            <label for ="message">Message</label>
-                                            <textarea  className="form-control" id="message" placeholder="Enter Your Message" required></textarea>
+                                            <label >Message</label>
+                                            { this.state.validMessage ? null : <div className="text-input-error-wrapper text-left errorMsg">Message is Required.</div>}
+                                            <textarea  className="form-control" id="message" placeholder="Enter Your Message"
+                                                       onChange={(event) => {
+                                                           this.setState({
+                                                               userdata: {
+                                                                   ...this.state.userdata,
+                                                                   message: event.target.value
+                                                               }
+                                                           });
+                                                       }}
+                                                       onFocus={(event) => {
+                                                           this.setState({validMessage: true});
+                                                       }}
+                                            ></textarea>
                                         </div>
                                         <div>
-                                            <button type="submit" className="btn btn-default submit" onclick="sendMail()"><i className="fa fa-paper-plane" aria-hidden="true"></i>  Send Message</button>
+                                            <button type="button" className="btn btn-default submit" onClick={()=>{this.sendMail()}}>Send Message</button>
                                         </div>
                                     </div>
-                                </form>
+                                </div>
                             </div>
                         </div>
-                    </section>
+                    </div>
                 </div>
             </div>
         );

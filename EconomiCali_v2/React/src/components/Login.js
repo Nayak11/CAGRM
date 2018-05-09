@@ -23,7 +23,7 @@ class Login extends Component {
             emailorusernameValid: true,
             passwordValid: true,
             isLoggedIn: false,
-            message: ''
+            message: true
         };
 
     }
@@ -43,7 +43,10 @@ class Login extends Component {
                             localStorage.setItem('username',response.data.username);
                             this.props.history.push('/legislative');
                         }
-                    });
+                    })
+                .catch(error => {
+                    this.setState({message: false})
+                });
             }else
             {
                 this.setState({passwordValid: false})
@@ -83,6 +86,7 @@ class Login extends Component {
                             <LogoImage className="image"/>
                             <hr />
                             <div className="form-group"><h4>Login</h4></div>
+                            { this.state.message ? null : <div className="alert-info alert">Please Enter Valid Username and Password</div>}
                             <div className="form-group">
                                 { this.state.emailorusernameValid ? null : <div className="text-input-error-wrapper text-left errorMsg">Username is required.</div>}
                                 <input
