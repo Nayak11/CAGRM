@@ -62,7 +62,7 @@ class Dashboard extends Component {
             <br/>
             <br/>
             <div className="row">
-                    <div className="col-md-2 offset-md-6">
+                    <div className="col-md-2 offset-md-5">
                     <select id="category" name="category" className="form-control" onChange={this.change} >
                         <option value="Education">Education</option>
                         <option value="Health-care">Health-care</option>

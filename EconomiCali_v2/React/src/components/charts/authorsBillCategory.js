@@ -65,7 +65,7 @@ class AuthorByCategoty extends Component {
                                     type: 'column'
                                 },
                                 title: {
-                                    text: 'Top 5 authors under a category selection'
+                                    text: 'Top 5 Legislative Members under a category selection'
                                 },
                                 /* HighchartsConfig */
                                 xAxis: {
@@ -116,7 +116,7 @@ class AuthorByCategoty extends Component {
                                 type: 'column'
                             },
                             title: {
-                                text: 'Top 5 authors under a category selection'
+                                text: 'Top 5 Legislative Members under a category selection  '
                             },
                             /* HighchartsConfig */
                             xAxis: {
