@@ -16,6 +16,7 @@ import NavbarTemp from "./NavbarTemp";
 import PeopleTemp from "./peopleTemp";
 import AuthorByCategoty from "./charts/authorsBillCategory";
 import BillDetails from "./BillDetails";
+import Preferences from "./Preferences";
 
 class NewerHomePage extends Component {
 
@@ -128,6 +129,13 @@ class NewerHomePage extends Component {
                         <Message message={this.state.message}/>
                     </div>
                 )}/>
+                <Route exact path="/preferences" render={() => (
+                    <div>
+                        <Preferences/>
+                        <Message message={this.state.message}/>
+                    </div>
+                )}/>
+
             </div>
         );
     }

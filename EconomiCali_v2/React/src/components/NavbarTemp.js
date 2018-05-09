@@ -125,7 +125,7 @@ class NavbarTemp extends Component {
                                 </a>
                             </li>
                             <li className="nav-item" data-toggle="tooltip" data-placement="right" title="Charts">
-                                <a className="nav-link" href="charts.html">
+                                <a className="nav-link" href="bills ">
                                     <i className="fa-sticky-note-o "></i>
                                     <span className="nav-link-text">Bills</span>
                                 </a>

@@ -40,7 +40,7 @@ class Login extends Component {
                         if (response.data) {
                             localStorage.setItem('user_id', response.data.userId);
                             localStorage.setItem('company_id',response.data.companyId);
-                            localStorage.setItem('username',response.data.companyId)
+                            localStorage.setItem('username',response.data.username)
                             this.props.history.push('/home');
                         }
                     });

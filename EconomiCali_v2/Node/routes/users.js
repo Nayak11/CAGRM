@@ -534,6 +534,61 @@ router.post('/fetchbillsData',(req,res)=> {
     });
 });
 
+router.post('/fetchPreferencesByUser',(req,res)=> {
+
+    console.log(req.body.username);
+
+    console.log("fetch user preferences by user");
+    mongo.connect(mongoURL, function () {
+
+        console.log('Connected to mongo at: ' + mongoURL);
+        var coll = mongo.collection('organization');
+
+        coll.find({ username : req.body.username }).toArray(function (err, user1) {
+            if (user1) {
+                console.log("inside call back" + user1)
+                res.status(200).json({data: user1, status: true, message: "Success"});
+            }
+            else {
+                res.status(401).json({message: "Error", success: false});
+            }
+        })
+        })
+});
+
+
+
+
+router.post('/savePreferences',(req,res)=> {
+
+
+    console.log(req.body.org_id);
+    console.log(req.body.preferences);
+    console.log(req.body.username);
+    console.log("Inside Save Preferences");
+    mongo.connect(mongoURL, function () {
+
+        console.log('Connected to mongo at: ' + mongoURL);
+        var coll = mongo.collection('organization');
+
+        coll.updateOne({User_name: req.body.username },
+            {
+                $set: {
+                    preferences: req.body.preferences
+                }
+            },
+            {upsert : true},
+            function (err, user){
+                if(user)
+                {
+                    res.status(200).json({status: true, message: "Success"});
+                }
+                else {
+                    res.status(401).json({message: "Error in saving preference", success: false});
+                }
+            })
+    });
+});
 
 
 

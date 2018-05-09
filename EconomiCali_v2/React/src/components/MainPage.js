@@ -24,7 +24,9 @@ class MainPage extends Component {
                 <div className="image1">
                     <div className=" transparent navbar-fixed-top">
                         <div className="row col-sm-3 offset-sm-9 navbar-right">
-                            <button id="contactUsBtn" className="btn cusButton"><i className="fa fa-paper-plane" aria-hidden="true" href="#abc"></i>Contact Us</button>
+                            <button id="contactUsBtn" className="btn cusButton"><i className="fa fa-paper-plane" aria-hidden="true" onClick={()=>{
+                                this.refs.contact.scrollIntoView();
+                            }}></i>Contact Us</button>
                             <button className="btn  cusButton fa fa-paper-plane" onClick={() => {
                                 this.props.history.push("/login");
                             }}>Login</button>
@@ -79,7 +81,7 @@ class MainPage extends Component {
                         EconomiCali
                     </div>
                 </div>
-                <div id="abc">
+                <div id="abc" ref = "contact">
                     <section id="contact">
                         <div className="section-content">
                             <br/>
