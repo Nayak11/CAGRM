@@ -67,7 +67,7 @@ class Dashboard extends Component {
                         <option value="Education">Education</option>
                         <option value="Health-care">Health-care</option>
                         <option value="Corporation">Corporation</option>
-                        <option value="Corporation">Government</option>
+                        <option value="Government">Government</option>
                     </select>
                     </div>
                 </div>

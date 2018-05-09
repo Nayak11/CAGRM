@@ -130,7 +130,7 @@ class NavbarTemp extends Component {
                 <div className="fixed-nav sticky-footer bg-dark" id="page-top">
                     <Modal isOpen={this.state.isOpen} onRequestHide={this.hideModal} size = "modal-lg">
                         <ModalHeader>
-                            <ModalTitle>Modal title</ModalTitle>
+                            <ModalTitle>Email</ModalTitle>
                             <ModalClose onClick={this.hideModal}/>
                         </ModalHeader>
                         <ModalBody>
@@ -245,12 +245,7 @@ class NavbarTemp extends Component {
                     </button>
                     <div className="collapse navbar-collapse" id="navbarResponsive">
                         <ul className="navbar-nav navbar-sidenav" id="exampleAccordion">
-                            <li className="nav-item" data-toggle="tooltip" data-placement="right" title="Dashboard">
-                                <a className="nav-link" href="dashboard">
-                                    <i className="fa fa-fw fa-dashboard"></i>
-                                    <span className="nav-link-text">Dashboard</span>
-                                </a>
-                            </li>
+                            
                             <li className="nav-item" data-toggle="tooltip" data-placement="right" title="Charts">
                                 <a className="nav-link" href="bills ">
                                     <i className="fa-sticky-note-o "></i>
@@ -267,8 +262,15 @@ class NavbarTemp extends Component {
                                 <a className="nav-link" onClick={()=>{
                                     this.openModal()
                                 }}>
+                                
                                     <i className="fa fa-envelope-square"></i>
                                     <span className="nav-link-text"> Email</span>
+                                </a>
+                            </li>
+                            <li className="nav-item" data-toggle="tooltip" data-placement="right" title="Dashboard">
+                                <a className="nav-link" href="dashboard">
+                                    <i className="fa fa-fw fa-dashboard"></i>
+                                    <span className="nav-link-text">Dashboard</span>
                                 </a>
                             </li>
                         </ul>
