@@ -627,18 +627,52 @@ router.post('/fetchbillsData',(req,res)=> {
     });
 });
 
+router.post('/fetchPreferencesByUser',(req,res)=> {
+
+    console.log("Inside Fetch bills passes failed analysis");
+    mongo.connect(mongoURL, function () {
+
+        console.log('Connected to mongo at: ' + mongoURL);
+        var coll = mongo.collection('organization');
+        coll.findOne({User_name:req.body.username} , function (err, user1) {
+            if (user1) {
+                console.log("inside call back" + JSON.stringify(user1))
+                res.status(200).json({data:user1.preferences, status:true, message: "Success" });
+            }
+            else {
+                res.status(401).json({message: "Error",success: false});
+            }
+        });
 
 
+    });
+});
 
+router.post('/savePreferences',(req,res)=> {
 
-// router.post('/uploadFile', upload.single('myfile'), function (req, res, next){
-//     upload(req, res, function (err) {
-//         if (err) {
-//             return res.status(501).send({error:err});
-//         }
-//         res.json({originalname :req.file.originalname, uploadname :req.file.filename});
-//     })
-// })
+    console.log("Inside Fetch bills passes failed analysis");
+    mongo.connect(mongoURL, function () {
+        console.log(req.body.preferences)
+
+        console.log('Connected to mongo at: ' + mongoURL);
+        var coll = mongo.collection('organization');
+        coll.update({User_name: req.body.username}, {
+            $set: {
+                preferences: req.body.preferences,
+            }
+        },{upsert:true}
+            , function (err, resp) {
+            if (resp) {
+                console.log("Preferences added to existing record");
+                res.status(201).json({message: "Profile Set Successfully", success: true});
+            }
+            else {
+                res.status(401).json({message: "Error in Preferences set", success: false});
+            }
+        });
+    });
+});
+
 
 router.post('/uploadFile', function (req, res) {
     upload(req, res, function (err) {
