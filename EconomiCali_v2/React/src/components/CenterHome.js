@@ -32,67 +32,28 @@ componentDidMount(){
 
 }
 
-  handleBill(bill){
-    var house=this.state.houseBool;
-    var senate=this.state.senateBool;
-    if(bill==="House"){
-      console.log(this.state.houseBool);
-      if(this.state.houseBool){
-        this.setState({houseBool:false});
-        house=false;
-        //console.log(this.state.houseBool);
+  handleBill(type){
+      //this.setState({status:status});
+      if(type==="ALL"){
+          this.setState({mails:this.state.mailscopy});
+          return;
       }
-      else{
-        house=true;
-        this.setState({houseBool:true});
-      }
-      //console.log(this.state.houseBool);
-    }
-    else{
-      if(this.state.senateBool){
-        senate=false;
-        this.setState({senateBool:false});
-      }
-      else{
-        senate=true;
-        this.setState({senateBool:true});
-      }
-    }
-    console.log(this);
-    this.handleStatus(this.state.status);
 
-    if(house && senate){
-      //console.log("ITHE KA");
-      this.handleStatus(this.state.status);
-      return;
-    }
-    var mail=[];
-    var flag=false;
-    if(house){
-      flag=true;
-      mail=this.state.mails.filter((item)=>{
-        if(item.bill_type==="H.R."){
-          return item;
-        }
-      });
-    }
-    if(senate){
-      flag=true;
-      console.log("Done");
-      mail=this.state.mails.filter((item)=>{
-        if(item.bill_type==="S.R."){
-          return item;
-        }
-      });
-    }
-    console.log(this.state.houseBool);
-    this.setState({mails:mail});
+      var mail=this.state.mailscopy.filter((item)=>{
+          /*  if(status===item.status){
+              return item;
+            }*/
+          if(type===item.bill_type){
 
+              return item;
+          }
+      });
+      this.setState({mails:mail});
   }
 
   handleMonth(month){
     this.setState({month:month});
-    var mail=this.state.mails.filter((item)=>{
+    var mail=this.state.mailscopy.filter((item)=>{
 
       if(month.toString()==item.when){
         return item;
@@ -125,7 +86,7 @@ componentDidMount(){
     if(category==="All"){
       return;
     }
-    var mail=this.state.mails.filter((item)=>{
+    var mail=this.state.mailscopy.filter((item)=>{
         if(category===item.category){
 
           return item;
@@ -137,8 +98,8 @@ componentDidMount(){
   }
 
   handleSearch(searchTerm){
-    var mail=this.state.mails.filter((item)=>{
-        if(searchTerm===item.bill_no){
+    var mail=this.state.mailscopy.filter((item)=>{
+        if(searchTerm===item.bill_no.toString()){
 
           return item;
         }
@@ -163,10 +124,10 @@ componentDidMount(){
               <select onChange={(event)=>{this.handleCategory(event.target.value)}}>
   <option value="All">All</option>
   <option value="Education">Education</option>
-  <option value="Finance">Government</option>
-  <option value="Finance">Corporation</option>
-  <option value="Health">Health-care</option>
-  <option value="Health">Labor</option>
+  <option value="Government">Government</option>
+  <option value="Corporation">Corporation</option>
+  <option value="Health-care">Health-care</option>
+  <option value="Labor">Labor</option>
   <option value="Finance">Finance</option>
 </select>
             </form>
@@ -177,19 +138,21 @@ componentDidMount(){
           </div>
           <div style={{float:"left",overflow:"hidden",width:"15%"}}>
             <h4>Bill Type</h4>
-              <label><input type="checkbox" checked={this.state.houseBool} onClick={()=>{this.handleBill("house")}}/>House Bill</label> 
+              <label><input type="radio" name="type"  onClick={()=>{this.handleBill("House")}}/>House Bill</label>
               <br></br>
-              <label><input type="checkbox" checked={this.state.senateBool} onClick={()=>{this.handleBill("senate")}}/>Senate Bill</label>
+              <label><input type="radio" name="type" onClick={()=>{this.handleBill("Senate")}}/>Senate Bill</label>
+              <br></br>
+              <label><input type="radio" name="type" onClick={()=>{this.handleBill("ALL")}}/>All</label>
           </div>
           <div style={{float:"left",overflow:"hidden",width:"20%"}}>
             <h4>Status</h4>
-              <label><input type="radio" name="contact" onClick={()=>{this.handleStatus("PASS")}}/>Passed</label>
+              <label><input type="radio" name="contact" onClick={()=>{this.handleStatus("Pass")}}/>Passed</label>
               <br></br>
-              <label><input type="radio" name="contact" onClick={()=>{this.handleStatus("INTRODUCED")}}/>Introduced</label>
+              <label><input type="radio" name="contact" onClick={()=>{this.handleStatus("Introduced")}}/>Introduced</label>
               <br></br>
-                <label><input type="radio" name="contact" onClick={()=>{this.handleStatus("PROGRESS")}} />Progress</label>
+                <label><input type="radio" name="contact" onClick={()=>{this.handleStatus("Enacted")}} />Enacted</label>
                 <br></br>
-                <label><input type="radio" name="contact" onClick={()=>{this.handleStatus("REJECTED")}} />Rejected</label>
+                <label><input type="radio" name="contact" onClick={()=>{this.handleStatus("Fail")}} />Failed</label>
                 <br></br>
                 <label><input type="radio" name="contact" onClick={()=>{this.handleStatus("ALL")}} defaultChecked />All</label>
           </div>
@@ -204,9 +167,9 @@ componentDidMount(){
           </div>
         </div>
           </div>
-          <ul style={{border:"1px solid black",listStyleType:"none"}}>
+          <ul style={{border:"1px solid black",textAlign:"left",listStyleType:"none"}}>
             <li>
-              <div style={{display:"flex",justifyContent: "space-between",textAlign:"left",color:"#129A94"}}>
+              <div style={{display:"flex",textAlign:"left",color:"#129A94"}}>
                 <div style={{float:"left",overflow:"hidden",width:"25%"}}>
                 <h3 style={{textAlign:"left",fontSize:"17px"}}> Bill No.</h3>
                 </div>
