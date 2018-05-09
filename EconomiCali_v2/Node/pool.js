@@ -1,5 +1,6 @@
 var mysql = require('mysql');
 
+
 //Put your mysql configuration settings - user, password, database and port
 function getConnection(){
     var connection = mysql.createConnection({
@@ -10,6 +11,7 @@ function getConnection(){
     });
     return connection;
 }
+
 
 
 function fetchData(callback,sqlQuery ){
@@ -32,8 +34,10 @@ function fetchData(callback,sqlQuery ){
         }
     });
 
+
     console.log("\nConnection closed..");
     connection.end();
 }
+
 
 exports.fetchData=fetchData;

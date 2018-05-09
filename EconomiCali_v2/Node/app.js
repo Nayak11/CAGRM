@@ -13,9 +13,11 @@ var app = express();
 app.use(cors());
 
 
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
+
 
 
 /*uncomment after placing your favicon in /public
@@ -29,12 +31,14 @@ app.use('/', index);
 app.use('/users', users);
 
 
+
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
     var err = new Error('Not Found');
     err.status = 404;
     next(err);
 });
+
 
 
 // error handler

@@ -101,8 +101,6 @@ router.post('/doSignUp', function (req, res, next) {
 
 
 router.post('/addProject', function (req, res, next) {
-
-
     console.log("Inside addProject");
     var reqProjectname = req.body.projectname;
     var reqDescription = req.body.projectdescription;
@@ -111,8 +109,6 @@ router.post('/addProject', function (req, res, next) {
     var reqFilePath = req.body.projectFile;
     var reqEmployer = req.body.userid;
     var reqSkill = req.body.projectSkilstring
-
-
     var q = "insert into project(project_name, description, budget_range_start, budget_range_end) values ('website', 'simple site', 10, 50)"
     var query = "insert into project(project_name, description, budget_range_start, budget_range_end, projectSkills, userid, filepath) values ('" + reqProjectname + "','" + reqDescription + "','" + reqProjectBudgetMin + "','" + reqProjectBudgetMax + "','" + reqSkill  + "','" + reqEmployer + "','"  + reqFilePath + "')"
     console.log("Query is :" + query);
@@ -191,9 +187,8 @@ router.get('/comments',function(req,res,next){
     });
 });
 
+
 router.post('/setProfile', function (req, res, next) {
-
-
     console.log("Inside setProfile");
     var reqUserId = req.body.userId;
     var reqfirstname = req.body.firstname;
@@ -234,6 +229,7 @@ router.post('/setProfile', function (req, res, next) {
     },query);
 });
 
+
 router.post('/fetchProject', function (req, res, next) {
 
     var query = "select p.project_id , p.project_name, p.description, p.budget_range_start,p.budget_range_end, p.projectSkills,p.userid,avg(pu.bid_value) \n" +
@@ -254,6 +250,7 @@ router.post('/fetchProject', function (req, res, next) {
 
 });
 
+
 router.post('/fetchprojectusers', function (req, res, next) {
 
     console.log("Inside fetchprojectusers");
@@ -271,6 +268,7 @@ router.post('/fetchprojectusers', function (req, res, next) {
         }
     },query);
 });
+
 
 router.post('/addmybid', function (req, res, next) {
 
@@ -295,8 +293,6 @@ router.post('/addmybid', function (req, res, next) {
             res.status(201).json({message: "Success",success: true});
         }
     },query);
-
-
 });
 
 
@@ -358,6 +354,8 @@ router.post('/fetchskills', function (req, res, next) {
         }
     },query);
 });
+
+
 router.post('/addskillsToProject', function (req, res, next) {
 
     var reqProjectId = req.body.projectId;
@@ -391,6 +389,8 @@ router.post('/addskillsToProject', function (req, res, next) {
     }
 )
 });
+
+
 router.post('/addskillsToUser', function (req, res, next) {
 
     var reqUserId = req.body.userId;
@@ -459,6 +459,8 @@ var requserId =  req.body.userid;
         }
     },query);
 });
+
+
 
 router.post('/fetchPeople', function (req, res, next) {
 
@@ -573,6 +575,7 @@ router.get('/downloadFile', (req, res) => {
         res.status(200).send(bufferBase64);
     }
 });
+
 
 router.post('/fetchAllbills', function (req, res, next) {
 
