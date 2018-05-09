@@ -37,7 +37,10 @@ class NewerHomePage extends Component {
         return (
             <div className="container-fluid cusDivNav">
                 <Route exact path="/" render={() => (
-                    <div><Message message="You have landed on main page !!"/></div>
+                     <div>
+                     <MainPage/>
+                     <Message message={this.state.message}/>
+                 </div>
                 )}/>
 
               <Route exact path="/int" render={()=>(
@@ -116,7 +119,7 @@ class NewerHomePage extends Component {
                 )}/>
 
 
-                <Route exact path="/peo" render={() => (
+                <Route exact path="/legislative" render={() => (
                     <div>
                         <PeopleTemp/>
                         <Message message={this.state.message}/>

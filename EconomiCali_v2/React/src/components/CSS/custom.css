@@ -9,16 +9,16 @@
 .customImage
 {
     position: absolute;
-    background: blue;
-    top: 3px;
+    top: 7px;
     left: 3px;
-    width: 42px;
-    height: 41px;
+    width: 35px;
+    height: 35px;
 }
 .logoTitle{
     padding-left: 30px;
     color : lightseagreen;
     font-family: 'Helvetica Neue', 'Segoe UI', Helvetica, Arial, sans-serif;
+    margin-left:15px;
 }
 
 /*landing page button*/
@@ -48,3 +48,27 @@
     border-radius: 0px !important;
 }
 /*end of kirati change*/
+
+section#useful p{
+    color :#F5F6CE;
+}
+div#part1{
+text-align: left
+}
+
+div#part2   {
+    text-align: left
+    }
+div#useful {
+    text-align: left;
+}
+
+form.col-md-4.col-md-3.align-self-center.border{
+    margin-top : 100px !important;
+}
+
+div.form-group h4{
+    text-align: center;
+}
+
+
