@@ -1,4 +1,3 @@
-
 /* sample flow of data wrt to sample html page upon click on button it should display text in the texbox */
 function data()
 {
@@ -11,7 +10,6 @@ function data()
                 var texbox = document.getElementById('textbox').value=response.data.name;
                 return response;
             };
-            
             throw new Error('Request failed.');
             //console.log("In client js");
         });
@@ -35,7 +33,6 @@ function data()
                 console.log(matchresults);
                 return matchresults;
             };
-            
             throw new Error('Request failed.');
             //console.log("In client js");
         })
@@ -64,7 +61,6 @@ function data()
                document.getElementById("aboutauthor").innerText="Bill Title: "+matchresults[0].title + "\n\n"+"Status: "+matchresults[0].status;
                 return matchresults;
             };
-            
             throw new Error('Request failed.');
             //console.log("In client js");
         })
@@ -72,7 +68,6 @@ function data()
 
 
     /*Send the drop down selected from category to the server.js for the api /dashboard */
-
     function sendCategory(){
         alert("abc");
         var category = {
@@ -165,12 +160,11 @@ function data()
                     {
                         introduced.push(res);
                     }
-
+                    
                     if(res.status === 'FAIL')
                     {
                        fail.push(res);
                     }
-
                 });
                 var statusResult ={"Pass" : pass.length ,"Introduced":introduced.length,"Fail":fail.length}
                 
@@ -201,8 +195,7 @@ function data()
                   }
 
                return statusResult;
-            };
-            
+            };     
             throw new Error('Request failed.');
             //console.log("In client js");
         }) 
