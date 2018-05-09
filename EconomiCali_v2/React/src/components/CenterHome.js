@@ -204,7 +204,7 @@ componentDidMount(){
           </div>
         </div>
           </div>
-          <ul style={{border:"2px solid black",listStyleType:"none"}}>
+          <ul style={{border:"1px solid black",listStyleType:"none"}}>
             <li>
               <div style={{display:"flex",justifyContent: "space-between",textAlign:"left",color:"#129A94"}}>
                 <div style={{float:"left",overflow:"hidden",width:"25%"}}>
