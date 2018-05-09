@@ -101,6 +101,7 @@ class PeopleTemp extends Component {
     {
 
         var abc = []
+        if(this.state.selectedOptions){
         this.state.selectedOptions.map((e)=>{
             abc.push(e.name.toString())
         })
@@ -140,7 +141,7 @@ class PeopleTemp extends Component {
                 {item}
             </div>
         )
-    }
+    }}
 
     render(){
         return(
