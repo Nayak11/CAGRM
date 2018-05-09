@@ -2,10 +2,12 @@
   text-align: center;
 }
 
+
 .App-logo {
   animation: App-logo-spin infinite 20s linear;
   height: 80px;
 }
+
 
 .App-header {
   background-color: #222;
@@ -14,13 +16,16 @@
   color: white;
 }
 
+
 .App-title {
   font-size: 1.5em;
 }
 
+
 .App-intro {
   font-size: large;
 }
+
 
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
@@ -37,10 +42,13 @@
   justify-content: space-between;
 }
 
+
 .leftlist:hover{
   background: skyblue;
   border-left: 1px solid #188fff;
 }
+
+
 .leftlist{
   /*background: grey;*/
   text-align: left;
@@ -56,6 +64,7 @@
   font-size: 30;
 }
 
+
 .signinFlex{
   display: flex;
   margin-left: 20%;
@@ -64,10 +73,12 @@
   justify-content: space-around;
 }
 
+
 .signinFlex2{
   display: flex;
   justify-content: space-around;
 }
+
 
 #textbox{
   border: 0;
@@ -87,6 +98,7 @@
   max-width: 50%;
   max-height: 50%;
 }
+
 
 .signinRight{
   text-align: center;
@@ -135,6 +147,8 @@ body,html{
     */
     background-attachment: fixed
 }
+
+
 .image1{
 
 /*    background-image: url('../images/image1.jpg');*/
@@ -142,30 +156,36 @@ body,html{
 
 }
 
+
 .image2{
   /*  background-image: url('../images/image2.jpg');*/
     min-height: 400px;
 }
+
 
 .image3{
   /*  background-image: url('../images/image3.jpg');*/
     min-height: 400px;
 }
 
+
 .section{
     text-align: center;
     padding: 50px 80px;
 }
+
 
 .section-light{
     background: color #f4f4f4;
     color : #666;
 }
 
+
 .section-dark{
     background: black;
     color : #ddd;
 }
+
 
 .ptext{
     position : absolute;
@@ -200,16 +220,19 @@ nav{
 
 }
 
+
 nav .logo
 {
     float : left;
 }
+
 
 nav .logo img
 {
     height : 40px;
     transition: .5s;
 }
+
 
 nav ul
 {
@@ -219,10 +242,13 @@ nav ul
     display: flex;
 }
 
+
 nav ul li
 {
     list-style: none;
 }
+
+
 nav ul li a
 {
     list-style: 80px;
@@ -233,9 +259,8 @@ nav ul li a
     font-size: 15px;
     transition: .5s;
 }
-/*
-for the EconomiCali Text
-*/
+
+
  div.logo a
 {
     color : #F9E79F;
@@ -244,12 +269,17 @@ for the EconomiCali Text
     font-size: 20px;
     transition: .5s;
 }
+
+
 nav ul li a.active,
 nav ul li a:hover
+
+
 {
 color : #fff;
 background : #48C9B0;
 }
+
 
 div.section1{
     width : 100%;
@@ -257,6 +287,7 @@ div.section1{
     /*background : url('../images/image5.png');*/
     background-size: cover;
 }
+
 
 /* left navigation */
 div.leftnavigation ul{
@@ -273,12 +304,14 @@ div.leftnavigation ul{
     width : 10%;
 }
 
+
 div.leftnavigation ul li{
     list-style : none;
     padding : 20px 40px;
 
 
 }
+
 
 div#divsearch{
     float: right;
@@ -303,6 +336,7 @@ div#divsearch input{
     font-size: 15px;
 }
 
+
 div.leftnavigation ul li a
 {
     list-style: 80px;
@@ -315,6 +349,8 @@ div.leftnavigation ul li a
     height: 100%;
 
 }
+
+
 /* hover on left navigationlinks */
 div.leftnavigation ul li a.active,
 div.leftnavigation ul li a:hover
@@ -322,3 +358,37 @@ div.leftnavigation ul li a:hover
 color : #fff;
 background : #48C9B0;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
