@@ -11,6 +11,7 @@ import "./CSS/people.css";
 import "./CSS/custom.css";
 import {Typeahead} from 'react-bootstrap-typeahead';
 import 'react-bootstrap-typeahead/css/Typeahead.css';
+import Highlighter from "react-highlight-words";
 
 class PeopleTemp extends Component {
 
@@ -19,6 +20,8 @@ class PeopleTemp extends Component {
         this.state = {
             temp:0,
             authors:[],
+            mails:[],
+            mailscopy:[],
             options : [
                 {id: 1, name: "Health"},
                 {id: 2, name: "Medical"},
@@ -33,82 +36,91 @@ class PeopleTemp extends Component {
                 {id :11,name : "Medical Emergency"}
             ],
 
-            selectedOptions: []
+            selectedOptions: [],
+            selectedOptionsName : []
         };
         this.handleOptionSelected = this.handleOptionSelected.bind(this);
     }
 
     handleOptionSelected(option){
         this.setState({
-            selectedOptions:option
+            selectedOptions:option,
             })
-        console.log(this.state.selectedOptions);
+
+        this.setState({selectedOptionsName : this.state.selectedOptions.map(e => e.name).join(",")});
+
+        console.log(this.state.selectedOptionsName);
         }
 
 
     componentDidMount(){
+        var self = this;
         var payload ={username : localStorage.getItem("username") }
-        // API.fetchPreferencesByUser(payload)
-        //     .then(
-        //         (response) =>{
-        //             console.log(response.data);
-        //             this.setState({
-        //                 authors:response.data
-        //             })
-        //         }
-        //     );
+        API.fetchPreferencesByUser(payload)
+            .then(
+                (response) =>{
+                    console.log(response.data);
+                    self.setState({
+                        selectedOptions: response.data,
+                    })
+
+                }
+            );
+        API.fetchAllbills(payload)
+            .then(
+                (response) =>{
+                    console.log(response.data);
+                    self.setState({
+                        mails:response.data,
+                        mailscopy:response.data
+                    })
+
+                    var mails = [];
+                    var count = 0;
+                    if(self.state.selectedOptions!== undefined){
+                    for (var i =0; i< self.state.selectedOptions.length ; i++) {
+                        self.state.mailscopy.map((mail) => {
+                            console.log(mail.bill_description);
+                            console.log(self.state.selectedOptions[i].name);
+                            if (mail.bill_description.toLowerCase().indexOf(self.state.selectedOptions[i].name.toLowerCase()) > -1) {
+                                count = count + 1;
+                                mails.push(mail);
+                            }
+                        })
+                    }
+                    console.log("mails" + JSON.stringify(mails));
+                    console.log("count:" + count);
+                    self.setState({mails:mails});
+                    console.log(this.state.mails);
+
+                }})
 
     }
 
-    display_authors()
+    display_mails()
     {
-        const item = this.state.authors.map((author,index) =>{
 
+        var abc = []
+        this.state.selectedOptions.map((e)=>{
+            abc.push(e.name.toString())
+        })
+
+        console.log("abc : " +  abc);
+        const item = this.state.mails.map((mail,index) =>{
             return(
-
-                <div className="col-md-4">
-                    <div className="image-flip" ontouchstart="this.classList.toggle('hover');">
-                        <div className="mainflip">
-                            <div className="frontside cusFrontBack">
-                                <div className="card cusCard">
-                                    <div className="card-body text-center">
-                                        <p><img className=" img-fluid" src={author.profile_pic} alt="card image"/></p>
-                                        <h4 className="card-title">{author.author}</h4>
-                                        <p className="card-text">{author.about}</p>
-                                    </div>
+                <div>
+                    <div className="container-fluid small">
+                        <div className="row text-center">
+                            <div className="col-sm-1 border gridFont">{mail.bill_no}</div>
+                            <div className="col-sm-2 border">{mail.title}
                                 </div>
-                            </div>
-                            <div className="backside cusFrontBack">
-                                <div className="card cusCard">
-                                    <div className="card-body text-center mt-4 col-md-12">
-                                        <h4 className="card-title">{author.author}</h4>
-                                        <p className="card-text">{author.email}</p>
-                                        <ul className="list-inline">
-                                            <li className="list-inline-item">
-                                                <a className="social-icon text-xs-center" target="_blank" href="#">
-                                                    <i className="fa fa-facebook"></i>
-                                                </a>
-                                            </li>
-                                            <li className="list-inline-item">
-                                                <a className="social-icon text-xs-center" target="_blank" href="#">
-                                                    <i className="fa fa-twitter"></i>
-                                                </a>
-                                            </li>
-                                            <li className="list-inline-item">
-                                                <a className="social-icon text-xs-center" target="_blank" href="#">
-                                                    <i className="fa fa-skype"></i>
-                                                </a>
-                                            </li>
-                                            <li className="list-inline-item">
-                                                <a className="social-icon text-xs-center" target="_blank" href="#">
-                                                    <i className="fa fa-google"></i>
-                                                </a>
-                                            </li>
-                                        </ul>
-                                        <a href="#" className="btn btn-primary btn-sm"><i className="fa fa-plus">More Details</i></a>
-                                    </div>
-                                </div>
-                            </div>
+                            <div className="col-sm-7 border gridFont"><Highlighter
+                                highlightClassName='mark'
+                                searchWords={abc}
+                                autoEscape={true}
+                                textToHighlight={mail.bill_description}
+                            /></div>
+                            <div className="col-sm-2 border gridFont">{mail.status}</div>
                         </div>
                     </div>
                 </div>
@@ -116,8 +128,16 @@ class PeopleTemp extends Component {
             )
         });
         return(
-            <div className="row">
-                {/*{item}*/}
+            <div>
+                <div className="container-fluid bg-light">
+                    <div className="row text-center">
+                        <div className="col-sm-1 border gridHeader">Bill Number</div>
+                        <div className="col-sm-2 border gridHeader">Bill title</div>
+                        <div className="col-sm-7 border gridHeader">Bill Description</div>
+                        <div className="col-sm-2 border gridHeader">Bill Status</div>
+                    </div>
+                </div>
+                {item}
             </div>
         )
     }
@@ -138,25 +158,70 @@ class PeopleTemp extends Component {
                         options={this.state.options}
                         placeholder="Enter serach preferences"
                         onChange={this.handleOptionSelected}
+                        selected = {this.state.selectedOptions}
                     /></div>
                     <button className="btn btn-primary" onClick={()=> {
+                        var self = this;
                         var payload ={ username : localStorage.getItem("username")
                                        ,org_id : localStorage.getItem("company_id"),
-                                       preferences: this.state.selectedOptions }
-                        // API.savePreferences(payload)
-                        //     .then(
-                        //         (response) =>{
-                        //             console.log(response.data);
-                        //             this.setState({
-                        //                 authors:response.data
-                        //             })
-                        //         }
-                        //     );
+                                       preferences: self.state.selectedOptions }
+                        API.savePreferences(payload)
+                            .then(
+                                (response) =>{
+                                    console.log(response.data);
+                                    self.setState({
+                                        authors:response.data
+                                    })
+                                }
+                            );
+                        API.fetchPreferencesByUser(payload)
+                            .then(
+                                (response) =>{
+                                    console.log(response.data);
+                                    self.setState({
+                                        selectedOptions: response.data,
+                                        selectedOptionsName: response.data.map((e)=> {e.name}).join(',')
 
+                                    })
+                                }
+                            );
+                        API.fetchAllbills(payload)
+                            .then(
+                                (response) =>{
+                                    console.log(response.data);
+                                    self.setState({
+                                        mails:response.data,
+                                        mailscopy:response.data
+                                    })
+
+                                    var mails = [];
+                                    var count = 0;
+                                    if(self.state.selectedOptions!== undefined){
+                                    for (var i =0; i< self.state.selectedOptions.length ; i++) {
+                                        self.state.mailscopy.map((mail) => {
+                                            console.log(mail.bill_description);
+                                            console.log(self.state.selectedOptions[i].name);
+                                            if (mail.bill_description.toLowerCase().indexOf(self.state.selectedOptions[i].name.toLowerCase()) > -1) {
+                                                count = count + 1;
+                                                mails.push(mail);
+                                            }
+                                        })
+                                    }
+                                    console.log("mails" + JSON.stringify(mails));
+                                    console.log("count:" + count);
+                                    this.setState({mails:mails});
+                                    console.log(this.state.mails);
+
+                                }})
 
                     }}> Search </button>
                     </div>
+<br/>
+                <br/>
 
+                </div>
+                {this.state.mails !== undefined && this.state.mails.length > 0 ? this.display_mails() : <div className="alert alert-info">Not Records Found</div> }
+                <div>
 
                 </div>
                 <footer className="sticky-footer">

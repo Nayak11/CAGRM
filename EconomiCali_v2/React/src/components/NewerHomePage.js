@@ -134,7 +134,7 @@ class NewerHomePage extends Component {
                 )}/>
                 <Route exact path="/preferences" render={() => (
                     <div>
-                        <Preferences/>
+                        <Preferences handleClick={this.handleClick}/>
                         <Message message={this.state.message}/>
                     </div>
                 )}/>
