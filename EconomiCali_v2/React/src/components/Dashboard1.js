@@ -20,11 +20,29 @@ class Dashboard extends Component {
         this.state = {
             userId: '',
             view:"projects",
-           selectedValue:""
+            config:{
+                chart: {
+                    type: 'pie'
+                },
+                /* HighchartsConfig */
+                xAxis: {
+                    categories: []
+                },
+                series: [{
+                    name: 'Tokyo',
+                    data: []
+
+                }]
+            },
+            value:"Education"
         }
+        this.change = this.change.bind(this);
     }
 
-
+    change(event){
+        this.setState({value: event.target.value});
+        console.log(this.state.value);
+    }
 
     render(){
         return(
@@ -45,10 +63,7 @@ class Dashboard extends Component {
             <br/>
             <div className="row">
                     <div className="col-md-2 offset-md-6">
-                    <select id="category" name="category" className="form-control" onChange={(e)=>{
-                        this.setState({selectedValue : e.target.value})
-                        console.log("Selected drop down",this.state.selectedValue);
-                    }}>
+                    <select id="category" name="category" className="form-control" onChange={this.change} >
                         <option value="Education">Education</option>
                         <option value="Health-care">Health-care</option>
                         <option value="Corporation">Corporation</option>
@@ -59,8 +74,8 @@ class Dashboard extends Component {
                 <br/>
                 <br/>
                 <div className="row">
-                    <div className="col-md-6"><AuthorByCategoty /></div>
-                    <div className="col-md-6"><BillStatusByCategory/></div>
+                    <div className="col-md-6"><AuthorByCategoty value={this.state.value}/></div>
+                    <div className="col-md-6"><BillStatusByCategory value={this.state.value}/></div>
                 </div>
             </div>
                 <footer className="sticky-footer">
