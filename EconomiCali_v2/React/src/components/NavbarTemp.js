@@ -276,9 +276,16 @@ class NavbarTemp extends Component {
                         </ul>
 
                         <ul className="navbar-nav ml-auto">
+                        <li className="nav-item">
+                                <a className="nav-link" data-toggle="modal" data-target="#exampleModal" onClick={() => {this.handleLogout()}}>
+                                    Welcome {localStorage.getItem('username')}!</a>
+                            </li>
+                        
+                    
                             <li className="nav-item dropdown">
                                 <a className="nav-link dropdown-toggle mr-lg-2" id="messagesDropdown" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     <i className="fa fa-fw fa-envelope"></i>
+                                    
                                     <span className="d-lg-none">Messages
               <span className="badge badge-pill badge-primary">12 New</span>
             </span>
