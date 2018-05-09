@@ -277,7 +277,7 @@ class NavbarTemp extends Component {
 
                         <ul className="navbar-nav ml-auto">
                         <li className="nav-item">
-                                <a className="nav-link" data-toggle="modal" data-target="#exampleModal" onClick={() => {this.handleLogout()}}>
+                                <a className="nav-link" data-toggle="modal" data-target="#exampleModal">
                                     Welcome {localStorage.getItem('username')}!</a>
                             </li>
                         
