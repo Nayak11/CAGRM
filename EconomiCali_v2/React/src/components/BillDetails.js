@@ -348,7 +348,7 @@ putComment = (id, comment) =>{
               <div className="titleBox">
                   <label>Comment Box</label>
               </div>
-              {this.state.commentArr.length>0 ? this.display_comments() : null}
+              {this.state.commentArr !== undefined && this.state.commentArr.length >0 ? this.display_comments() : null}
               <div className="form-inline" role="form">
                   <div className="form-group">
                       <input className="form-control" type="text" onChange={(event)=>this.setState({comment:event.target.value})} placeholder="Add Your comments" />
