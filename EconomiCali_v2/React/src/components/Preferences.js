@@ -169,18 +169,19 @@ class PeopleTemp extends Component {
                                     self.setState({
                                         authors:response.data
                                     })
-                                }
-                            );
-                        API.fetchPreferencesByUser(payload)
-                            .then(
-                                (response) =>{
-                                    console.log(response.data);
-                                    self.setState({
-                                        selectedOptions: response.data
+                                    API.fetchPreferencesByUser(payload)
+                                        .then(
+                                            (response) =>{
+                                                console.log(response.data);
+                                                self.setState({
+                                                    selectedOptions: response.data
 
-                                    })
+                                                })
+                                            }
+                                        );
                                 }
                             );
+
                         API.fetchAllbills(payload)
                             .then(
                                 (response) =>{
