@@ -68,7 +68,7 @@ putComment = (id, comment) =>{
                                 <li>
                                     <div className="row">
                                         <div className="font-weight-bold smaller ">
-                                            {comment.username} ":  "
+                                            {comment.username} :
                                         </div>
                                     </div>
                                     <div className="row">
@@ -354,7 +354,7 @@ putComment = (id, comment) =>{
                       <input className="form-control" type="text" onChange={(event)=>this.setState({comment:event.target.value})} placeholder="Add Your comments" />
                   </div>
                   <div className="form-group">
-                      <button className="btn btn-default" onClick={()=>this.putComment()}>Add</button>
+                      <button className="btn btn-default btn btn-success" onClick={()=>this.putComment()}>Add</button>
                   </div>
               </div>
           </div>

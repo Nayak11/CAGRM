@@ -277,13 +277,13 @@ class NavbarTemp extends Component {
 
                         <ul className="navbar-nav ml-auto">
                         <li className="nav-item">
-                                <a className="nav-link" data-toggle="modal" data-target="#exampleModal" onClick={() => {this.handleLogout()}}>
+                                <a className="nav-link" data-toggle="modal" data-target="#exampleModal">
                                     Welcome {localStorage.getItem('username')}!</a>
                             </li>
                         
                     
                             <li className="nav-item dropdown">
-                                <a className="nav-link dropdown-toggle mr-lg-2" id="messagesDropdown" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                {/* <a className="nav-link dropdown-toggle mr-lg-2" id="messagesDropdown" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     <i className="fa fa-fw fa-envelope"></i>
                                     
                                     <span className="d-lg-none">Messages
@@ -292,7 +292,7 @@ class NavbarTemp extends Component {
                                     <span className="indicator text-primary d-none d-lg-block">
               <i className="fa fa-fw fa-circle"></i>
             </span>
-                                </a>
+                                </a> */}
                                 <div className="dropdown-menu" aria-labelledby="messagesDropdown">
                                     <h6 className="dropdown-header">New Messages:</h6>
                                     <div className="dropdown-divider"></div>
@@ -318,7 +318,7 @@ class NavbarTemp extends Component {
                                 </div>
                             </li>
                             <li className="nav-item dropdown">
-                                <a className="nav-link dropdown-toggle mr-lg-2" id="alertsDropdown" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                {/* <a className="nav-link dropdown-toggle mr-lg-2" id="alertsDropdown" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     <i className="fa fa-fw fa-bell"></i>
                                     <span className="d-lg-none">Alerts
               <span className="badge badge-pill badge-warning">6 New</span>
@@ -326,7 +326,7 @@ class NavbarTemp extends Component {
                                     <span className="indicator text-warning d-none d-lg-block">
               <i className="fa fa-fw fa-circle"></i>
             </span>
-                                </a>
+                                </a> */}
                                 <div className="dropdown-menu" aria-labelledby="alertsDropdown">
                                     <h6 className="dropdown-header">New Alerts:</h6>
                                     <div className="dropdown-divider"></div>
