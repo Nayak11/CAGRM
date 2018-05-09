@@ -20,20 +20,7 @@ class Dashboard extends Component {
         this.state = {
             userId: '',
             view:"projects",
-            config:{
-                chart: {
-                    type: 'pie'
-                },
-                /* HighchartsConfig */
-                xAxis: {
-                    categories: []
-                },
-                series: [{
-                    name: 'Tokyo',
-                    data: []
-
-                }]
-            }
+           selectedValue:""
         }
     }
 
@@ -58,11 +45,14 @@ class Dashboard extends Component {
             <br/>
             <div className="row">
                     <div className="col-md-2 offset-md-6">
-                    <select id="category" name="category" className="form-control">
+                    <select id="category" name="category" className="form-control" onChange={(e)=>{
+                        this.setState({selectedValue : e.target.value})
+                        console.log("Selected drop down",this.state.selectedValue);
+                    }}>
                         <option value="Education">Education</option>
                         <option value="Health-care">Health-care</option>
                         <option value="Corporation">Corporation</option>
-                        <option value="Corporation">Government</option>
+                        <option value="Government">Government</option>
                     </select>
                     </div>
                 </div>
