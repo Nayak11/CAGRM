@@ -46,10 +46,6 @@ class PeopleTemp extends Component {
         this.setState({
             selectedOptions:option,
             })
-
-        this.setState({selectedOptionsName : this.state.selectedOptions.map(e => e.name).join(",")});
-
-        console.log(this.state.selectedOptionsName);
         }
 
 
@@ -180,8 +176,7 @@ class PeopleTemp extends Component {
                                 (response) =>{
                                     console.log(response.data);
                                     self.setState({
-                                        selectedOptions: response.data,
-                                        selectedOptionsName: response.data.map((e)=> {e.name}).join(',')
+                                        selectedOptions: response.data
 
                                     })
                                 }
