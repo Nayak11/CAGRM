@@ -11,17 +11,43 @@ class BillDetails extends Component{
     this.state = {
         temp:0,
         mails:[],
-        mailscopy:[]
+        mailscopy:[],
+        comment:"",
+        commentArr:[]
     };
     var temp=this.state.mails;
     temp.push(this.props.item.item);
     this.setState({
         mails:temp,
         mailscopy:temp
+    });
+    var payload = {
+      company_id = localStorage.getItem("company_id"),
+      bill_no = this.state.mails[0].item.bill_no
+    }
+    API.comment1(payload)
+    .then((res)=>{
+      console.log(res);
+      var temp=[];
+      for(var i=0;i<res.data.length;i++){
+        temp.push(res.data[i].Company_name);
+      }
+      this.setState({commentArr:temp})
     })
     console.log(this.props.item);
 }
 
+putComment = (id, comment) =>{
+  API.comment()
+  .then((res)=>{
+    if(res==201){
+      this.state.commentArr.push(this.state.comment);
+      this.setState({comment:""});
+      console.log("comment added to db");
+    }
+  })
+}
+ 
 
   render(){
     return(
@@ -272,19 +298,24 @@ class BillDetails extends Component{
            
           </ul> */}
 
-          <div style={{float:"center",height:"50px"}}>
+          <div style={{float:"center",height:"200px",marginLeft:"45px"}}>
           <p></p>
           </div>
+          <div style={{border:"1px solid black"}}>
+          <ul>
+{this.state.commentArr.map((item)=>{
+  return <li style={{listStyleType:"none"}}>
+      {item}
+  </li>
+})}
+</ul>
+</div>
+ 
+ <input type="text" value={this.state.comment} onChange={(event)=>this.setState({comment:event.target.value})} style={{float:"center",border:"1px solid black",width:"60%",height:"5%",marginLeft:"45px"}} placeholder="Enter your comment... "/>
 
- <textarea rows="4" cols="50" style={{float:"center",border:"1px solid black",width:"95%",height:"20%",marginLeft:"45px"}}>
- Randy Weber- "The resolution was passed in a vote in the House. A simple resolution is not voted on in the other chamber and does not have the force of law."                                                                                                                                                                                                                                                                             Jerry Hill- "Bills and resolutions are referred to committees which debate the bill before possibly sending it on to the whole chamber."
+<button style={{float:"center",height:"50px"}} onClick={()=>this.putComment({id:this.state.commentArr.length+1,comment:this.state.comment})}>Enter Comment</button>
+<p id="10"></p>
 
-
- </textarea>
- <textarea rows="2" cols="50" style={{float:"center",border:"1px solid black",width:"60%",height:"5%",marginLeft:"45px"}}>
-Enter your comment... </textarea>
-
-<button style={{float:"center"}}>Enter Comment</button>
 
         </div>
     </div>

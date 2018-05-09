@@ -35,7 +35,7 @@ componentDidMount(){
   handleBill(bill){
     var house=this.state.houseBool;
     var senate=this.state.senateBool;
-    if(bill==="house"){
+    if(bill==="House"){
       console.log(this.state.houseBool);
       if(this.state.houseBool){
         this.setState({houseBool:false});
@@ -78,7 +78,7 @@ componentDidMount(){
     }
     if(senate){
       flag=true;
-      console.log("Jatay");
+      console.log("Done");
       mail=this.state.mails.filter((item)=>{
         if(item.bill_type==="S.R."){
           return item;
@@ -152,14 +152,14 @@ componentDidMount(){
             <nav className="navbar navbar-default ">
             </nav>
             <NavbarTemp/>
-           <div style={{display:"flex",flexDirection:"column",alignContent:"space-between"}}>
+           <div style={{leftMargin:"50px",display:"flex",flexDirection:"column",alignContent:"space-between"}}>
         <div  style={{color:"black"}}>
           <div style={{width:"100%",color:"black"}}>
             <br/><br/><br/>
-            <div style={{width:"100%",display:"flex",alignContent:"space-between"}}>
-          <div style={{float:"left",overflow:"hidden",width:"25%"}}>
-            <h1>Category</h1>
-            <form style={{width:"100%",height:"100%"}}>
+            <div style={{leftMargin:"10px",width:"100%",display:"flex",alignContent:"center"}}>
+          <div style={{leftMargin:"10px",alignContent:"center",overflow:"hidden",width:"15%"}}>
+            <h4>Category</h4>
+            <form style={{width:"100%",height:"80%"}}>
               <select onChange={(event)=>{this.handleCategory(event.target.value)}}>
   <option value="All">All</option>
   <option value="Agriculture">Agriculture</option>
@@ -175,29 +175,34 @@ componentDidMount(){
 </select>
             </form>
           </div>
-          <div style={{float:"left",overflow:"hidden",width:"20%"}}>
-            <h1>Date</h1>
+          <div style={{alignContent:"left",float:"left",overflow:"hidden",width:"20%"}}>
+            <h4>Date Introduced</h4>
             <input id="date" type="month" value={this.state.month} onChange={(event)=>{this.handleMonth(event.target.value)}}/>
           </div>
-          <div style={{float:"left",overflow:"hidden",width:"20%"}}>
-            <h1>Bill</h1>
-              <label><input type="checkbox" checked={this.state.houseBool} onClick={()=>{this.handleBill("house")}}/>House Bill</label>
+          <div style={{float:"left",overflow:"hidden",width:"15%"}}>
+            <h4>Bill Type</h4>
+              <label><input type="checkbox" checked={this.state.houseBool} onClick={()=>{this.handleBill("house")}}/>House Bill</label> 
+              <br></br>
               <label><input type="checkbox" checked={this.state.senateBool} onClick={()=>{this.handleBill("senate")}}/>Senate Bill</label>
           </div>
           <div style={{float:"left",overflow:"hidden",width:"20%"}}>
-            <h1>Status</h1>
+            <h4>Status</h4>
               <label><input type="radio" name="contact" onClick={()=>{this.handleStatus("PASS")}}/>Passed</label>
+              <br></br>
               <label><input type="radio" name="contact" onClick={()=>{this.handleStatus("INTRODUCED")}}/>Introduced</label>
+              <br></br>
                 <label><input type="radio" name="contact" onClick={()=>{this.handleStatus("PROGRESS")}} />Progress</label>
+                <br></br>
                 <label><input type="radio" name="contact" onClick={()=>{this.handleStatus("REJECTED")}} />Rejected</label>
+                <br></br>
                 <label><input type="radio" name="contact" onClick={()=>{this.handleStatus("ALL")}} defaultChecked />All</label>
           </div>
           <div style={{float:"left",overflow:"hidden",width:"30%"}}>
             <div style={{height:"5px",width:"500px"}}>
-           <input type="text" placeholder="Search" value={this.state.searchTerm} onChange={(event)=>{
+           <input type="text" placeholder="Search" style={{width:"30px"}} value={this.state.searchTerm} onChange={(event)=>{
                this.setState({searchTerm:event.target.value});}} style={{width:"300px"}}/>
              <br/>
-           <button className="btn btn-default" style={{backgroundColor:"blue",width:"100px",height:"30px",color:"black"}} onClick={()=>{this.handleSearch(this.state.searchTerm)}} type="submit">Search  <i className="glyphicon glyphicon-search"></i></button>
+           <button className="btn btn-default" style={{backgroundColor:"#129A94",width:"100px",height:"30px",color:"black"}} onClick={()=>{this.handleSearch(this.state.searchTerm)}} type="submit">Search  <i className="glyphicon glyphicon-search"></i></button>
 
           </div>
           </div>
@@ -205,33 +210,34 @@ componentDidMount(){
           </div>
           <ul style={{border:"2px solid black",listStyleType:"none"}}>
             <li>
-              <div style={{display:"flex",justifyContent: "space-between",textAlign:"left",color:"skyblue"}}>
+              <div style={{display:"flex",justifyContent: "space-between",textAlign:"left",color:"#129A94"}}>
                 <div style={{float:"left",overflow:"hidden",width:"25%"}}>
-                <h3 style={{textAlign:"center"}}> Bill No.</h3>
+                <h3 style={{textAlign:"left",fontSize:"17px"}}> Bill No.</h3>
                 </div>
                 <div style={{float:"left",overflow:"hidden",width:"25%"}}>
-                <h3 style={{textAlign:"center"}}>  Introducer</h3>
+                <h3 style={{textAlign:"left",fontSize:"17px"}}>  Introducer</h3>
                 </div>
                 <div style={{float:"left",overflow:"hidden",width:"25%"}}>
-                <h3 style={{textAlign:"center"}}>  Introduced On </h3>
+                <h3 style={{textAlign:"left",fontSize:"17px"}}>  Introduced On </h3>
                 </div>
                 <div style={{float:"left",overflow:"hidden",width:"25%"}}>
-                <h3 style={{textAlign:"center"}}>  Category </h3>
+                <h3 style={{textAlign:"left",fontSize:"17px"}}>  Category </h3>
                 </div>
                 <div style={{float:"left",overflow:"hidden",width:"25%"}}>
-              <h3 style={{textAlign:"center"}}>    Title </h3>
+              <h3 style={{textAlign:"left",fontSize:"17px"}}>    Title </h3>
                 </div>
                 <div style={{float:"left",overflow:"hidden",width:"25%"}}>
-              <h3 style={{textAlign:"center"}}>    Status</h3>
+              <h3 style={{textAlign:"left",fontSize:"17px"}}>    Status</h3>
                 </div>
                 <div style={{float:"left",overflow:"hidden",width:"25%"}}>
-              <h3 style={{textAlign:"center"}}>    Bill Type </h3>
+              <h3 style={{textAlign:"left",fontSize:"17px"}}>    Bill Type </h3>
                 </div>
 
               </div>
             </li>
             {this.state.mails.map((item)=>{
               return <li key={item.time} >
+              
                 <div style={{display:"flex",border:"1px solid black",justifyContent: "space-between",color:"black"}}>
                   <div style={{float:"left",overflow:"hidden",width:"14.28%"}}>
                   <a href="#" onClick={()=>{
