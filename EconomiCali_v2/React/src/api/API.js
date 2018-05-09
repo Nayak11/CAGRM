@@ -6,6 +6,23 @@ const headers = {
     'Accept': 'application/json'
 };
 
+export const comment = (payload) =>
+    fetch(`${api}/users/commentAdd`, {
+        method: 'POST',
+        headers: {
+            ...headers,
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(payload)
+    }).then(res => {
+        return res.status;
+    })
+        .catch(error => {
+            console.log("This is error");
+            return error;
+        });
+
+
 export const doLogin = (payload) =>
     fetch(`${api}/users/doLogin`, {
         method: 'POST',
@@ -64,43 +81,6 @@ export const fetchbills = (payload) =>
             return error;
         });
 
-export const fetchPreferencesByUser = (payload) =>
-    fetch(`${api}/users/fetchPreferencesByUser`, {
-        method: 'POST',
-        headers: {
-            ...headers,
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(payload)
-    }).then(res => {
-        //  console.log("sending JSON from API");
-        // //res.status = 201;
-        // return res.json();
-        return res.json();
-    })
-        .catch(error => {
-            console.log("Error from fetching data from Authors");
-            return error;
-        });
-export const savePreferences = (payload) =>
-    fetch(`${api}/users/savePreferences`, {
-        method: 'POST',
-        headers: {
-            ...headers,
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(payload)
-    }).then(res => {
-        //  console.log("sending JSON from API");
-        // //res.status = 201;
-        // return res.json();
-        return res.json();
-    })
-        .catch(error => {
-            console.log("Error from fetching data from Authors");
-            return error;
-        });
-
 
 export const fetchAllbills = (payload) =>
     fetch(`${api}/users/fetchAllbills`, {
@@ -125,7 +105,7 @@ export const fetchAllbills = (payload) =>
 
 
 export const fetchbillsData = (payload) =>
-    fetch(`${api}/users/fetchbillsData`, {
+    fetch(`${api}/users/fetchbills`, {
         method: 'POST',
         headers: {
             ...headers,
@@ -354,4 +334,20 @@ export const getuserPic = (payload) =>
             console.log("This is error");
             return error;
         });
+
+
+        export const comment1 = (payload) =>
+        fetch(`${api}/users/comments`, {
+            method: 'GET',
+            headers: {
+                ...headers,
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(payload)
+        }).then(function(resp) { return resp.json(); })
+    
+            .catch(error => {
+                console.log("This is error");
+                return error;
+            });
 
