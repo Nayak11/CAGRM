@@ -125,15 +125,15 @@ class NavbarTemp extends Component {
                                 </a>
                             </li>
                             <li className="nav-item" data-toggle="tooltip" data-placement="right" title="Charts">
-                                <a className="nav-link" href="charts.html">
+                                <a className="nav-link" href="bills">
                                     <i className="fa-sticky-note-o "></i>
                                     <span className="nav-link-text">Bills</span>
                                 </a>
                             </li>
                             <li className="nav-item" data-toggle="tooltip" data-placement="right" title="Tables">
-                                <a className="nav-link" href="peo">
+                                <a className="nav-link" href="legislative">
                                     <i className="fa fa-address-card"></i>
-                                    <span className="nav-link-text"> Authors</span>
+                                    <span className="nav-link-text"> Legislative Members</span>
                                 </a>
                             </li>
                             <li className="nav-item" data-toggle="tooltip" data-placement="right" title="Tables">

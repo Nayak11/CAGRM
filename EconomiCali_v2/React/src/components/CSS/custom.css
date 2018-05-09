@@ -63,5 +63,12 @@ div#useful {
     text-align: left;
 }
 
+form.col-md-4.col-md-3.align-self-center.border{
+    margin-top : 100px !important;
+}
+
+div.form-group h4{
+    text-align: center;
+}
 
 

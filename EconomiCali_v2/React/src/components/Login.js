@@ -41,7 +41,7 @@ class Login extends Component {
                             localStorage.setItem('user_id', response.data.userId);
                             localStorage.setItem('company_id',response.data.companyId);
                             localStorage.setItem('username',response.data.companyId)
-                            this.props.history.push('/home');
+                            this.props.history.push('/legislative');
                         }
                     });
             }else
@@ -79,10 +79,10 @@ class Login extends Component {
             <div>
                 <div className="container">
                     <div className="row justify-content-md-center ">
-                        <form className="col-sm-12 col-md-3 align-self-center border">
+                        <form className="col-md-4 col-md-3 align-self-center border">
                             <LogoImage className="image"/>
                             <hr />
-                            <div className="form-group"><h5>Login</h5></div>
+                            <div className="form-group"><h4>Login</h4></div>
                             <div className="form-group">
                                 { this.state.emailorusernameValid ? null : <div className="text-input-error-wrapper text-left errorMsg">Username is required.</div>}
                                 <input
@@ -137,7 +137,7 @@ class Login extends Component {
                                 </button>
                             </div>
                             <hr />
-                            <div className="form-group"><p className="small">Don't have an account? <Link to = "/signup">Sign Up</Link></p></div>
+                            <div className="form-group"><p className="small">Don't have an account? <Link to = "/signup">Contact Us</Link></p></div>
                         </form>
                     </div>
 

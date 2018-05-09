@@ -118,7 +118,7 @@ class NewerHomePage extends Component {
                 )}/>
 
 
-                <Route exact path="/peo" render={() => (
+                <Route exact path="/legislative" render={() => (
                     <div>
                         <PeopleTemp/>
                         <Message message={this.state.message}/>
