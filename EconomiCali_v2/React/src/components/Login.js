@@ -79,7 +79,7 @@ class Login extends Component {
             <div>
                 <div className="container">
                     <div className="row justify-content-md-center ">
-                        <form className="col-md-4 col-md-3 align-self-center border">
+                        <form className="col-SM-12 col-md-3 align-self-center border">
                             <LogoImage className="image"/>
                             <hr />
                             <div className="form-group"><h4>Login</h4></div>

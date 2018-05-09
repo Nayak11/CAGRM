@@ -48,15 +48,15 @@ class PeopleTemp extends Component {
 
     componentDidMount(){
         var payload ={username : localStorage.getItem("username") }
-        API.fetchPreferencesByUser(payload)
-            .then(
-                (response) =>{
-                    console.log(response.data);
-                    this.setState({
-                        authors:response.data
-                    })
-                }
-            );
+        // API.fetchPreferencesByUser(payload)
+        //     .then(
+        //         (response) =>{
+        //             console.log(response.data);
+        //             this.setState({
+        //                 authors:response.data
+        //             })
+        //         }
+        //     );
 
     }
 
@@ -143,15 +143,15 @@ class PeopleTemp extends Component {
                         var payload ={ username : localStorage.getItem("username")
                                        ,org_id : localStorage.getItem("company_id"),
                                        preferences: this.state.selectedOptions }
-                        API.savePreferences(payload)
-                            .then(
-                                (response) =>{
-                                    console.log(response.data);
-                                    this.setState({
-                                        authors:response.data
-                                    })
-                                }
-                            );
+                        // API.savePreferences(payload)
+                        //     .then(
+                        //         (response) =>{
+                        //             console.log(response.data);
+                        //             this.setState({
+                        //                 authors:response.data
+                        //             })
+                        //         }
+                        //     );
 
 
                     }}> Search </button>

@@ -7,7 +7,7 @@ const headers = {
 };
 
 export const comment = (payload) =>
-    fetch(`${api}/users/commentAdd`, {
+    fetch(`${api}/users/comments`, {
         method: 'POST',
         headers: {
             ...headers,
@@ -337,8 +337,8 @@ export const getuserPic = (payload) =>
 
 
         export const comment1 = (payload) =>
-        fetch(`${api}/users/comments`, {
-            method: 'GET',
+        fetch(`${api}/users/getcomment`, {
+            method: 'POST',
             headers: {
                 ...headers,
                 'Content-Type': 'application/json'

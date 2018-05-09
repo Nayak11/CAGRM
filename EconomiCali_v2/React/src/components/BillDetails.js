@@ -22,31 +22,77 @@ class BillDetails extends Component{
         mailscopy:temp
     });
     var payload = {
-      company_id = localStorage.getItem("company_id"),
-      bill_no = this.state.mails[0].item.bill_no
+      company_id : localStorage.getItem("company_id"),
+      bill_no : this.state.mails[0].bill_no
     }
     API.comment1(payload)
     .then((res)=>{
-      console.log(res);
-      var temp=[];
-      for(var i=0;i<res.data.length;i++){
-        temp.push(res.data[i].Company_name);
-      }
-      this.setState({commentArr:temp})
+      this.setState({commentArr : res.comment})
+      console.log(this.state.commentArr);
     })
     console.log(this.props.item);
 }
 
 putComment = (id, comment) =>{
-  API.comment()
+      var payload = {company_id : localStorage.getItem("company_id"),
+          bill_no : this.state.mails[0].bill_no,
+          username : localStorage.getItem("username")  ,
+          comment : this.state.comment
+      }
+  API.comment(payload)
   .then((res)=>{
     if(res==201){
-      this.state.commentArr.push(this.state.comment);
-      this.setState({comment:""});
       console.log("comment added to db");
+        var payload = {
+            company_id : localStorage.getItem("company_id"),
+            bill_no : this.state.mails[0].bill_no
+        }
+        API.comment1(payload)
+            .then((res)=>{
+                this.setState({commentArr : res.comment, comment: ""})
+                console.log(this.state.commentArr);
+            })
     }
   })
 }
+
+
+    display_comments() {
+        {
+            const item = this.state.commentArr.map((comment, index) => {
+
+                return (
+                    <div className="col-md-12">
+                        <div className="actionBox">
+                            <ul className="commentList">
+                                <li>
+                                    <div className="row">
+                                        <div className="font-weight-bold smaller ">
+                                            {comment.username} ":  "
+                                        </div>
+                                    </div>
+                                    <div className="row">
+                                        <div className="commentText ">
+                                            {comment.comment}
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                )
+            });
+            return (
+                <div className="row">
+                    {item}
+                </div>
+            )
+        }
+
+
+    }
+
  
 
   render(){
@@ -298,27 +344,25 @@ putComment = (id, comment) =>{
            
           </ul> */}
 
-          <div style={{float:"center",height:"200px",marginLeft:"45px"}}>
-          <p></p>
+          <div className="col-md-6 detailBox">
+              <div className="titleBox">
+                  <label>Comment Box</label>
+              </div>
+              {this.state.commentArr.length>0 ? this.display_comments() : null}
+              <div className="form-inline" role="form">
+                  <div className="form-group">
+                      <input className="form-control" type="text" onChange={(event)=>this.setState({comment:event.target.value})} placeholder="Add Your comments" />
+                  </div>
+                  <div className="form-group">
+                      <button className="btn btn-default" onClick={()=>this.putComment()}>Add</button>
+                  </div>
+              </div>
           </div>
-          <div style={{border:"1px solid black"}}>
-          <ul>
-{this.state.commentArr.map((item)=>{
-  return <li style={{listStyleType:"none"}}>
-      {item}
-  </li>
-})}
-</ul>
-</div>
- 
- <input type="text" value={this.state.comment} onChange={(event)=>this.setState({comment:event.target.value})} style={{float:"center",border:"1px solid black",width:"60%",height:"5%",marginLeft:"45px"}} placeholder="Enter your comment... "/>
-
-<button style={{float:"center",height:"50px"}} onClick={()=>this.putComment({id:this.state.commentArr.length+1,comment:this.state.comment})}>Enter Comment</button>
-<p id="10"></p>
-
 
         </div>
     </div>
+            <br/>
+            <br/>
             <footer className="sticky-footer">
                 <div className="container">
                     <div className="text-center">
