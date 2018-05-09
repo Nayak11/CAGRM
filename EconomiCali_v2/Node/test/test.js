@@ -5,7 +5,6 @@ var app = require('../app');
 var http = require('http');
 
 
-
 it('Test case 1 - should respond with success flag on sign up', function (done) {
     request(app).post('/users/doSignUp')
         .send({"email":"adminKKB@123.com","username":"adminKKB","password":"admin123","role":"Work"})
