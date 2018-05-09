@@ -162,3 +162,9 @@ textarea.form-control {
 .titleBox{
     background-color: #F39C12   ;
 }
+
+ul li:nth-child(odd) div:nth-child(1){
+background-color: #EAF2F8;
+border-left-style: solid !important;
+
+}
