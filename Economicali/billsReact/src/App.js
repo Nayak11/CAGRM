@@ -10,32 +10,34 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <nav className="navbar navbar-inverse" style={{backgroundImage: 'url(' + bg + ')',height:"50px"}}>
-        <nav className="navbar navbar-inverse navbar-fixed-top">
-         <nav className="navbar navbar-default">
-          <div className="logo">
-              <img src={logo}/>
+          <nav className="navbar navbar-inverse" style={{backgroundImage: 'url(' + bg + ')',height:"50px"}}>
+            <nav className="navbar navbar-inverse navbar-fixed-top">
+              <nav className="navbar navbar-default">
+                <div className="logo">
+                    <img src={logo}/>
+                    
+                      <a>
+                        EconomiCali
+                      </a>
+                </div>
 
-                <a>EconomiCali</a>
-          </div>
-          <ul>
-                <li><a href="#" className="active">Home</a></li>
-                <li><a href="#">Features</a></li>
-                <li><a href="#">Contact Us</a></li>
-                <li><a href="#">SignOut</a></li>
-          </ul>
-          
-         </nav>
-         </nav>
-         </nav>
-        <BrowserRouter>
-          <div>
-          <RoutingComponent/>
-          </div>
-        </BrowserRouter>
+                <ul>
+                      <li><a href="#" className="active">Home</a></li>
+                      <li><a href="#">Features</a></li>
+                      <li><a href="#">Contact Us</a></li>
+                      <li><a href="#">SignOut</a></li>
+                </ul>
+
+              </nav>
+            </nav>
+          </nav>
+          <BrowserRouter>
+            <div>
+            <RoutingComponent/>
+            </div>
+          </BrowserRouter>
       </div>
     );
   }
 }
-
 export default App;
