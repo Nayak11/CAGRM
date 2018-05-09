@@ -105,7 +105,7 @@ export const fetchAllbills = (payload) =>
 
 
 export const fetchbillsData = (payload) =>
-    fetch(`${api}/users/fetchbills`, {
+    fetch(`${api}/users/fetchbillsData`, {
         method: 'POST',
         headers: {
             ...headers,

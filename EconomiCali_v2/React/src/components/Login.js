@@ -141,16 +141,13 @@ class Login extends Component {
                                 </button>
                             </div>
                             <hr />
-                            <div className="form-group"><p className="small">Don't have an account? <Link to = "/signup">Contact Us</Link></p></div>
+                            <div className="form-group"><p className="small">Don't have an account? <Link to = "/">Contact Us</Link></p></div>
                         </form>
                     </div>
-
                 </div>
             </div>
         );
     }
 }
-
-
 
 export default withRouter(connect(null,null)(Login));
