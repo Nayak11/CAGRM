@@ -162,16 +162,12 @@ componentDidMount(){
             <form style={{width:"100%",height:"80%"}}>
               <select onChange={(event)=>{this.handleCategory(event.target.value)}}>
   <option value="All">All</option>
-  <option value="Agriculture">Agriculture</option>
-  <option value="Environment">Environment</option>
   <option value="Education">Education</option>
+  <option value="Finance">Government</option>
+  <option value="Finance">Corporation</option>
+  <option value="Health">Health-care</option>
+  <option value="Health">Labor</option>
   <option value="Finance">Finance</option>
-  <option value="Crime">Crime</option>
-  <option value="Foreign">Foreign</option>
-  <option value="Health">Health</option>
-  <option value="Industries">Industries</option>
-  <option value="Legal Affairs">Legal Affairs</option>
-  <option value="Sports">Sports</option>
 </select>
             </form>
           </div>
@@ -202,7 +198,7 @@ componentDidMount(){
            <input type="text" placeholder="Search" style={{width:"30px"}} value={this.state.searchTerm} onChange={(event)=>{
                this.setState({searchTerm:event.target.value});}} style={{width:"300px"}}/>
              <br/>
-           <button className="btn btn-default" style={{backgroundColor:"#129A94",width:"100px",height:"30px",color:"black"}} onClick={()=>{this.handleSearch(this.state.searchTerm)}} type="submit">Search  <i className="glyphicon glyphicon-search"></i></button>
+           <button className="btn btn-default" style={{backgroundColor:"#129A94",width:"65px",height:"30px",color:"black"}} onClick={()=>{this.handleSearch(this.state.searchTerm)}} type="submit">Search  <i className="glyphicon glyphicon-search"></i></button>
 
           </div>
           </div>
