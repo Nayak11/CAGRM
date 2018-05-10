@@ -33,7 +33,11 @@ class PeopleTemp extends Component {
                 {id :8,name :"Health Information"},
                 {id :9,name :"Health Code"},
                 {id : 10,name :"Emergency"},
-                {id :11,name : "Medical Emergency"}
+                {id :11,name : "Medical Emergency"},
+                {id :12,name : "Education"},
+                {id :13,name : "commission"},
+                {id :14,name : "wage"},
+                {id :15,name : "Agriculture"},
             ],
 
             selectedOptions: [],
