@@ -29,7 +29,6 @@ componentDidMount(){
               })
           }
       );
-
 }
 
   handleBill(type){
@@ -132,7 +131,7 @@ componentDidMount(){
 </select>
             </form>
           </div>
-          <div style={{alignContent:"left",float:"left",overflow:"hidden",width:"20%"}}>
+          {/* <div style={{alignContent:"left",float:"left",overflow:"hidden",width:"20%"}}>
             <h4>Date Introduced</h4>
             <input id="date" type="month" value={this.state.month} onChange={(event)=>{this.handleMonth(event.target.value)}}/>
           </div>
@@ -143,34 +142,37 @@ componentDidMount(){
               <label><input type="radio" name="type" onClick={()=>{this.handleBill("Senate")}}/>Senate Bill</label>
               <br></br>
               <label><input type="radio" name="type" onClick={()=>{this.handleBill("ALL")}}/>All</label>
-          </div>
-          <div style={{float:"left",overflow:"hidden",width:"20%"}}>
+          </div> */}
+          <div style={{float:"left",overflow:"hidden",width:"30%"}}>
             <h4>Status</h4>
+            <div style={{float:"left",overflow:"hidden",width:"50%"}}>
               <label><input type="radio" name="contact" onClick={()=>{this.handleStatus("Pass")}}/>Passed</label>
               <br></br>
               <label><input type="radio" name="contact" onClick={()=>{this.handleStatus("Introduced")}}/>Introduced</label>
-              <br></br>
+             </div> 
+              
+              <div style={{float:"left",overflow:"hidden",width:"50%"}}>
                 <label><input type="radio" name="contact" onClick={()=>{this.handleStatus("Enacted")}} />Enacted</label>
                 <br></br>
                 <label><input type="radio" name="contact" onClick={()=>{this.handleStatus("Fail")}} />Failed</label>
-                <br></br>
+                </div>
                 <label><input type="radio" name="contact" onClick={()=>{this.handleStatus("ALL")}} defaultChecked />All</label>
           </div>
-          <div style={{float:"left",overflow:"hidden",width:"30%"}}>
+          <div style={{float:"left",overflow:"hidden",width:"50%"}}>
             <div style={{height:"5px",width:"500px"}}>
-           <input type="text" placeholder="Search" style={{width:"30px"}} value={this.state.searchTerm} onChange={(event)=>{
-               this.setState({searchTerm:event.target.value});}} style={{width:"300px"}}/>
+           <input type="text" placeholder="Search" style={{width:"20px"}} value={this.state.searchTerm} onChange={(event)=>{
+               this.setState({searchTerm:event.target.value});}} style={{width:"130px"}}/>
              <br/>
-           <button className="btn btn-default" style={{backgroundColor:"#129A94",width:"65px",height:"30px",color:"black"}} onClick={()=>{this.handleSearch(this.state.searchTerm)}} type="submit">Search  <i className="glyphicon glyphicon-search"></i></button>
+           <button className="btn btn-default" style={{backgroundColor:"#129A94",width:"75px",height:"30px",color:"black"}} onClick={()=>{this.handleSearch(this.state.searchTerm)}} type="submit">Search  <i className="glyphicon glyphicon-search"></i></button>
 
           </div>
           </div>
         </div>
           </div>
-          <ul style={{border:"1px solid black",textAlign:"left",listStyleType:"none"}}>
+          <ul style={{float:"left",border:"1px solid black",textAlign:"left",alignContent:"left",listStyleType:"none"}}>
             <li>
-              <div style={{display:"flex",textAlign:"left",color:"#129A94"}}>
-                <div style={{float:"left",overflow:"hidden",width:"25%"}}>
+              <div style={{display:"flex",textAlign:"left",alignContent:"left",color:"#129A94"}}>
+                <div style={{float:"left",overflow:"hidden",alignContent:"left",width:"25%"}}>
                 <h3 style={{textAlign:"left",fontSize:"17px"}}> Bill No.</h3>
                 </div>
                 <div style={{float:"left",overflow:"hidden",width:"25%"}}>
