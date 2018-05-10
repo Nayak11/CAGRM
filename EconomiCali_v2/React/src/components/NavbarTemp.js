@@ -25,7 +25,8 @@ class NavbarTemp extends Component {
             validEmail : true,
             validName : true,
             validSubject : true,
-            validMessage : true
+            validMessage : true,
+            validSuccess : true
         }
         this.sendMail = this.sendMail.bind(this);
         this.openModal = this.openModal.bind(this);
@@ -41,8 +42,19 @@ class NavbarTemp extends Component {
 
     openModal = () => {
         this.setState({
-            isOpen: true
+            isOpen: true,
+            validSuccess: true
         });
+        this.setState({
+            userdata: {
+                ...this.state.userdata,
+                name: "",
+                email:"",
+                subject:"",
+                message:""
+            }
+        });
+
     };
 
     hideModal = () => {
@@ -55,7 +67,7 @@ class NavbarTemp extends Component {
     validateEmail() {
 
         var emailId = this.state.userdata.email;
-        if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(emailId))
+        if (/^\w+([\.-]?\w+)@\w+([\.-]?\w+)(\.\w{2,3})+$/.test(emailId))
         {
             return (true)
         }
@@ -93,6 +105,7 @@ class NavbarTemp extends Component {
 
     sendMail()
     {
+        var self = this;
         if(this.validateName() == true){
             if(this.validateEmail() == true){
                 if(this.validSubject() == true){
@@ -102,8 +115,9 @@ class NavbarTemp extends Component {
                             .then((response) => {
                                 console.log(response);
                                 if (response.data) {
-                                    this.setState({message:true});
+                                    self.setState({message:true,validSuccess:false });
                                 }
+
                             })
                     }
                     else{
@@ -135,6 +149,12 @@ class NavbarTemp extends Component {
                         </ModalHeader>
                         <ModalBody>
                             <div className="container">
+                                {this.state.validSuccess ? null : <div className="row">
+                                    <div className="col-md-12">
+                                        <div className="alert-info alert">Email sent...</div>
+                                    </div>
+                                </div> }
+
                                 <div className="row">
                                     <div className="col-md-12">
                                         <div className="well well-sm">
@@ -226,7 +246,7 @@ class NavbarTemp extends Component {
                             </div>
                         </ModalBody>
                         <ModalFooter>
-                            <button type="button" className="btn btn-primary send pull-right"  onClick={()=>{this.sendMail()}} id="btnContactUs">
+                            <button type="button" className="btn btn-primary pull-right"  onClick={()=>{this.sendMail()}} id="btnContactUs">
                                 Send Message</button>
                             <button className='btn btn-default' onClick={() => {
                                 this.hideModal()
@@ -366,18 +386,7 @@ class NavbarTemp extends Component {
                                     <a className="dropdown-item small" href="#">View all alerts</a>
                                 </div>
                             </li>
-                            <li className="nav-item">
-                                <form className="form-inline my-2 my-lg-0 mr-lg-2">
-                                    {<div className="input-group">
-                                        <input className="form-control" type="text" placeholder="Search for..." />
-              <span className="input-group-append">
-                <button className="btn btn-primary" type="button">
-                  <i className="fa fa-search"></i>
-                </button>
-              </span>
-                                    </div> }
-                                </form>
-                            </li>
+
                             <li className="nav-item">
                                 <a className="nav-link" data-toggle="modal" data-target="#exampleModal" onClick={() => {this.handleLogout()}}>
                                     <i className="fa fa-fw fa-sign-out"></i>Logout</a>
