@@ -226,7 +226,7 @@ class NavbarTemp extends Component {
                             </div>
                         </ModalBody>
                         <ModalFooter>
-                            <button type="button" className="btn btn-primary pull-right"  onClick={()=>{this.sendMail()}} id="btnContactUs">
+                            <button type="button" className="btn btn-primary send pull-right"  onClick={()=>{this.sendMail()}} id="btnContactUs">
                                 Send Message</button>
                             <button className='btn btn-default' onClick={() => {
                                 this.hideModal()
@@ -368,14 +368,14 @@ class NavbarTemp extends Component {
                             </li>
                             <li className="nav-item">
                                 <form className="form-inline my-2 my-lg-0 mr-lg-2">
-                                    <div className="input-group">
+                                    {<div className="input-group">
                                         <input className="form-control" type="text" placeholder="Search for..." />
               <span className="input-group-append">
                 <button className="btn btn-primary" type="button">
                   <i className="fa fa-search"></i>
                 </button>
               </span>
-                                    </div>
+                                    </div> }
                                 </form>
                             </li>
                             <li className="nav-item">
