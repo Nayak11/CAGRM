@@ -117,7 +117,7 @@ componentDidMount(){
           <div style={{width:"100%",color:"black"}}>
             <br/><br/><br/>
             <div style={{leftMargin:"10px",width:"100%",display:"flex",alignContent:"center"}}>
-          <div style={{leftMargin:"10px",alignContent:"center",overflow:"hidden",width:"15%"}}>
+          <div style={{leftMargin:"10px",alignContent:"left",overflow:"hidden",width:"35%"}}>
             <h4>Category</h4>
             <form style={{width:"100%",height:"80%"}}>
               <select onChange={(event)=>{this.handleCategory(event.target.value)}}>
@@ -131,39 +131,39 @@ componentDidMount(){
 </select>
             </form>
           </div>
-          {/* <div style={{alignContent:"left",float:"left",overflow:"hidden",width:"20%"}}>
-            <h4>Date Introduced</h4>
+          <div style={{alignContent:"left",float:"left",overflow:"hidden",width:"55%"}}>
+            <h4>Date Introduced on</h4>
             <input id="date" type="month" value={this.state.month} onChange={(event)=>{this.handleMonth(event.target.value)}}/>
           </div>
-          <div style={{float:"left",overflow:"hidden",width:"15%"}}>
+          <div style={{float:"left",overflow:"hidden",width:"40%"}}>
             <h4>Bill Type</h4>
               <label><input type="radio" name="type"  onClick={()=>{this.handleBill("House")}}/>House Bill</label>
               <br></br>
               <label><input type="radio" name="type" onClick={()=>{this.handleBill("Senate")}}/>Senate Bill</label>
               <br></br>
               <label><input type="radio" name="type" onClick={()=>{this.handleBill("ALL")}}/>All</label>
-          </div> */}
-          <div style={{float:"left",overflow:"hidden",width:"30%"}}>
+          </div>
+          <div style={{float:"left",overflow:"hidden",width:"70%"}}>
             <h4>Status</h4>
-            <div style={{float:"left",overflow:"hidden",width:"50%"}}>
+            <div style={{float:"left",overflow:"hidden",width:"30%"}}>
               <label><input type="radio" name="contact" onClick={()=>{this.handleStatus("Pass")}}/>Passed</label>
               <br></br>
               <label><input type="radio" name="contact" onClick={()=>{this.handleStatus("Introduced")}}/>Introduced</label>
              </div> 
               
-              <div style={{float:"left",overflow:"hidden",width:"50%"}}>
+              <div style={{float:"left",overflow:"hidden",width:"30%"}}>
                 <label><input type="radio" name="contact" onClick={()=>{this.handleStatus("Enacted")}} />Enacted</label>
                 <br></br>
                 <label><input type="radio" name="contact" onClick={()=>{this.handleStatus("Fail")}} />Failed</label>
                 </div>
                 <label><input type="radio" name="contact" onClick={()=>{this.handleStatus("ALL")}} defaultChecked />All</label>
           </div>
-          <div style={{float:"left",overflow:"hidden",width:"50%"}}>
-            <div style={{height:"5px",width:"500px"}}>
-           <input type="text" placeholder="Search" style={{width:"20px"}} value={this.state.searchTerm} onChange={(event)=>{
+          <div style={{float:"right",overflow:"hidden",width:"50%",alignContent:"right"}}>
+            <div style={{float:"left",height:"5px",width:"500px",alignContent:"right"}}>
+           <input type="text" placeholder="Search" style={{width:"20px",alignContent:"right"}} value={this.state.searchTerm} onChange={(event)=>{
                this.setState({searchTerm:event.target.value});}} style={{width:"130px"}}/>
              <br/>
-           <button className="btn btn-default" style={{backgroundColor:"#129A94",width:"75px",height:"30px",color:"black"}} onClick={()=>{this.handleSearch(this.state.searchTerm)}} type="submit">Search  <i className="glyphicon glyphicon-search"></i></button>
+           <button className="btn btn-default" style={{backgroundColor:"#129A94",width:"75px",height:"30px",color:"black",alignContent:"right"}} onClick={()=>{this.handleSearch(this.state.searchTerm)}} type="submit">Search  <i className="glyphicon glyphicon-search"></i></button>
 
           </div>
           </div>
