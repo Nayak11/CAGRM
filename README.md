@@ -10,7 +10,7 @@ Your scope is narrowed to CA
 
 Get set go..  fast 
 
-########################################################################################################################################
+######################################################################################################
 
 # Student Names:
 Suhas Nayak, Kirati Bhuva, Shraddha Jamadade, Spandana Padala
@@ -23,7 +23,7 @@ EconomiCali
 
 ----------------------------------------------------------------------------------------------------------------------------------------
 
-# PROBLEM STATEMENT:
+## PROBLEM STATEMENT
 Government information is not easy to access and there is lot of it. For any business, keeping the information which their business depends on in spreadsheet which are being updated. Traditionally they were looking at around 50+ different websites, Federal websites, take links, PDFs, texts and put them all together into one folder on to their computer. Having a dedicated platform which provides the ability to view all the legal information about their businesses and take decisions accordingly will help organizations proactively grow and protect themselves.
 
 ----------------------------------------------------------------------------------------------------------------------------------------
@@ -49,7 +49,7 @@ We gathered required information needed for our application from California Legi
 ----------------------------------------------------------------------------------------------------------------------------------------
 
 # FEATURES 
-# Bills 
+# Bills: 
 The application displays all the bills corresponding each category such as Education, Government, Corporation, Agriculture, Health Care etc.  Each has the following fields
 o	Bill No
 o	Introducer
@@ -77,28 +77,28 @@ This option defines under which category the bills is arranged, for example: Edu
 # Status: 
 Determines the status of the bill which can be passed, Failed, Enacted, etc. The select status radio button allows users to view all the bills corresponding to the selected status.This page also provides the functionality to filter out other categories and keep only those of our interest, thus enabling efficient search.If we want to find a bill which is particularly effective within the issue area of Sports and Recreation, then after applying the scope filter and choosing particular region from the list, we go to the categories tab and mark that we only want to see the effective legislatures within the Sports and Recreation field. 
 
-# The search bar 
+# The search bar: 
 Allows users to provide a bill number to display its respective details. When a user inputs the Bill number in the search, it displays the details of that particular bill.
 
-# On clicking a particular bill number link 
+# On clicking a particular bill number link: 
 The user is redirected to a page with more detailed information on that particular bill.
 
-# Comments on the Bill
+# Comments on the Bill:
 When a user clicks on the Bill no, a complete description of the bill is displayed and user who is the representative of the organization can comment on bills to have collaboration among his colleagues.
 It provides transparency among the members in his team to know the status and the progress on the bill.
 
-# Legislative Members
+# Legislative Members:
 This feature is used to display the list of legislative members, with their profile and their mail ids for the organization to communicate with them to work on the bills
 
-# Email Feature
+# Email Feature:
 Each user is provided with mail service to communicate with the Senators on the bills
 
-# Dashboard
+# Dashboard:
 Bar graph which shows top 5 legislative members (one who dealt with maximum number of bills) in the category selected by the user.
 Pie chart which shows status of selected bill in particular category. 
 Analytics provides the organization to give an insight of the top senators under category who dealt with more no of bills for each category. It also showcases the bill status for each category.
 
-# Saved Preference
+# Saved Preference:
 It allows user to search for keywords, which highlights the text in Yellow from the available bills. It also allows the user to save the selected bills. User quickly navigate to the corresponding bill that he wants to save and work on them
 
 ----------------------------------------------------------------------------------------------------------------------------------------
