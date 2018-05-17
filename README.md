@@ -12,13 +12,13 @@ Get set go..  fast
 
 ##################################################################################
 
-# Student Names:
+### Student Names
 Suhas Nayak, Kirati Bhuva, Shraddha Jamadade, Spandana Padala
 
-# Team Name: 
+### Team Name 
 Team11
 
-# Project Title: 
+### Project Title
 EconomiCali
 
 ----------------------------------------------------------------------------------------------------------------------------------------
@@ -59,28 +59,28 @@ o	Title
 o	Status
 o	Bill Type
 
-########## Bill No: 
+##### Bill No: 
 It is a unique number corresponding to each Bill given by the Government when a bill is introduced.
 
-########## Title: 
+##### Title: 
 Provides a brief description about the bill.
 
-########## Introducer: 
+##### Introducer: 
 It is the person who has introduced the bill.
 
-########## Introduced On: 
+##### Introduced On: 
 The date on which the bill was introduced.
 
-########## Category: 
+##### Category: 
 This option defines under which category the bills is arranged, for example: Education, Health-Care, Corporation, etc. The user can select particular category from the drop-down box and view all the bills corresponding to that category.
 
-########## Status: 
+##### Status: 
 Determines the status of the bill which can be passed, Failed, Enacted, etc. The select status radio button allows users to view all the bills corresponding to the selected status.This page also provides the functionality to filter out other categories and keep only those of our interest, thus enabling efficient search.If we want to find a bill which is particularly effective within the issue area of Sports and Recreation, then after applying the scope filter and choosing particular region from the list, we go to the categories tab and mark that we only want to see the effective legislatures within the Sports and Recreation field. 
 
-########## The search bar: 
+##### The search bar: 
 Allows users to provide a bill number to display its respective details. When a user inputs the Bill number in the search, it displays the details of that particular bill.
 
-########## On clicking a particular bill number link: 
+##### On clicking a particular bill number link: 
 The user is redirected to a page with more detailed information on that particular bill.
 
 # Comments on the Bill:
