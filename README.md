@@ -47,7 +47,15 @@ We have used MongoDB database as our datasource. We chose MongoDB for two reason
 We gathered required information needed for our application from California Legislative Information site using Web Scraping which is also known as Screen Scraping, Web Harvesting, Web Data Extraction etc. Using this technique, we extracted huge amount of data from Official California Legislation Information site and saved it in MongoDB. We used cheerio library to scrap the data. 
 
 ----------------------------------------------------------------------------------------------------------------------------------------
+# LANDING PAGE
+![LandingPage](https://github.com/SJSU272LabSP18/CAGRM/blob/master/Images_For_ReadMe/LandingPage.png)
+![Landing_Page_Continued_1](https://github.com/SJSU272LabSP18/CAGRM/blob/master/Images_For_ReadMe/Landing_Page_Continued_1.png)
+![Landing_Page_Continued_2](https://github.com/SJSU272LabSP18/CAGRM/blob/master/Images_For_ReadMe/Landing_Page_Continued_2.png)
 
+# LOGIN PAGE
+![Login_Page](https://github.com/SJSU272LabSP18/CAGRM/blob/master/Images_For_ReadMe/Login_Page.png)
+
+----------------------------------------------------------------------------------------------------------------------------------------
 # FEATURES 
 ##### Bills: 
 The application displays all the bills corresponding each category such as Education, Government, Corporation, Agriculture, Health Care etc.  Each has the following fields
@@ -81,17 +89,23 @@ Determines the status of the bill which can be passed, Failed, Enacted, etc. The
 Allows users to provide a bill number to display its respective details. When a user inputs the Bill number in the search, it displays the details of that particular bill.
 
 ##### On clicking a particular bill number link: 
+![Bill_Details_When_Clicked_On_Particular_Bill](https://github.com/SJSU272LabSP18/CAGRM/blob/master/Images_For_ReadMe/Bill_Details_When_Clicked_On_Particular_Bill.png)
+
 The user is redirected to a page with more detailed information on that particular bill.
 
 #### Comments on the Bill
+![Comment_Functionality](https://github.com/SJSU272LabSP18/CAGRM/blob/master/Images_For_ReadMe/Comment_Functionality.png)
+
 When a user clicks on the Bill no, a complete description of the bill is displayed and user who is the representative of the organization can comment on bills to have collaboration among his colleagues.
 It provides transparency among the members in his team to know the status and the progress on the bill.
 
 #### Legislative Members:
+![Legislative_Members](https://github.com/SJSU272LabSP18/CAGRM/blob/master/Images_For_ReadMe/Legislative_Members.png)
+
 This feature is used to display the list of legislative members, with their profile and their mail ids for the organization to communicate with them to work on the bills
 
 #### Email Feature:
-![Dashboard](https://github.com/SJSU272LabSP18/CAGRM/blob/master/Images_For_ReadMe/Email_Functionality.png)
+![Email_Functionality](https://github.com/SJSU272LabSP18/CAGRM/blob/master/Images_For_ReadMe/Email_Functionality.png)
 
 Each user is provided with mail service to communicate with the Senators on the bills
 
@@ -103,6 +117,8 @@ Pie chart which shows status of selected bill in particular category.
 Analytics provides the organization to give an insight of the top senators under category who dealt with more no of bills for each category. It also showcases the bill status for each category.
 
 #### Saved Preference:
+![KeywordSearch_UserPreference](https://github.com/SJSU272LabSP18/CAGRM/blob/master/Images_For_ReadMe/KeywordSearch_UserPreference.png)
+
 It allows user to search for keywords, which highlights the text in Yellow from the available bills. It also allows the user to save the selected bills. User quickly navigate to the corresponding bill that he wants to save and work on them
 
 ----------------------------------------------------------------------------------------------------------------------------------------
