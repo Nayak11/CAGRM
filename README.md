@@ -49,8 +49,8 @@ We gathered required information needed for our application from California Legi
 ----------------------------------------------------------------------------------------------------------------------------------------
 # LANDING PAGE
 ![LandingPage](https://github.com/SJSU272LabSP18/CAGRM/blob/master/Images_For_ReadMe/LandingPage.png)
-![Landing_Page_Continued_1](https://github.com/SJSU272LabSP18/CAGRM/blob/master/Images_For_ReadMe/Landing_Page_Continued_1.png)
-![Landing_Page_Continued_2](https://github.com/SJSU272LabSP18/CAGRM/blob/master/Images_For_ReadMe/Landing_Page_Continued_2.png)
+![Landing_1](https://github.com/SJSU272LabSP18/CAGRM/blob/master/Images_For_ReadMe/Landing_1.png)
+![Landing_2](https://github.com/SJSU272LabSP18/CAGRM/blob/master/Images_For_ReadMe/Landing_2.png)
 
 # LOGIN PAGE
 ![Login_Page](https://github.com/SJSU272LabSP18/CAGRM/blob/master/Images_For_ReadMe/Login_Page.png)
@@ -58,6 +58,8 @@ We gathered required information needed for our application from California Legi
 ----------------------------------------------------------------------------------------------------------------------------------------
 # FEATURES 
 ##### Bills: 
+![Comment_Functionality](https://github.com/SJSU272LabSP18/CAGRM/blob/master/Images_For_ReadMe/Bill_Details.png)
+
 The application displays all the bills corresponding each category such as Education, Government, Corporation, Agriculture, Health Care etc.  Each has the following fields
 o	Bill No
 o	Introducer
