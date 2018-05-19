@@ -49,7 +49,8 @@ We gathered required information needed for our application from California Legi
 ----------------------------------------------------------------------------------------------------------------------------------------
 # LANDING PAGE
 ![LandingPage](https://github.com/SJSU272LabSP18/CAGRM/blob/master/Images_For_ReadMe/LandingPage.png)
-![Landing_1](https://github.com/SJSU272LabSP18/CAGRM/blob/master/Images_For_ReadMe/Landing_1.png)
+
+# CONTACT US
 ![Landing_2](https://github.com/SJSU272LabSP18/CAGRM/blob/master/Images_For_ReadMe/Landing_2.png)
 
 # LOGIN PAGE
