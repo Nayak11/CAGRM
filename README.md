@@ -94,7 +94,7 @@ This feature is used to display the list of legislative members, with their prof
 Each user is provided with mail service to communicate with the Senators on the bills
 
 #### Dashboard:
-![Dashboard](CAGRM/Images_For_ReadMe/Dashboard.png)
+![Dashboard](https://github.com/SJSU272LabSP18/CAGRM/blob/master/Images_For_ReadMe/Dashboard.png)
 Bar graph which shows top 5 legislative members (one who dealt with maximum number of bills) in the category selected by the user.
 Pie chart which shows status of selected bill in particular category. 
 Analytics provides the organization to give an insight of the top senators under category who dealt with more no of bills for each category. It also showcases the bill status for each category.
